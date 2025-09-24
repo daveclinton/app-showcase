@@ -1,82 +1,100 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Button } from "./ui/button";
-import { Shield, Zap, Globe } from "lucide-react";
+import { Upload, Sparkles, LineChart } from "lucide-react";
 
 export default function HowItWorks() {
   return (
     <section className="py-20">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
-        {/* Left Content */}
-        <div className="space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-4xl lg:text-5xl font-bold text-balance">
-              Transfer money with confidence
-            </h2>
-            <p className="text-gray-400 text-lg text-pretty">
-              Experience seamless money transfers with bank-level security,
-              instant notifications, and competitive exchange rates. Send money
-              globally in seconds, not days.
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <div className="bg-amber-400/20 p-3 rounded-full">
-                <Shield className="w-6 h-6 text-amber-400" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">
-                  Bank-level Security
-                </h3>
-                <p className="text-gray-400">
-                  Your money and data are protected with enterprise-grade
-                  encryption and fraud detection.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="bg-amber-400/20 p-3 rounded-full">
-                <Zap className="w-6 h-6 text-amber-400" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">
-                  Instant Transfers
-                </h3>
-                <p className="text-gray-400">
-                  Send money instantly to friends, family, or businesses
-                  worldwide with just a few taps.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="bg-amber-400/20 p-3 rounded-full">
-                <Globe className="w-6 h-6 text-amber-400" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Global Reach</h3>
-                <p className="text-gray-400">
-                  Transfer to over 200 countries with competitive exchange rates
-                  and low fees.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <Button className="bg-amber-400 text-black hover:bg-amber-500 px-8 py-3 rounded-full font-medium">
-            Get Started Today
-          </Button>
-        </div>
+      <div className="max-w-4xl mx-auto text-center mb-16">
+        <h1 className="text-5xl font-bold">How It Works</h1>
+        <p className="text-gray-200 mt-4 text-lg">
+          A simple process to turn your uploads into engaging previews.
+        </p>
+      </div>
+      <div className="grid lg:grid-cols-2 gap-32 items-center">
         <div className="flex justify-center lg:justify-end">
-          <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{
+              opacity: 1,
+              y: [0, -12, 0],
+              rotate: [0, 2, 0, -2, 0],
+            }}
+            transition={{
+              opacity: { duration: 0.6 },
+              y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+            }}
+            className="relative"
+          >
             <Image
               src="/how-it-works.png"
               alt="Mobile app mockup showing money transfer interface"
               width={500}
               height={1000}
             />
+          </motion.div>
+        </div>
+        <div className="space-y-8">
+          <div className="space-y-4">
+            <h2 className="text-4xl lg:text-5xl font-bold text-balance">
+              Different uploads. Different outcomes.
+            </h2>
+            <p className="text-gray-200 text-lg text-pretty">
+              Create meaningful previews designed for product pages, ads and
+              quick decisions.
+            </p>
           </div>
+
+          <div className="space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="bg-amber-400/20 p-3 rounded-full">
+                <Upload className="w-6 h-6 text-amber-400" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">
+                  Upload your video
+                </h3>
+                <p className="text-gray-200">
+                  Share product benefits, usage and your authentic experience.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="bg-amber-400/20 p-3 rounded-full">
+                <Sparkles className="w-6 h-6 text-amber-400" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">
+                  Auto create VeeVu™
+                </h3>
+                <p className="text-gray-200">
+                  A short, engaging preview that showcases product highlights.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="bg-amber-400/20 p-3 rounded-full">
+                <LineChart className="w-6 h-6 text-amber-400" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">
+                  iGlo™ journey built
+                </h3>
+                <p className="text-gray-200">
+                  A full, AI-verified record showing truthful results over time.
+                </p>
+              </div>
+            </div>
+          </div>
+          <Button className="bg-amber-400 text-black hover:bg-amber-500 px-8 py-3 rounded-full font-medium">
+            Get Started Today
+          </Button>
         </div>
       </div>
     </section>

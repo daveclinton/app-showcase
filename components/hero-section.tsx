@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import React from "react";
+import BackgroundSvg from "./background";
 
 export function HeroSection() {
   return (
@@ -15,7 +16,7 @@ export function HeroSection() {
         true customers
       </h1>
 
-      <p className="text-gray-400 text-lg lg:text-xl max-w-2xl mx-auto text-balance">
+      <p className="text-gray-200 text-lg lg:text-xl max-w-2xl mx-auto text-balance">
         iGlo™ allows creators to journal authentic experiences and monetise
         their reviews.
       </p>
