@@ -2,14 +2,15 @@ import Image from "next/image";
 
 export function DashboardPreview() {
   return (
-    <div className="w-full max-w-[1160px] mx-auto px-4">
-      <div className="bg-primary-light/50 rounded-2xl p-2 shadow-2xl">
+    <div className="relative flex justify-center items-center">
+      <div className="relative w-full max-w-4xl">
         <Image
           src="/tai-hero-image.png"
-          alt="Dashboard preview"
-          width={1160}
-          height={700}
-          className="w-full h-full object-cover rounded-xl shadow-lg"
+          alt="Pays_e mobile app interface showing money transfer features, account balance, and portfolio management"
+          width={800}
+          height={600}
+          className="w-full h-auto"
+          priority
         />
       </div>
     </div>
