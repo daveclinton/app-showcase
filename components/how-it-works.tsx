@@ -8,13 +8,13 @@ import { Upload, Sparkles, LineChart } from "lucide-react";
 export default function HowItWorks() {
   return (
     <section className="py-20">
-      <div className="max-w-4xl mx-auto text-center mb-16">
+      <div className="max-w-7xl mx-auto  mb-16">
         <h1 className="text-5xl font-bold">How It Works</h1>
         <p className="text-gray-200 mt-4 text-lg">
           A simple process to turn your uploads into engaging previews.
         </p>
       </div>
-      <div className="grid lg:grid-cols-2 gap-32 items-center">
+      <div className="grid lg:grid-cols-2 shadow-xl rounded-2xl gap-32 items-center">
         <div className="flex justify-center lg:justify-end">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -92,7 +92,7 @@ export default function HowItWorks() {
               </div>
             </div>
           </div>
-          <Button className="bg-amber-400 text-black hover:bg-amber-500 px-8 py-3 rounded-full font-medium">
+          <Button className="bg-amber-400 text-black hover:bg-amber-500 px-8 py-5 rounded-full font-medium">
             Get Started Today
           </Button>
         </div>

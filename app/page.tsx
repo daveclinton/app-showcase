@@ -1,4 +1,5 @@
 import { AnimatedSection } from "@/components/animated-section";
+import AskAI from "@/components/ask-ai";
 import { DashboardPreview } from "@/components/dashboard-preview";
 import { HeroSection } from "@/components/hero-section";
 import HowItWorks from "@/components/how-it-works";
@@ -11,6 +12,7 @@ export default function HomePage() {
         <DashboardPreview />
       </AnimatedSection>
       <HowItWorks />
+      <AskAI />
     </div>
   );
 }
