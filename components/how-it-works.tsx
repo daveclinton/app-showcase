@@ -40,7 +40,7 @@ export default function HowItWorks() {
         </div>
         <div className="space-y-8">
           <div className="space-y-4">
-            <h2 className="text-4xl lg:text-5xl font-bold text-balance">
+            <h2 className="text-3xl font-bold text-balance">
               Different uploads. Different outcomes.
             </h2>
             <p className="text-gray-200 text-lg text-pretty">
