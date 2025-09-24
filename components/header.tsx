@@ -15,9 +15,9 @@ import Link from "next/link";
 
 export function Header() {
   const navItems = [
-    { name: "Features", href: "#features-section" },
-    { name: "Pricing", href: "#pricing-section" },
-    { name: "Testimonials", href: "#testimonials-section" },
+    { name: "How it Works", href: "#features-section" },
+    { name: "Creators", href: "#pricing-section" },
+    { name: "Brand", href: "#testimonials-section" },
   ];
 
   const handleScroll = (
@@ -38,7 +38,7 @@ export function Header() {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
             <span className="text-foreground text-xl font-semibold">
-              Pointer
+              TAI ORA
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-2">
@@ -46,8 +46,8 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                onClick={(e) => handleScroll(e, item.href)} // Add onClick handler
-                className="text-[#888888] hover:text-foreground px-4 py-2 rounded-full font-medium transition-colors"
+                onClick={(e) => handleScroll(e, item.href)}
+                className="text-white hover:text-foreground px-4 py-2 rounded-full font-medium transition-colors"
               >
                 {item.name}
               </Link>
@@ -61,7 +61,7 @@ export function Header() {
             rel="noopener noreferrer"
             className="hidden md:block"
           >
-            <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2 rounded-full font-medium shadow-sm">
+            <Button className="bg-white text-primary-foreground hover:bg-secondary/90 px-6 py-2 rounded-full font-medium shadow-sm">
               Try for Free
             </Button>
           </Link>
@@ -86,7 +86,7 @@ export function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    onClick={(e) => handleScroll(e, item.href)} // Add onClick handler
+                    onClick={(e) => handleScroll(e, item.href)}
                     className="text-[#888888] hover:text-foreground justify-start text-lg py-2"
                   >
                     {item.name}
@@ -98,7 +98,7 @@ export function Header() {
                   rel="noopener noreferrer"
                   className="w-full mt-4"
                 >
-                  <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2 rounded-full font-medium shadow-sm">
+                  <Button className="bg-primary text-secondary-foreground hover:bg-secondary/90 px-6 py-2 rounded-full font-medium shadow-sm">
                     Try for Free
                   </Button>
                 </Link>
