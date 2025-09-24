@@ -14,7 +14,7 @@ export default function HowItWorks() {
           A simple process to turn your uploads into engaging previews.
         </p>
       </div>
-      <div className="grid lg:grid-cols-2 shadow-xl rounded-2xl gap-32 items-center">
+      <div className="grid lg:grid-cols-2  gap-32 items-center">
         <div className="flex justify-center lg:justify-end">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
