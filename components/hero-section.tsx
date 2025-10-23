@@ -13,26 +13,21 @@ export default function HeroSection() {
               <span className="text-xl">✨</span>
             </div>
           </div>
-
           <div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-              Sell your products on Tai Ora — free for your first two months!
+              Brand & Creators! Sell your products on Tai Ora
             </h1>
             <p className="text-base sm:text-lg text-foreground/90 leading-relaxed max-w-lg">
               Join by <span className="font-semibold">10 November 2025</span>{" "}
-              and be part of our early access launch. Discover conscious deals,
-              wellbeing insights, and real stories from creators who value truth
-              and clarity.
+              and be part of our early access launch.
             </p>
           </div>
-
           <div className="pt-4">
             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-lg font-semibold text-base transition-colors">
               Join Free Now
             </Button>
           </div>
         </div>
-
         <div className="bg-card rounded-3xl p-6 md:p-8 lg:p-10">
           <div className="grid grid-cols-3 gap-4 auto-rows-max">
             <div className="col-span-1 row-span-2">
