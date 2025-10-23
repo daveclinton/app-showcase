@@ -1,6 +1,6 @@
 import type React from "react";
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
+import { Download, ExternalLink } from "lucide-react";
 
 export function Header() {
   return (
@@ -36,8 +36,8 @@ export function Header() {
         variant="secondary"
         className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6"
       >
-        Sign Up
-        <ExternalLink />
+        Download App
+        <Download />
       </Button>
     </header>
   );

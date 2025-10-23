@@ -131,3 +131,21 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@property --hue-rotation {
+  syntax: "<angle>";
+  initial-value: 0turn;
+  inherits: false;
+}
+
+@theme inline {
+  --animate-inner-glow: inner-glow 4s linear infinite;
+  @keyframes inner-glow {
+    from {
+      --hue-rotation: 0turn;
+    }
+    to {
+      --hue-rotation: 1turn;
+    }
+  }
+}

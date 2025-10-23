@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import { InnerGlow } from "./Inner-Glow";
 
 export default function HeroSection() {
   return (
@@ -59,7 +60,7 @@ export default function HeroSection() {
             <div className="col-span-2">
               <div className="relative w-full h-40 rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src="/veevo.png"
+                  src="/left-hero.png"
                   alt="Ethical brand connection"
                   fill
                   className="object-cover"
@@ -82,7 +83,7 @@ export default function HeroSection() {
             <div className="col-span-1 row-span-2">
               <div className="relative w-full h-48 md:h-56 rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src="/veevo.png"
+                  src="/one.png"
                   alt="Conscious shopping experience"
                   fill
                   className="object-cover"
