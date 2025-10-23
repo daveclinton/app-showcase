@@ -1,18 +1,5 @@
-import { AnimatedSection } from "@/components/animated-section";
-import ComingSoon from "@/components/ask-ai";
-import { DashboardPreview } from "@/components/dashboard-preview";
-import { HeroSection } from "@/components/hero-section";
-import HowItWorks from "@/components/how-it-works";
+import HeroSection from "@/components/hero-section";
 
 export default function HomePage() {
-  return (
-    <div className="max-w-7xl mx-auto">
-      <HeroSection />
-      <AnimatedSection>
-        <DashboardPreview />
-      </AnimatedSection>
-      <HowItWorks />
-      <ComingSoon />
-    </div>
-  );
+  return <HeroSection />;
 }

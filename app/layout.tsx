@@ -78,7 +78,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Header />
-        <main className="px-6 lg:px-12 pt-12 lg:pt-20">{children}</main>
+        <main className="pt-12 lg:pt-20">{children}</main>
       </body>
     </html>
   );
