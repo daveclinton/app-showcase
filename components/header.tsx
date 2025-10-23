@@ -1,5 +1,6 @@
 import type React from "react";
 import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
 
 export function Header() {
   return (
@@ -31,12 +32,12 @@ export function Header() {
           BRAND
         </a>
       </nav>
-
       <Button
         variant="secondary"
         className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6"
       >
         Sign Up
+        <ExternalLink />
       </Button>
     </header>
   );
