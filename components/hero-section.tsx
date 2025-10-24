@@ -2,11 +2,36 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 export default function HeroSection() {
+  const reviews = [
+    {
+      name: "Kathryn Murphy",
+      avatar: "/avatar1.jpg",
+      comment: "Tai Ora made selling so seamless! My audience loves it.",
+      rating: 5,
+    },
+    {
+      name: "Jacob Lee",
+      avatar: "/avatar2.jpg",
+      comment: "Finally a platform that values creators. Highly recommend.",
+      rating: 4,
+    },
+    {
+      name: "Emily Stone",
+      avatar: "/avatar3.jpg",
+      comment: "Easy setup and great support team. Perfect for small brands.",
+      rating: 5,
+    },
+  ];
+
   return (
     <section className="w-full bg-background text-foreground overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12 px-4 sm:px-6 md:px-8 lg:px-12 py-8 md:py-12 lg:max-h-[650px]">
+        {/* Left content */}
         <div className="flex flex-col justify-center space-y-6 md:space-y-8 max-w-2xl mx-auto lg:ml-0">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
@@ -47,19 +72,55 @@ export default function HeroSection() {
 
               <div className="col-span-2">
                 <div className="bg-foreground text-background rounded-2xl p-4 shadow-md h-full flex flex-col justify-center">
-                  <div className="flex gap-1 mb-2">
-                    {[...Array(4)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={18}
-                        className="fill-primary text-primary"
-                      />
+                  <Swiper
+                    modules={[Autoplay]}
+                    spaceBetween={16}
+                    slidesPerView={1}
+                    autoplay={{
+                      delay: 3000,
+                      disableOnInteraction: false,
+                    }}
+                    loop={true}
+                    className="w-full"
+                  >
+                    {reviews.map((review, i) => (
+                      <SwiperSlide key={i}>
+                        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 text-center sm:text-left">
+                          <Image
+                            src={review.avatar}
+                            alt={review.name}
+                            width={48}
+                            height={48}
+                            className="rounded-full object-cover"
+                          />
+                          <div className="flex flex-col">
+                            <div className="flex gap-1 mb-1 justify-center sm:justify-start">
+                              {[...Array(review.rating)].map((_, i) => (
+                                <Star
+                                  key={i}
+                                  size={16}
+                                  className="fill-primary text-primary"
+                                />
+                              ))}
+                              {[...Array(5 - review.rating)].map((_, i) => (
+                                <Star
+                                  key={i}
+                                  size={16}
+                                  className="text-muted-foreground"
+                                />
+                              ))}
+                            </div>
+                            <p className="text-sm font-semibold">
+                              {review.name}
+                            </p>
+                            <p className="text-xs mt-1 text-background/80">
+                              {review.comment}
+                            </p>
+                          </div>
+                        </div>
+                      </SwiperSlide>
                     ))}
-                    <Star size={18} className="text-muted-foreground" />
-                  </div>
-                  <p className="text-sm font-semibold">
-                    Creators love Tai Ora!
-                  </p>
+                  </Swiper>
                 </div>
               </div>
 
@@ -70,6 +131,7 @@ export default function HeroSection() {
                     alt="Ethical brand connection"
                     fill
                     className="object-cover"
+                    unoptimized
                   />
                 </div>
               </div>
@@ -112,7 +174,7 @@ export default function HeroSection() {
               </div>
 
               <div className="col-span-1">
-                <div className="bg-primary rounded-2xl h-24 shadow-lg flex items-center justify-center">
+                <div className="bg-[#F9F37B] rounded-2xl h-24 shadow-lg flex items-center justify-center">
                   <p className="text-primary-foreground font-bold text-center px-2">
                     +20% Conversion
                   </p>
