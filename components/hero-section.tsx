@@ -9,9 +9,10 @@ import "swiper/css";
 export default function HeroSection() {
   const reviews = [
     {
-      name: "Kathryn Murphy",
-      avatar: "/avatar1.jpg",
-      comment: "Tai Ora made selling so seamless! My audience loves it.",
+      name: "Tania Pickering",
+      avatar: "/founder.jpg",
+      comment:
+        "Tai Ora is designed to help people feel seen, supported, and empowered in their wellbeing journey.",
       rating: 5,
     },
     {

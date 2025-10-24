@@ -1,0 +1,68 @@
+"use client";
+import Image from "next/image";
+
+export default function InnovationsSection() {
+  return (
+    <section className="w-full bg-background text-foreground py-16 md:py-24">
+      <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
+        <div className="space-y-8">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+            Our Innovations
+          </h2>
+          <div className="bg-muted rounded-2xl p-6 md:p-8 shadow-sm">
+            <div className="flex items-center gap-3 mb-3">
+              <Image
+                src="/Veevu.png"
+                alt="VeeVu logo"
+                width={36}
+                height={36}
+                className="object-contain rounded-full"
+              />
+              <h3 className="text-xl font-semibold">VeeVu™</h3>
+            </div>
+            <p className="text-base text-foreground/90 mb-3">
+              Watch authentic previews through VeeVu™ — see product benefits in
+              seconds, no hype.
+            </p>
+            <p className="text-sm text-foreground/80">
+              Instantly transforms long product videos into short, powerful
+              previews that highlight what truly matters. No gimmicks, just
+              clear, authentic insights.
+            </p>
+          </div>
+          <div className="bg-muted rounded-2xl p-6 md:p-8 shadow-sm">
+            <div className="flex items-center gap-3 mb-3">
+              <Image
+                src="/iGloIcon.png"
+                alt="iGlo logo"
+                width={36}
+                height={36}
+                className="object-contain rounded-full"
+              />
+              <h3 className="text-xl font-semibold">iGlo™</h3>
+            </div>
+            <p className="text-base text-foreground/90 mb-3">
+              Follow trustworthy journeys on iGlo™ — capture reflections,
+              photos, and progress over time.
+            </p>
+            <p className="text-sm text-foreground/80">
+              Document your full product journey with photos, notes, and
+              reflections. Creates an AI-verified record of real results,
+              building trust and offering authentic proof.
+            </p>
+          </div>
+        </div>
+        <div className="relative flex justify-center">
+          <div className="relative w-full max-w-[400px] sm:max-w-[450px] md:max-w-[500px] h-[450px] rounded-3xl overflow-hidden bg-primary p-3 flex items-center justify-center shadow-lg">
+            <Image
+              src="/veevo-mockup.png"
+              alt="VeeVu mockup on phone"
+              fill
+              className="object-contain rounded-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
