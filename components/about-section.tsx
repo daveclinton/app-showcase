@@ -3,9 +3,34 @@ import Image from "next/image";
 
 export default function AboutSection() {
   return (
-    <section className="w-full bg-muted text-foreground mt-10 py-16 md:py-24">
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 px-6 md:px-12 lg:px-20">
-        <div className="relative bg-primary rounded-3xl p-4 sm:p-6 md:p-8 flex items-center justify-center">
+    <section className="relative w-full bg-muted text-foreground mt-10 py-16 md:py-24 overflow-hidden">
+      {/* Decorative Flowers */}
+      <Image
+        src="/flower-one.svg"
+        alt=""
+        width={180}
+        height={180}
+        className="absolute top-10 left-[-40px] opacity-30 rotate-12 pointer-events-none"
+      />
+      <Image
+        src="/flower-two.svg"
+        alt=""
+        width={220}
+        height={220}
+        className="absolute bottom-[-30px] right-[-50px] opacity-25 -rotate-6 pointer-events-none"
+      />
+
+      <div className="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-12 px-6 md:px-12 lg:px-20 z-10">
+        {/* Image Section */}
+        <div className="relative bg-primary rounded-3xl p-4 sm:p-6 md:p-8 flex items-center justify-center overflow-hidden">
+          {/* Decorative Flower Behind Image */}
+          <Image
+            src="/flower-one.svg"
+            alt=""
+            width={160}
+            height={160}
+            className="absolute top-[-30px] right-[-20px] opacity-40 rotate-6 pointer-events-none"
+          />
           <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg">
             <Image
               src="/discover.png"
@@ -16,6 +41,7 @@ export default function AboutSection() {
           </div>
         </div>
 
+        {/* Text Section */}
         <div className="space-y-6 max-w-xl">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
             What is Tai Ora?
