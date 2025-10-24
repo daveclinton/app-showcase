@@ -11,6 +11,9 @@ export default function InnovationsSection() {
     { src: "/veevo-mockup.png", alt: "VeeVu mockup on phone" },
     { src: "/mock-2.png", alt: "VeeVu interface preview" },
     { src: "/mock-3.png", alt: "iGlo interface preview" },
+    { src: "/product.png", alt: "iGlo interface preview" },
+    { src: "/wall-sign.png", alt: "iGlo interface preview" },
+    { src: "/billboard.png", alt: "iGlo interface preview" },
   ];
 
   return (
