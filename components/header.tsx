@@ -7,7 +7,7 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="flex items-center justify-between px-6 py-4 lg:px-12 bg-background text-foreground relative">
+    <header className="flex items-center justify-between px-6 py-4 lg:px-12 bg-background text-foreground relative border-b  shadow-md">
       <div className="text-xl font-semibold text-foreground">Tai Ora</div>
 
       {/* Desktop Navigation */}
@@ -72,7 +72,7 @@ export function Header() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-background border-t border-border flex flex-col items-start p-6 space-y-4 md:hidden z-50">
+        <div className="absolute top-full left-0 w-full bg-background border-t border-border flex flex-col items-start p-6 space-y-4 md:hidden z-50 shadow-md">
           <a
             href="#"
             className="w-full text-foreground hover:text-primary transition-colors"

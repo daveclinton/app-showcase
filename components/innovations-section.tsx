@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import "swiper/css/autoplay";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -72,13 +72,13 @@ export default function InnovationsSection() {
         <div className="relative flex justify-center">
           <div className="relative w-full max-w-[400px] sm:max-w-[450px] md:max-w-[500px] h-[450px] rounded-3xl bg-primary p-3 shadow-lg flex items-center justify-center">
             <Swiper
+              key="innovations-swiper"
               modules={[Pagination, Autoplay]}
               spaceBetween={20}
               slidesPerView={1.5}
-              centeredSlides={true}
               loop={true}
               autoplay={{
-                delay: 2500,
+                delay: 1000,
                 disableOnInteraction: false,
               }}
               pagination={{
