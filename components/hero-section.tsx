@@ -159,17 +159,23 @@ export default function HeroSection() {
               </div>
 
               <div className="col-span-1">
-                <div className="bg-foreground text-background rounded-2xl p-4 shadow-md h-full flex flex-col justify-between">
-                  <div className="flex gap-1 mb-2">
-                    {[...Array(4)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={14}
-                        className="fill-primary text-primary"
-                      />
-                    ))}
+                <div className="relative bg-gradient-to-br from-pink-300 via-rose-200 to-purple-200 rounded-2xl h-40 shadow-lg flex flex-col items-center justify-center overflow-hidden">
+                  <p className="text-foreground font-bold text-sm text-center z-10">
+                    Level up your business
+                  </p>
+
+                  {/* Floating beauty emojis */}
+                  <div className="absolute inset-0">
+                    <span className="absolute top-4 left-6 text-3xl animate-bounce-slow">
+                      💅
+                    </span>
+                    <span className="absolute bottom-6 right-5 text-4xl animate-bounce">
+                      💄
+                    </span>
+                    <span className="absolute top-10 right-12 text-3xl animate-bounce-slower">
+                      🌸
+                    </span>
                   </div>
-                  <p className="text-xs font-semibold">Kathryn Murphy</p>
                 </div>
               </div>
 
