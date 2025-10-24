@@ -143,6 +143,7 @@ export default function HeroSection() {
                     alt="Early Access Promotion"
                     fill
                     className="object-cover"
+                    unoptimized
                   />
                 </div>
               </div>
