@@ -19,13 +19,11 @@ export default function InnovationsSection() {
   return (
     <section className="w-full bg-background text-foreground py-16 md:py-24">
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
-        {/* Left content */}
         <div className="space-y-8">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
             Our Innovations
           </h2>
 
-          {/* VeeVu card */}
           <div className="bg-muted rounded-2xl p-6 md:p-8 shadow-sm">
             <div className="flex items-center gap-3 mb-3">
               <Image
