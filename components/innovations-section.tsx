@@ -7,15 +7,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 export default function InnovationsSection() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Fix autoplay not starting due to SSR hydration
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
-
   const mockups = [
     { src: "/veevo-mockup.png", alt: "VeeVu mockup on phone" },
     { src: "/mock-2.png", alt: "VeeVu interface preview" },
@@ -78,7 +69,6 @@ export default function InnovationsSection() {
           </div>
         </div>
 
-        {/* Right Swiper mockups */}
         <div className="relative flex justify-center">
           <div className="relative w-full max-w-[400px] sm:max-w-[450px] md:max-w-[500px] h-[450px] rounded-3xl bg-primary p-3 shadow-lg flex items-center justify-center">
             <Swiper
