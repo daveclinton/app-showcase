@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 const siteUrl = "https://www.taiora.ai";
@@ -80,7 +81,12 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full bg-background text-foreground">
+        <div className="flex min-h-dvh flex-col">
+          <SiteHeader />
+          <div className="flex-1">{children}</div>
+        </div>
+      </body>
     </html>
   );
 }

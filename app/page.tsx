@@ -1,5 +1,5 @@
+import { SimpleCenteredPage } from "./_components/simple-centered-page";
+
 export default function Home() {
-  return (
-   <div>Hello World</div>
-  );
+  return <SimpleCenteredPage title="HOME" />;
 }

@@ -7,6 +7,37 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-taiora-aqua: var(--taiora-aqua);
+  --color-taiora-teal-bright: var(--taiora-teal-bright);
+  --color-taiora-teal: var(--taiora-teal);
+  --color-taiora-teal-mid: var(--taiora-teal-mid);
+  --color-taiora-teal-deep: var(--taiora-teal-deep);
+  --color-taiora-teal-dark: var(--taiora-teal-dark);
+  --color-taiora-teal-ink: var(--taiora-teal-ink);
+  --color-taiora-gold-light: var(--taiora-gold-light);
+  --color-taiora-gold: var(--taiora-gold);
+  --color-taiora-gold-deep: var(--taiora-gold-deep);
+  --color-taiora-gold-olive: var(--taiora-gold-olive);
+  --color-taiora-gold-brown: var(--taiora-gold-brown);
+  --color-taiora-gold-dark: var(--taiora-gold-dark);
+  --color-taiora-gold-ink: var(--taiora-gold-ink);
+  --color-mauri-green: var(--mauri-green);
+  --color-mauri-green-deep: var(--mauri-green-deep);
+  --color-mauri-card: var(--mauri-card);
+  --color-mauri-muted: var(--mauri-muted);
+  --color-mauri-gold: var(--mauri-gold);
+  --color-mauri-sage: var(--mauri-sage);
+  --color-mauri-mint: var(--mauri-mint);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-active: var(--surface-active);
+  --color-surface-selected: var(--surface-selected);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-active: var(--secondary-active);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
@@ -26,6 +57,7 @@
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
@@ -49,72 +81,119 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0.008 326);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0.008 326);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0.008 326);
-  --primary: oklch(0.508 0.118 165.612);
-  --primary-foreground: oklch(0.979 0.021 166.113);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.96 0.003 325.6);
-  --muted-foreground: oklch(0.542 0.034 322.5);
-  --accent: oklch(0.96 0.003 325.6);
-  --accent-foreground: oklch(0.212 0.019 322.12);
+  --taiora-aqua: #a6fefe;
+  --taiora-teal-bright: #40dbdb;
+  --taiora-teal: #318080;
+  --taiora-teal-mid: #248888;
+  --taiora-teal-deep: #176161;
+  --taiora-teal-dark: #083d3d;
+  --taiora-teal-ink: #031c1c;
+  --taiora-gold-light: #ffebc6;
+  --taiora-gold: #efbf04;
+  --taiora-gold-deep: #c19902;
+  --taiora-gold-olive: #947501;
+  --taiora-gold-brown: #6a5301;
+  --taiora-gold-dark: #433300;
+  --taiora-gold-ink: #1f1600;
+  --mauri-green: #004c45;
+  --mauri-green-deep: #003f39;
+  --mauri-card: #036057;
+  --mauri-muted: #025850;
+  --mauri-green-secondary: #156e5a;
+  --mauri-gold: #d4af37;
+  --mauri-sage: #91c9ad;
+  --mauri-mint: #b4dac6;
+  --mauri-gold-hover: #c6a027;
+  --mauri-gold-active: #b38d1d;
+
+  --background: var(--mauri-green);
+  --foreground: #ffffff;
+  --surface: var(--mauri-card);
+  --surface-hover: #0b6a60;
+  --surface-active: #025850;
+  --surface-selected: color-mix(in srgb, var(--mauri-sage) 18%, var(--mauri-card));
+  --card: var(--mauri-card);
+  --card-foreground: #ffffff;
+  --popover: var(--mauri-muted);
+  --popover-foreground: #ffffff;
+  --primary: var(--mauri-gold);
+  --primary-foreground: var(--mauri-green);
+  --primary-hover: var(--mauri-gold-hover);
+  --primary-active: var(--mauri-gold-active);
+  --secondary: var(--mauri-card);
+  --secondary-foreground: #ffffff;
+  --secondary-hover: var(--surface-hover);
+  --secondary-active: var(--surface-active);
+  --muted: var(--mauri-muted);
+  --muted-foreground: var(--mauri-mint);
+  --accent: var(--mauri-sage);
+  --accent-foreground: var(--mauri-green);
+  --link: var(--mauri-gold);
+  --link-hover: var(--mauri-mint);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0.005 325.62);
-  --input: oklch(0.922 0.005 325.62);
-  --ring: oklch(0.711 0.019 323.02);
-  --chart-1: oklch(0.845 0.143 164.978);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.596 0.145 163.225);
-  --chart-4: oklch(0.508 0.118 165.612);
-  --chart-5: oklch(0.432 0.095 166.913);
+  --destructive-foreground: #ffffff;
+  --border: rgb(255 255 255 / 12%);
+  --input: rgb(255 255 255 / 18%);
+  --ring: var(--mauri-sage);
+  --chart-1: var(--mauri-gold);
+  --chart-2: var(--mauri-sage);
+  --chart-3: #5baf84;
+  --chart-4: #ffffff;
+  --chart-5: var(--mauri-mint);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0.008 326);
-  --sidebar-primary: oklch(0.596 0.145 163.225);
-  --sidebar-primary-foreground: oklch(0.979 0.021 166.113);
-  --sidebar-accent: oklch(0.96 0.003 325.6);
-  --sidebar-accent-foreground: oklch(0.212 0.019 322.12);
-  --sidebar-border: oklch(0.922 0.005 325.62);
-  --sidebar-ring: oklch(0.711 0.019 323.02);
+  --sidebar: var(--mauri-green-deep);
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: var(--mauri-gold);
+  --sidebar-primary-foreground: var(--mauri-green);
+  --sidebar-accent: var(--mauri-muted);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 12%);
+  --sidebar-ring: var(--mauri-sage);
 }
 
 .dark {
-  --background: oklch(0.145 0.008 326);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.212 0.019 322.12);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.212 0.019 322.12);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.432 0.095 166.913);
-  --primary-foreground: oklch(0.979 0.021 166.113);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.263 0.024 320.12);
-  --muted-foreground: oklch(0.711 0.019 323.02);
-  --accent: oklch(0.263 0.024 320.12);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.542 0.034 322.5);
-  --chart-1: oklch(0.845 0.143 164.978);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.596 0.145 163.225);
-  --chart-4: oklch(0.508 0.118 165.612);
-  --chart-5: oklch(0.432 0.095 166.913);
-  --sidebar: oklch(0.212 0.019 322.12);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.696 0.17 162.48);
-  --sidebar-primary-foreground: oklch(0.262 0.051 172.552);
-  --sidebar-accent: oklch(0.263 0.024 320.12);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.542 0.034 322.5);
+  --background: var(--mauri-green);
+  --foreground: #ffffff;
+  --surface: var(--mauri-card);
+  --surface-hover: #0b6a60;
+  --surface-active: #025850;
+  --surface-selected: color-mix(in srgb, var(--mauri-sage) 18%, var(--mauri-card));
+  --card: var(--mauri-card);
+  --card-foreground: #ffffff;
+  --popover: var(--mauri-muted);
+  --popover-foreground: #ffffff;
+  --primary: var(--mauri-gold);
+  --primary-foreground: var(--mauri-green);
+  --primary-hover: var(--mauri-gold-hover);
+  --primary-active: var(--mauri-gold-active);
+  --secondary: var(--mauri-green-secondary);
+  --secondary-foreground: #ffffff;
+  --secondary-hover: #1c7c66;
+  --secondary-active: var(--mauri-muted);
+  --muted: var(--mauri-muted);
+  --muted-foreground: var(--mauri-mint);
+  --accent: var(--mauri-sage);
+  --accent-foreground: var(--mauri-green);
+  --link: var(--mauri-gold);
+  --link-hover: var(--mauri-mint);
+  --destructive: oklch(0.6 0.18 15);
+  --destructive-foreground: #ffffff;
+  --border: rgb(255 255 255 / 12%);
+  --input: rgb(255 255 255 / 18%);
+  --ring: var(--mauri-sage);
+  --chart-1: var(--mauri-gold);
+  --chart-2: var(--mauri-sage);
+  --chart-3: #5baf84;
+  --chart-4: #ffffff;
+  --chart-5: var(--mauri-mint);
+  --sidebar: var(--mauri-green-deep);
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: var(--mauri-gold);
+  --sidebar-primary-foreground: var(--mauri-green);
+  --sidebar-accent: var(--mauri-muted);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 12%);
+  --sidebar-ring: var(--mauri-sage);
 }
 
 @layer base {
@@ -126,5 +205,143 @@
   }
   html {
     @apply font-sans;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--mauri-gold) 72%, transparent);
+    color: var(--mauri-green);
+  }
+  a {
+    @apply text-link underline-offset-4 transition-colors hover:text-link-hover focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50;
+  }
+  button,
+  [role="button"],
+  a,
+  input,
+  textarea,
+  select {
+    @apply outline-none;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href],
+  input[type="button"]:not(:disabled),
+  input[type="submit"]:not(:disabled),
+  input[type="reset"]:not(:disabled),
+  select:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  button:disabled,
+  [role="button"][aria-disabled="true"],
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    @apply cursor-default;
+  }
+  input,
+  textarea,
+  select {
+    @apply border-input bg-background text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50;
+  }
+  article,
+  .article-content {
+    @apply text-foreground;
+  }
+  article h1,
+  .article-content h1 {
+    @apply scroll-m-20 text-4xl font-extrabold tracking-tight text-balance text-foreground md:text-5xl;
+  }
+  article h2,
+  .article-content h2 {
+    @apply mt-10 scroll-m-20 border-b border-border pb-2 text-3xl font-semibold tracking-tight text-foreground transition-colors first:mt-0;
+  }
+  article h3,
+  .article-content h3 {
+    @apply mt-8 scroll-m-20 text-2xl font-semibold tracking-tight text-foreground;
+  }
+  article h4,
+  .article-content h4 {
+    @apply mt-8 scroll-m-20 text-xl font-semibold tracking-tight text-foreground;
+  }
+  article p,
+  .article-content p {
+    @apply leading-7 text-foreground/85 [&:not(:first-child)]:mt-6;
+  }
+  article > p:first-of-type,
+  .article-content > p:first-of-type,
+  article .lead,
+  .article-content .lead {
+    @apply text-xl leading-8 text-muted-foreground;
+  }
+  article a,
+  .article-content a {
+    @apply font-medium text-link underline underline-offset-4 hover:text-link-hover focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50;
+  }
+  article blockquote,
+  .article-content blockquote {
+    @apply mt-6 border-l-2 border-l-primary bg-surface px-6 py-4 italic text-foreground;
+  }
+  article ul,
+  .article-content ul {
+    @apply my-6 ml-6 list-disc text-foreground/85 [&>li]:mt-2;
+  }
+  article ol,
+  .article-content ol {
+    @apply my-6 ml-6 list-decimal text-foreground/85 [&>li]:mt-2;
+  }
+  article li,
+  .article-content li {
+    @apply leading-7;
+  }
+  article li > p,
+  .article-content li > p {
+    @apply mt-2;
+  }
+  article table,
+  .article-content table {
+    @apply my-6 w-full overflow-hidden rounded-md border border-border text-sm;
+  }
+  article thead,
+  .article-content thead {
+    @apply bg-surface-hover text-foreground;
+  }
+  article tr,
+  .article-content tr {
+    @apply m-0 border-t border-border p-0 even:bg-muted;
+  }
+  article th,
+  .article-content th {
+    @apply border border-border px-4 py-2 text-left font-bold text-foreground [&[align=center]]:text-center [&[align=right]]:text-right;
+  }
+  article td,
+  .article-content td {
+    @apply border border-border px-4 py-2 text-left text-foreground/85 [&[align=center]]:text-center [&[align=right]]:text-right;
+  }
+  article code,
+  .article-content code {
+    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-mauri-mint;
+  }
+  article pre,
+  .article-content pre {
+    @apply my-6 overflow-x-auto rounded-md border border-border bg-mauri-green-deep p-4 text-sm text-foreground;
+  }
+  article pre code,
+  .article-content pre code {
+    @apply rounded-none bg-transparent p-0 text-inherit;
+  }
+  article hr,
+  .article-content hr {
+    @apply my-8 border-border;
+  }
+  article small,
+  .article-content small {
+    @apply text-sm leading-none font-medium text-muted-foreground;
+  }
+  article strong,
+  .article-content strong {
+    @apply font-semibold text-foreground;
+  }
+  article img,
+  .article-content img {
+    @apply my-6 rounded-md border border-border;
   }
 }
