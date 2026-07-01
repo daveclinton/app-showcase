@@ -34,7 +34,7 @@ export function HeaderDrawer({
       ) : null}
       <VaulHeader.Portal>
         <VaulHeader.Overlay className="fixed inset-0 z-50 bg-mauri-green/70 backdrop-blur-xs" />
-        <VaulHeader.Content className="fixed top-0 left-0 z-50 h-fit w-full border-b border-border bg-background/95 px-3 py-3 text-foreground shadow-2xl backdrop-blur-xl md:px-6">
+        <VaulHeader.Content className="fixed top-0 left-0 z-50 h-fit w-full bg-background/90 px-3 py-3 text-foreground backdrop-blur-xl md:px-6">
           {children}
         </VaulHeader.Content>
       </VaulHeader.Portal>

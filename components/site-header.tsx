@@ -42,11 +42,11 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 px-3 pt-3 md:px-6">
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-md border border-border bg-background/70 p-3 text-foreground shadow-xs backdrop-blur-md">
+    <header className="fixed top-0 left-0 z-50 w-full px-3 pt-3 md:px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-md p-3 text-foreground">
         <Link
           href="/"
-          className="text-lg font-extrabold tracking-tight text-foreground no-underline transition-colors hover:text-mauri-mint focus-visible:ring-[3px] focus-visible:ring-ring/50"
+          className="text-2xl font-extrabold tracking-tight text-taiora-gold-light no-underline transition-colors hover:text-mauri-mint focus-visible:ring-[3px] focus-visible:ring-ring/50 md:text-3xl"
           onClick={() => setHeaderOpen(false)}
         >
           Tai Ora
@@ -61,7 +61,7 @@ export function SiteHeader() {
                 type="button"
                 aria-label={headerOpen ? "Close navigation" : "Open navigation"}
                 aria-expanded={headerOpen}
-                className="inline-flex size-10 items-center justify-center rounded-md border border-input bg-background text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 active:bg-surface-active data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
+                className="inline-flex size-10 items-center justify-center rounded-md bg-background/80 text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50 active:bg-surface-active data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
                 data-state={headerOpen ? "open" : "closed"}
               >
                 {headerOpen ? <X aria-hidden="true" /> : <MenuIcon aria-hidden="true" />}
@@ -69,7 +69,7 @@ export function SiteHeader() {
             )}
           >
             <DrawerContent>
-              <div className="relative mx-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-6xl overflow-y-auto rounded-md border border-border bg-background p-4 text-foreground md:p-6">
+              <div className="relative mx-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-6xl overflow-y-auto rounded-md bg-background/95 p-4 text-foreground backdrop-blur-xl md:p-6">
                 {!isDesktop ? (
                   <div className="absolute bottom-1 left-0 flex w-full justify-center">
                     <div className="my-4 h-[0.3rem] w-16 shrink-0 rounded-full bg-muted-foreground" />
@@ -77,7 +77,7 @@ export function SiteHeader() {
                 ) : null}
 
                 <div className="mx-auto grid gap-4">
-                  <div className="flex items-center justify-between border-b border-border pb-3">
+                  <div className="flex items-center justify-between pb-3">
                     {isDesktop ? (
                       <button
                         type="button"
@@ -132,7 +132,7 @@ export function SiteHeader() {
                           <figure
                             key={panel.title}
                             className={cn(
-                              "group relative min-h-52 overflow-hidden rounded-md border border-border",
+                              "group relative min-h-52 overflow-hidden rounded-md",
                               panel.className,
                             )}
                           >
