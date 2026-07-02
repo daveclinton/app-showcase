@@ -29,7 +29,17 @@ export function BlogArticleCard({ post }: BlogArticleCardProps) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="w-full"
       >
-        <Card className="w-full gap-0 overflow-hidden border border-border bg-surface p-0 text-foreground ring-0 [--card-spacing:0px]">
+        <Card className="relative w-full gap-0 overflow-hidden border border-border bg-surface p-0 text-foreground ring-0 [--card-spacing:0px]">
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.35, delay: 0.18 }}
+            className="absolute top-3 right-3 z-10 rounded-md bg-primary px-3 py-1 text-xs font-bold text-primary-foreground shadow-md"
+          >
+            {post.category}
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -65,6 +75,18 @@ export function BlogArticleCard({ post }: BlogArticleCardProps) {
               >
                 {post.title}
               </motion.h2>
+
+              <motion.time
+                dateTime="2026-10-21"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.42 }}
+                className="mt-2 block text-xs font-bold uppercase tracking-normal text-mauri-mint"
+              >
+                {post.date}
+              </motion.time>
 
               <motion.p
                 variants={{

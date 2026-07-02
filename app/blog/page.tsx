@@ -62,11 +62,10 @@ export default function BlogPage() {
       <section className="border-b border-border px-6 pb-20 pt-32 md:px-10 md:pb-24 md:pt-40">
         <div className="mx-auto max-w-7xl">
           <h1 className="max-w-4xl text-5xl font-extrabold leading-[0.95] tracking-normal text-balance text-foreground md:text-7xl">
-            Stay updated with the latest news, insights and more
+            Stay updated with the latest on Tai Ora.
           </h1>
         </div>
       </section>
-
       <section className="px-6 py-16 md:px-10 md:py-24">
         <div className="mx-auto flex max-w-7xl flex-col gap-16">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.9fr)_minmax(22rem,1fr)_minmax(22rem,1fr)] lg:items-start">
