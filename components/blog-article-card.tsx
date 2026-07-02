@@ -1,35 +1,46 @@
 "use client";
 
+import type { BlogPost } from "@/lib/blog-posts";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 
-export type BlogArticle = {
-  title: string;
-  category: "News" | "Insights";
-  date: string;
-  image: string;
-  slug: string;
-};
-
 type BlogArticleCardProps = {
-  post: BlogArticle;
+  post: BlogPost;
   priority?: boolean;
   variant?: "featured" | "default";
 };
 
+function truncateText(text: string, maxLength: number) {
+  if (text.length <= maxLength) {
+    return text;
+  }
+
+  const truncated = text.slice(0, maxLength).trimEnd();
+  const lastSpace = truncated.lastIndexOf(" ");
+
+  return `${truncated.slice(0, lastSpace > 0 ? lastSpace : maxLength)}...`;
+}
+
 export function BlogArticleCard({ post }: BlogArticleCardProps) {
+  const title = truncateText(post.title, 58);
+  const subtitle = truncateText(post.subtitle, 68);
+
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex h-full items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="w-full"
+        className="h-full w-full"
       >
-        <Card className="relative w-full gap-0 overflow-hidden border border-border bg-surface p-0 text-foreground ring-0 [--card-spacing:0px]">
+        <Link
+          href={`/blog/${post.slug}`}
+          className="group block cursor-pointer rounded-2xl no-underline focus-visible:ring-[3px] focus-visible:ring-ring/50"
+        >
+        <Card className="relative h-full w-full cursor-pointer gap-0 overflow-hidden border border-border bg-surface p-0 text-foreground ring-0 [--card-spacing:0px]">
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +67,7 @@ export function BlogArticleCard({ post }: BlogArticleCardProps) {
             />
           </motion.div>
 
-          <CardContent className="flex min-h-48 flex-col p-6 pt-5">
+          <CardContent className="flex min-h-64 flex-1 flex-col p-6 pt-5">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -71,13 +82,14 @@ export function BlogArticleCard({ post }: BlogArticleCardProps) {
                   visible: { opacity: 1, y: 0 },
                 }}
                 transition={{ duration: 0.4 }}
-                className="text-lg font-semibold text-foreground"
+                className="min-h-21 overflow-hidden text-lg font-semibold leading-7 text-foreground [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]"
+                title={post.title}
               >
-                {post.title}
+                {title}
               </motion.h2>
 
               <motion.time
-                dateTime="2026-10-21"
+                dateTime={post.dateTime}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 },
@@ -94,11 +106,10 @@ export function BlogArticleCard({ post }: BlogArticleCardProps) {
                   visible: { opacity: 1, y: 0 },
                 }}
                 transition={{ duration: 0.45 }}
-                className="mt-2 text-sm font-medium text-muted-foreground"
+                className="mt-2 min-h-12 overflow-hidden text-sm font-medium leading-6 text-muted-foreground [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
+                title={post.subtitle}
               >
-                Nullam lobortis sodales dolor vitae viverra.
-                <br />
-                Cras lacinia bibendum metus vel rhoncus.
+                {subtitle}
               </motion.p>
             </motion.div>
 
@@ -109,16 +120,14 @@ export function BlogArticleCard({ post }: BlogArticleCardProps) {
               transition={{ duration: 0.4, delay: 0.2 }}
               className="mt-auto flex justify-end pt-5"
             >
-              <Link
-                href={`/blog/${post.slug}`}
-                className="inline-flex items-center gap-2 text-sm font-bold text-link no-underline transition-colors hover:text-link-hover focus-visible:ring-[3px] focus-visible:ring-ring/50 active:text-mauri-mint"
-              >
+              <span className="inline-flex items-center gap-2 text-sm font-bold text-link transition-colors group-hover:text-link-hover group-active:text-mauri-mint">
                 Read more
                 <ArrowRight aria-hidden="true" />
-              </Link>
+              </span>
             </motion.div>
           </CardContent>
         </Card>
+        </Link>
       </motion.div>
     </div>
   );
