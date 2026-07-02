@@ -95,7 +95,7 @@ export function BlogArticleCard({ post }: BlogArticleCardProps) {
                   visible: { opacity: 1, y: 0 },
                 }}
                 transition={{ duration: 0.42 }}
-                className="mt-2 block text-xs font-bold uppercase tracking-normal text-mauri-mint"
+                className="mt-2 block text-xs font-bold uppercase tracking-normal text-foreground/85"
               >
                 {post.date}
               </motion.time>
@@ -106,7 +106,7 @@ export function BlogArticleCard({ post }: BlogArticleCardProps) {
                   visible: { opacity: 1, y: 0 },
                 }}
                 transition={{ duration: 0.45 }}
-                className="mt-2 min-h-12 overflow-hidden text-sm font-medium leading-6 text-muted-foreground [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
+                className="mt-2 min-h-12 overflow-hidden text-sm font-medium leading-6 text-foreground/90 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
                 title={post.subtitle}
               >
                 {subtitle}

@@ -88,23 +88,23 @@
   --taiora-teal-deep: #176161;
   --taiora-teal-dark: #083d3d;
   --taiora-teal-ink: #031c1c;
-  --taiora-gold-light: #ffebc6;
-  --taiora-gold: #efbf04;
-  --taiora-gold-deep: #c19902;
-  --taiora-gold-olive: #947501;
-  --taiora-gold-brown: #6a5301;
-  --taiora-gold-dark: #433300;
-  --taiora-gold-ink: #1f1600;
+  --taiora-gold-light: #fff0a3;
+  --taiora-gold: #ffc300;
+  --taiora-gold-deep: #d6a300;
+  --taiora-gold-olive: #a67e00;
+  --taiora-gold-brown: #755900;
+  --taiora-gold-dark: #423200;
+  --taiora-gold-ink: #1f1700;
   --mauri-green: #004c45;
   --mauri-green-deep: #003f39;
   --mauri-card: #036057;
   --mauri-muted: #025850;
   --mauri-green-secondary: #156e5a;
-  --mauri-gold: #d4af37;
+  --mauri-gold: #ffc300;
   --mauri-sage: #91c9ad;
   --mauri-mint: #b4dac6;
-  --mauri-gold-hover: #c6a027;
-  --mauri-gold-active: #b38d1d;
+  --mauri-gold-hover: #e6af00;
+  --mauri-gold-active: #cc9c00;
 
   --background: var(--mauri-green);
   --foreground: #ffffff;
@@ -206,6 +206,21 @@
   html {
     @apply font-sans;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  [data-slot="card-title"],
+  .text-balance {
+    text-wrap: balance;
+  }
+  p,
+  li,
+  blockquote {
+    text-wrap: pretty;
+  }
   ::selection {
     background: color-mix(in srgb, var(--mauri-gold) 72%, transparent);
     color: var(--mauri-green);
@@ -264,13 +279,13 @@
   }
   article p,
   .article-content p {
-    @apply leading-7 text-foreground/85 [&:not(:first-child)]:mt-6;
+    @apply leading-7 text-foreground [&:not(:first-child)]:mt-6;
   }
   article > p:first-of-type,
   .article-content > p:first-of-type,
   article .lead,
   .article-content .lead {
-    @apply text-xl leading-8 text-muted-foreground;
+    @apply text-xl leading-8 text-foreground/90;
   }
   article a,
   .article-content a {
@@ -282,11 +297,11 @@
   }
   article ul,
   .article-content ul {
-    @apply my-6 ml-6 list-disc text-foreground/85 [&>li]:mt-2;
+    @apply my-6 ml-6 list-disc text-foreground [&>li]:mt-2;
   }
   article ol,
   .article-content ol {
-    @apply my-6 ml-6 list-decimal text-foreground/85 [&>li]:mt-2;
+    @apply my-6 ml-6 list-decimal text-foreground [&>li]:mt-2;
   }
   article li,
   .article-content li {
@@ -314,7 +329,7 @@
   }
   article td,
   .article-content td {
-    @apply border border-border px-4 py-2 text-left text-foreground/85 [&[align=center]]:text-center [&[align=right]]:text-right;
+    @apply border border-border px-4 py-2 text-left text-foreground/90 [&[align=center]]:text-center [&[align=right]]:text-right;
   }
   article code,
   .article-content code {
@@ -334,7 +349,7 @@
   }
   article small,
   .article-content small {
-    @apply text-sm leading-none font-medium text-muted-foreground;
+    @apply text-sm leading-none font-medium text-foreground/75;
   }
   article strong,
   .article-content strong {

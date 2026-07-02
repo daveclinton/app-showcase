@@ -1,8 +1,9 @@
 import { BlogArticleCard } from "@/components/blog-article-card";
-import { blogPosts } from "@/lib/blog-posts";
+import { getPublishedBlogPosts } from "@/lib/blog-posts";
 
-export default function BlogPage() {
-  const [featuredPost, ...remainingPosts] = blogPosts;
+export default async function BlogPage() {
+  const posts = await getPublishedBlogPosts();
+  const [featuredPost, ...remainingPosts] = posts;
   const secondaryPosts = remainingPosts.slice(0, 2);
   const gridPosts = remainingPosts.slice(2);
 
@@ -17,21 +18,32 @@ export default function BlogPage() {
       </section>
       <section className="px-6 py-16 md:px-10 md:py-24">
         <div className="mx-auto flex max-w-7xl flex-col gap-16">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.9fr)_minmax(22rem,1fr)_minmax(22rem,1fr)] lg:items-start">
-            <div className="lg:row-span-2">
-              <BlogArticleCard post={featuredPost} priority variant="featured" />
+          {featuredPost ? (
+            <>
+              <div className="grid gap-10 lg:grid-cols-[minmax(0,1.9fr)_minmax(22rem,1fr)_minmax(22rem,1fr)] lg:items-start">
+                <div className="lg:row-span-2">
+                  <BlogArticleCard post={featuredPost} priority variant="featured" />
+                </div>
+
+                {secondaryPosts.map((post) => (
+                  <BlogArticleCard key={post.slug} post={post} />
+                ))}
+              </div>
+
+              <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+                {gridPosts.map((post) => (
+                  <BlogArticleCard key={post.slug} post={post} />
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="rounded-md border border-border bg-surface p-8">
+              <h2 className="text-2xl font-bold text-foreground">No published posts yet</h2>
+              <p className="mt-3 text-foreground/90">
+                Add posts to Notion and mark them as published to show them here.
+              </p>
             </div>
-
-            {secondaryPosts.map((post) => (
-              <BlogArticleCard key={post.slug} post={post} />
-            ))}
-          </div>
-
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {gridPosts.map((post) => (
-              <BlogArticleCard key={post.slug} post={post} />
-            ))}
-          </div>
+          )}
         </div>
       </section>
     </main>
