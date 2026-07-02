@@ -1,43 +1,29 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 
-const storeLinks = [
-  {
-    href: "#",
-    icon: "/appstore.svg",
-    kicker: "Download on the",
-    label: "App Store",
-  },
-  {
-    href: "#",
-    icon: "/googleplay.svg",
-    kicker: "Get it on",
-    label: "Google Play",
-  },
-];
-
 export function HomeHero() {
   return (
-    <section className="relative overflow-hidden bg-background px-3 pb-6 pt-32 md:px-6 md:pb-24 md:pt-40">
+    <section className="relative overflow-hidden bg-background pb-10 pt-28 md:pb-20 md:pt-32">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,color-mix(in_srgb,var(--mauri-sage)_24%,transparent),transparent_42%),radial-gradient(circle_at_88%_82%,color-mix(in_srgb,var(--mauri-gold)_14%,transparent),transparent_38%)]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,color-mix(in_srgb,var(--mauri-sage)_18%,transparent),transparent_36%),radial-gradient(circle_at_82%_18%,color-mix(in_srgb,var(--mauri-gold)_16%,transparent),transparent_34%)]"
       />
 
-      <div className="relative mx-auto max-w-7xl">
-        <div className="p-0 md:p-8 lg:p-10">
+      <div className="relative flex min-h-[calc(100svh-7rem)] w-full flex-col items-center justify-center overflow-hidden px-4 py-16 text-center md:px-8 md:py-24">
+        <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="mx-auto mb-8 flex w-fit justify-center md:mb-10"
+            className="flex flex-col items-center gap-4 sm:flex-row"
           >
-            <div className="animate-heartbeat relative flex size-32 items-center justify-center overflow-hidden rounded-full shadow-xl shadow-primary/70 ring-2 ring-primary/50 md:size-40">
+            <div className="animate-heartbeat relative flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-full shadow-xl shadow-primary/50 ring-2 ring-primary/50 md:size-20">
               <div
                 aria-hidden="true"
                 className="animate-ping-slow absolute inset-0 rounded-full bg-gradient-to-br from-primary/35 to-mauri-sage/35"
@@ -45,116 +31,76 @@ export function HomeHero() {
               <Image
                 src="/logo.png"
                 alt="Tai Ora"
-                width={160}
-                height={160}
+                width={80}
+                height={80}
                 className="relative z-10 size-full object-cover"
                 priority
               />
             </div>
+            <div className="flex flex-col items-center gap-1 sm:items-start sm:text-left">
+              <p className="text-sm font-semibold uppercase text-primary">
+                Wellbeing through authenticity
+              </p>
+              <p className="text-sm font-medium text-muted-foreground">
+                Maori-led, values-aligned, and open to all cultures.
+              </p>
+            </div>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-[clamp(3.5rem,15vw,12rem)] font-extrabold leading-[0.85] tracking-tighter text-balance text-foreground uppercase"
-          >
-            I see You
-          </motion.h1>
-
-          <div className="mt-7 grid gap-8 md:mt-10 md:gap-10 lg:mt-16 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-stretch lg:gap-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
+          <div className="flex flex-col gap-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              variants={{
-                visible: { transition: { staggerChildren: 0.15 } },
-              }}
-              className="flex flex-col gap-5 lg:order-2 lg:min-h-[12.75rem] lg:max-w-md lg:justify-center lg:justify-self-end lg:gap-6"
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="mx-auto max-w-4xl text-5xl font-extrabold leading-[0.95] tracking-normal text-balance text-foreground md:text-7xl"
             >
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.45 }}
-                className="flex flex-wrap gap-3"
-              >
-                {storeLinks.map((store) => (
-                  <Button
-                    asChild
-                    key={store.label}
-                    variant="ghost"
-                    className="h-14 rounded-md bg-black px-4 text-white hover:bg-black/85 hover:text-white focus-visible:ring-[3px] focus-visible:ring-ring/50 active:bg-black/75 active:text-white"
-                  >
-                    <Link
-                      href={store.href}
-                      aria-label={`${store.kicker} ${store.label}`}
-                      className="gap-2.5 no-underline"
-                    >
-                      <Image
-                        src={store.icon}
-                        alt=""
-                        width={30}
-                        height={30}
-                        className="size-7"
-                        aria-hidden="true"
-                      />
-                      <span className="flex flex-col items-start leading-none">
-                        <span className="text-[0.6rem] font-medium uppercase tracking-wide">
-                          {store.kicker}
-                        </span>
-                        <span className="text-base font-semibold">{store.label}</span>
-                      </span>
-                    </Link>
-                  </Button>
-                ))}
-              </motion.div>
-            </motion.div>
-
-            <div className="grid gap-5 md:grid-cols-[17rem_22rem] md:items-stretch lg:order-1 lg:gap-5">
-              <motion.figure
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="relative aspect-[4/3] w-full overflow-hidden bg-muted shadow-lg md:rounded-xl"
-              >
-                <Image
-                  src="/left-hero.png"
-                  alt="Portrait representing authentic wellbeing and connection"
-                  fill
-                  priority
-                  sizes="(max-width: 767px) calc(100vw - 1.5rem), 17rem"
-                  className="object-cover object-[center_20%]"
-                />
-              </motion.figure>
-
-              <motion.aside
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={{
-                  visible: { transition: { staggerChildren: 0.15 } },
-                }}
-                className="flex flex-col border border-border bg-surface p-5 shadow-sm md:rounded-xl md:p-6"
-              >
-                <motion.p
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  transition={{ duration: 0.45 }}
-                  className="text-lg font-medium leading-8 text-muted-foreground"
-                >
-                  Tai Ora helps people make informed wellbeing choices through
-                  trusted video guidance and authentic real life product
-                  journeys.
-                </motion.p>
-              </motion.aside>
-            </div>
+              I see you.
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.45, delay: 0.1, ease: "easeOut" }}
+              className="mx-auto max-w-3xl text-lg font-medium leading-8 text-muted-foreground md:text-xl md:leading-9"
+            >
+              Tai Ora connects people, creators, brands, iwi, and funders through
+              trusted wellbeing products that protect identity, build confidence,
+              and make every recommendation feel human.
+            </motion.p>
           </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.12 } },
+            }}
+            className="flex flex-wrap justify-center gap-3"
+          >
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.45 }}
+              className="flex flex-wrap justify-center gap-3"
+            >
+              <Button asChild size="lg">
+                <Link href="/creators" className="no-underline">
+                  Explore creators
+                  <ArrowRight data-icon="inline-end" aria-hidden="true" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                <Link href="/partner" className="no-underline">
+                  Partner with Tai Ora
+                  <ArrowRight data-icon="inline-end" aria-hidden="true" />
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

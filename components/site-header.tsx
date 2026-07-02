@@ -135,7 +135,7 @@ export function SiteHeader() {
   const showDefaultPreview = () => setPreviewMode("phones");
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full px-3 pt-3 md:px-6">
+    <header className="fixed top-[var(--app-launch-banner-offset,0px)] left-0 z-50 w-full px-3 pt-3 transition-[top] duration-200 md:px-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between rounded-md p-3 text-foreground">
         <Link
           href="/"
@@ -170,7 +170,7 @@ export function SiteHeader() {
             )}
           >
             <DrawerContent>
-              <div className="relative mx-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-6xl overflow-y-auto rounded-md bg-background/95 p-4 text-foreground backdrop-blur-xl md:p-6">
+              <div className="scroll-fade-y relative mx-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-6xl overflow-y-auto rounded-md bg-background/95 p-4 text-foreground backdrop-blur-xl md:p-6">
                 {!isDesktop ? (
                   <div className="absolute bottom-1 left-0 flex w-full justify-center">
                     <div className="my-4 h-[0.3rem] w-16 shrink-0 rounded-full bg-muted-foreground" />

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Inter, Source_Serif_4 } from "next/font/google";
 import { CookieConsentProvider } from "@/components/cookie-consent/cookie-consent-provider";
 import { CookieConsentScripts } from "@/components/cookie-consent/cookie-consent-scripts";
+import { AppLaunchBanner } from "@/components/app-launch-banner";
 import CookieConsent from "@/components/shadcn-space/blocks/cookie-consent-01";
 import { Footer } from "@/components/footer";
 import { SiteHeader } from "@/components/site-header";
@@ -97,6 +98,7 @@ export default function RootLayout({
         <CookieConsentProvider>
           <div className="flex min-h-dvh flex-col">
             <SiteHeader />
+            <AppLaunchBanner />
             <div className="flex-1">{children}</div>
             <Footer />
           </div>

@@ -263,7 +263,7 @@ const MotionDrawer: React.FC<SideMenuProps> = ({
               )}
 
               {/* Content */}
-              <div className='h-full overflow-y-auto'>{children}</div>
+              <div className="scroll-fade-y h-full overflow-y-auto">{children}</div>
             </motion.div>
           </div>
         )}

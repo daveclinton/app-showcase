@@ -389,7 +389,7 @@
   }
   article pre,
   .article-content pre {
-    @apply my-6 overflow-x-auto rounded-md border border-border bg-mauri-green-deep p-4 text-sm text-foreground;
+    @apply scroll-fade-x my-6 overflow-x-auto rounded-md border border-border bg-mauri-green-deep p-4 text-sm text-foreground;
   }
   article pre code,
   .article-content pre code {
