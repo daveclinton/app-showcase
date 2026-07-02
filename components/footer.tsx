@@ -30,6 +30,21 @@ const actionLinks = [
   },
 ];
 
+const storeLinks = [
+  {
+    href: "#",
+    icon: "/appstore.svg",
+    kicker: "Download on the",
+    label: "App Store",
+  },
+  {
+    href: "#",
+    icon: "/googleplay.svg",
+    kicker: "Get it on",
+    label: "Google Play",
+  },
+];
+
 export function Footer() {
   return (
     <footer className="border-t border-mauri-green/15 bg-white text-mauri-green">
@@ -99,6 +114,40 @@ export function Footer() {
               <p className="font-semibold text-mauri-muted">New Zealand</p>
               <p>Tai Ora AI Limited — NZBN 9429053144133</p>
             </div>
+          </div>
+        </div>
+
+        <div className="flex justify-end" aria-label="Download Tai Ora">
+          <div className="flex flex-wrap justify-end gap-2.5">
+            {storeLinks.map((store) => (
+              <Button
+                asChild
+                key={store.label}
+                variant="ghost"
+                className="h-10 rounded-md bg-black px-3 text-white hover:bg-black/85 hover:text-white focus-visible:ring-[3px] focus-visible:ring-mauri-sage/50 active:bg-black/75 active:text-white"
+              >
+                <Link
+                  href={store.href}
+                  aria-label={`${store.kicker} ${store.label}`}
+                  className="gap-2 no-underline"
+                >
+                  <Image
+                    src={store.icon}
+                    alt=""
+                    width={22}
+                    height={22}
+                    className="size-5"
+                    aria-hidden="true"
+                  />
+                  <span className="flex flex-col items-start leading-none">
+                    <span className="text-[0.5rem] font-medium uppercase tracking-wide">
+                      {store.kicker}
+                    </span>
+                    <span className="text-sm font-semibold">{store.label}</span>
+                  </span>
+                </Link>
+              </Button>
+            ))}
           </div>
         </div>
 
