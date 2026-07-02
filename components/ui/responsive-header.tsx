@@ -1,6 +1,5 @@
 "use client";
 
-import { useMediaQuery } from "@/hooks/use-media-query";
 import { type ReactNode, useState } from "react";
 import { Drawer as VaulHeader } from "vaul";
 
@@ -20,20 +19,22 @@ export function HeaderDrawer({
   const [internalOpen, setInternalOpen] = useState(false);
   const open = controlledOpen ?? internalOpen;
   const setOpen = controlledSetOpen ?? setInternalOpen;
-  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <VaulHeader.Root
       open={open}
       direction="top"
       onOpenChange={setOpen}
-      dismissible={!isDesktop}
+      dismissible
     >
       {drawerBtn ? (
         <VaulHeader.Trigger asChild>{drawerBtn()}</VaulHeader.Trigger>
       ) : null}
       <VaulHeader.Portal>
-        <VaulHeader.Overlay className="fixed inset-0 z-50 bg-mauri-green/70 backdrop-blur-xs" />
+        <VaulHeader.Overlay
+          className="fixed inset-0 z-50 bg-mauri-green/70 backdrop-blur-xs"
+          onPointerDown={() => setOpen(false)}
+        />
         <VaulHeader.Content className="fixed top-0 left-0 z-50 h-fit w-full bg-background/90 px-3 py-3 text-foreground backdrop-blur-xl md:px-6">
           {children}
         </VaulHeader.Content>

@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import {
   BadgeCheck,
   BrainCircuit,
+  ArrowRight,
   LucideIcon,
   HeartHandshake,
   Leaf,
@@ -66,8 +66,8 @@ const products = [
 
 const principles = [
   {
-    title: "Maori-led",
-    description: "Rooted in Te Tiriti values and designed with matauranga Maori.",
+    title: "Mauri-led",
+    description: "Rooted in Te Tiriti values and designed with matauranga Mauri.",
     icon: HeartHandshake,
   },
   {
@@ -92,7 +92,6 @@ type EcosystemCard = {
   eyebrow: string;
   description: string;
   href?: string;
-  image: string;
   icon: LucideIcon;
 };
 
@@ -102,14 +101,12 @@ const ecosystemCards: EcosystemCard[] = [
     eyebrow: product.eyebrow,
     description: product.description,
     href: product.href,
-    image: product.image,
     icon: product.icon,
   })),
   ...principles.map((principle) => ({
     title: principle.title,
     eyebrow: "Tai Ora principle",
     description: principle.description,
-    image: "/app-screenshots/app-showcase-one.webp",
     icon: principle.icon,
   })),
 ];
@@ -121,34 +118,19 @@ function EcosystemCard({
   eyebrow,
   description,
   href,
-  image,
   icon: Icon,
 }: EcosystemCard) {
   const cardContent = (
     <Card className="relative h-full w-full cursor-pointer gap-0 overflow-hidden rounded-md border border-border bg-surface p-0 text-foreground shadow-none ring-0 [--card-spacing:0px] transition-[background-color,border-color] hover:border-primary/45 hover:bg-surface-hover active:bg-surface-active">
-      <div className="relative aspect-[2.15/1] w-full overflow-hidden bg-muted">
-        <Image
-          src={image}
-          alt=""
-          fill
-          sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1023px) 45vw, 25vw"
-          className="object-cover"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(180deg,transparent_44%,color-mix(in_srgb,var(--mauri-green)_72%,transparent))]"
-        />
-        <span className="absolute top-2 right-2 z-10 flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground shadow-md">
+      <span className="absolute top-3 right-3 z-10 rounded-md bg-primary px-2.5 py-1 text-[0.65rem] font-bold uppercase leading-none text-primary-foreground shadow-md">
+        {eyebrow}
+      </span>
+      <CardContent className="flex min-h-40 flex-1 flex-col p-5">
+        <span className="mb-4 flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md">
           <Icon aria-hidden="true" />
         </span>
-      </div>
-
-      <CardContent className="flex min-h-36 flex-1 flex-col p-3.5">
-        <p className="text-xs font-bold uppercase tracking-normal text-primary">
-          {eyebrow}
-        </p>
         <h3
-          className="mt-1 overflow-hidden text-base font-semibold leading-5 text-foreground [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
+          className="mt-2 overflow-hidden pr-20 text-base font-semibold leading-5 text-foreground [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
           title={title}
         >
           {title}
@@ -163,6 +145,7 @@ function EcosystemCard({
         <div className="mt-auto flex justify-end pt-2">
           <span className="inline-flex items-center gap-2 text-sm font-bold text-link transition-colors group-hover:text-link-hover group-active:text-mauri-mint">
             Learn more
+            <ArrowRight aria-hidden="true" />
           </span>
         </div>
       </CardContent>

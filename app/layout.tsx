@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Inter, Source_Serif_4 } from "next/font/google";
 import { CookieConsentProvider } from "@/components/cookie-consent/cookie-consent-provider";
 import { CookieConsentScripts } from "@/components/cookie-consent/cookie-consent-scripts";
-import { AppLaunchBanner } from "@/components/app-launch-banner";
 import CookieConsent from "@/components/shadcn-space/blocks/cookie-consent-01";
 import { Footer } from "@/components/footer";
 import { SiteHeader } from "@/components/site-header";
@@ -12,7 +11,7 @@ import "./globals.css";
 const siteUrl = "https://www.taiora.ai";
 const siteTitle = "Tai Ora - Wellbeing Through Authenticity & Connection";
 const siteDescription =
-  "Tai Ora is a wellbeing platform built on authenticity, connection, and aroha. Rooted in Māori values, we welcome all cultures to reclaim time, identity, and wellbeing.";
+  "Tai Ora is a wellbeing platform built on authenticity, connection, and aroha. Rooted in Mauri values, we welcome all cultures to reclaim time, identity, and wellbeing.";
 const openGraphDescription =
   "Join Tai Ora, a wellbeing platform grounded in cultural values, authenticity, and aroha. Reclaim your time, identity, and wellbeing through community and connection.";
 const twitterDescription =
@@ -49,7 +48,7 @@ export const metadata: Metadata = {
     "authenticity and connection",
     "aroha",
     "cultural wellness",
-    "Māori values",
+    "Mauri values",
     "community wellbeing",
     "sustainable wellbeing",
   ],
@@ -98,7 +97,6 @@ export default function RootLayout({
         <CookieConsentProvider>
           <div className="flex min-h-dvh flex-col">
             <SiteHeader />
-            <AppLaunchBanner />
             <div className="flex-1">{children}</div>
             <Footer />
           </div>

@@ -32,13 +32,13 @@ const actionLinks = [
 
 const storeLinks = [
   {
-    href: "#",
+    href: "https://apps.apple.com/ke/app/tai-ora/id6756413932",
     icon: "/appstore.svg",
     kicker: "Download on the",
     label: "App Store",
   },
   {
-    href: "#",
+    href: "https://play.google.com/store/apps/details?id=com.taiora.app",
     icon: "/googleplay.svg",
     kicker: "Get it on",
     label: "Google Play",

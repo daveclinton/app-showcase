@@ -135,7 +135,7 @@ export function SiteHeader() {
   const showDefaultPreview = () => setPreviewMode("phones");
 
   return (
-    <header className="fixed top-[var(--app-launch-banner-offset,0px)] left-0 z-50 w-full px-3 pt-3 transition-[top] duration-200 md:px-6">
+    <header className="fixed top-0 left-0 z-50 w-full px-3 pt-3 md:px-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between rounded-md p-3 text-foreground">
         <Link
           href="/"
