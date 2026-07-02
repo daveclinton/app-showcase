@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Footer } from "@/components/footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
@@ -11,6 +12,7 @@ const openGraphDescription =
   "Join Tai Ora, a wellbeing platform grounded in cultural values, authenticity, and aroha. Reclaim your time, identity, and wellbeing through community and connection.";
 const twitterDescription =
   "Tai Ora is a cultural wellbeing platform rooted in authenticity, aroha, and community connection. Welcoming all cultures to live authentically.";
+const ogImageUrl = "/api/og?mode=dark";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.png",
+        url: ogImageUrl,
         width: 1200,
         height: 630,
         alt: "Tai Ora - Wellbeing Through Authenticity & Connection",
@@ -62,7 +64,7 @@ export const metadata: Metadata = {
     creator: "@taiora",
     title: siteTitle,
     description: twitterDescription,
-    images: ["/og-image.png"],
+    images: [ogImageUrl],
   },
 };
 
@@ -85,6 +87,7 @@ export default function RootLayout({
         <div className="flex min-h-dvh flex-col">
           <SiteHeader />
           <div className="flex-1">{children}</div>
+          <Footer />
         </div>
       </body>
     </html>

@@ -139,10 +139,18 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between rounded-md p-3 text-foreground">
         <Link
           href="/"
-          className="text-2xl font-extrabold tracking-tight text-taiora-gold-light no-underline transition-colors hover:text-mauri-mint focus-visible:ring-[3px] focus-visible:ring-ring/50 md:text-3xl"
+          className="flex items-center gap-3 text-2xl font-extrabold tracking-tight text-white no-underline transition-colors hover:text-mauri-mint focus-visible:ring-[3px] focus-visible:ring-ring/50 md:text-3xl"
           onClick={() => setHeaderOpen(false)}
         >
-          Tai Ora
+          <Image
+            src="/logo.png"
+            alt=""
+            width={40}
+            height={40}
+            className="size-10 rounded-md"
+            aria-hidden="true"
+          />
+          <span>Tai Ora</span>
         </Link>
 
         <div className="flex items-center gap-2">
