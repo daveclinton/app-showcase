@@ -38,7 +38,8 @@
   --color-secondary-active: var(--secondary-active);
   --color-link: var(--link);
   --color-link-hover: var(--link-hover);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-source-serif);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -259,33 +260,33 @@
   }
   article,
   .article-content {
-    @apply text-foreground;
+    @apply font-serif text-lg leading-8 tracking-normal text-foreground;
   }
   article h1,
   .article-content h1 {
-    @apply scroll-m-20 text-4xl font-extrabold tracking-tight text-balance text-foreground md:text-5xl;
+    @apply scroll-m-20 text-4xl font-bold tracking-normal text-balance text-foreground md:text-5xl;
   }
   article h2,
   .article-content h2 {
-    @apply mt-10 scroll-m-20 border-b border-border pb-2 text-3xl font-semibold tracking-tight text-foreground transition-colors first:mt-0;
+    @apply mt-10 scroll-m-20 border-b border-border pb-2 text-3xl font-semibold tracking-normal text-foreground transition-colors first:mt-0;
   }
   article h3,
   .article-content h3 {
-    @apply mt-8 scroll-m-20 text-2xl font-semibold tracking-tight text-foreground;
+    @apply mt-8 scroll-m-20 text-2xl font-semibold tracking-normal text-foreground;
   }
   article h4,
   .article-content h4 {
-    @apply mt-8 scroll-m-20 text-xl font-semibold tracking-tight text-foreground;
+    @apply mt-8 scroll-m-20 text-xl font-semibold tracking-normal text-foreground;
   }
   article p,
   .article-content p {
-    @apply leading-7 text-foreground [&:not(:first-child)]:mt-6;
+    @apply text-lg leading-8 text-foreground [&:not(:first-child)]:mt-6;
   }
   article > p:first-of-type,
   .article-content > p:first-of-type,
   article .lead,
   .article-content .lead {
-    @apply text-xl leading-8 text-foreground/90;
+    @apply text-xl leading-9 text-foreground/95;
   }
   article a,
   .article-content a {
@@ -305,7 +306,7 @@
   }
   article li,
   .article-content li {
-    @apply leading-7;
+    @apply text-lg leading-8;
   }
   article li > p,
   .article-content li > p {

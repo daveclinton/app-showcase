@@ -77,10 +77,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <time dateTime={post.dateTime}>{post.date}</time>
             </div>
 
-            <h1 className="text-4xl font-extrabold leading-tight tracking-normal text-balance text-foreground md:text-5xl">
+            <h1 className="text-4xl font-bold leading-tight tracking-normal text-balance text-foreground md:text-5xl">
               {post.title}
             </h1>
-            <p className="mt-6 text-lg font-medium leading-8 text-foreground/90 md:text-xl">
+            <p className="mt-6 text-xl leading-9 text-foreground/95">
               {post.subtitle}
             </p>
           </header>

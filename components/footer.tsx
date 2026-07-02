@@ -1,3 +1,4 @@
+import { CookieSettingsLink } from "@/components/cookie-consent/cookie-settings-link";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Mail } from "lucide-react";
@@ -113,6 +114,9 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <CookieSettingsLink className="text-sm font-semibold text-mauri-green" />
+            </li>
           </ul>
         </nav>
 

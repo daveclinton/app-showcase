@@ -3,15 +3,12 @@ import { cn } from "@/lib/utils";
 
 export const runtime = "edge";
 
-const geistMedium = fetch(
-  new URL(
-    "../../../node_modules/next/dist/compiled/@vercel/og/Geist-Regular.ttf",
-    import.meta.url,
-  ),
+const interMedium = fetch(
+  "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff",
 ).then((res) => res.arrayBuffer());
 
 export async function GET(req: Request) {
-  const fontData = await geistMedium;
+  const fontData = await interMedium;
   const url = new URL(req.url);
   const values = Object.fromEntries(url.searchParams);
   const mode = (values.mode || "dark") as "dark" | "light";
@@ -43,7 +40,7 @@ export async function GET(req: Request) {
       height: 630,
       fonts: [
         {
-          name: "Geist",
+          name: "Inter",
           data: fontData,
           style: "normal",
           weight: 500,
