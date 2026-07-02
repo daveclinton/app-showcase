@@ -1,270 +1,164 @@
-"use client";
-
-import Link from "next/link";
-import {
-  BadgeCheck,
-  BrainCircuit,
-  ArrowRight,
-  LucideIcon,
-  HeartHandshake,
-  Leaf,
-  PlayCircle,
-  ShieldCheck,
-  Sparkles,
-  Users,
-} from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Carousel,
-  type CarouselApi,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+  ArrowRight,
+  BarChart3,
+  Heart,
+  Leaf,
+  Lock,
+  Play,
+  ShieldCheck,
+  Sparkles,
+  type LucideIcon,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const products = [
   {
     name: "Mauri",
-    eyebrow: "Reflective wellbeing",
-    description:
-      "A guided space to pause, process your thoughts, and reconnect with what matters.",
+    description: "Pause, reflect and process your thoughts.",
     href: "https://mauri.taiora.ai/",
     image: "/app-screenshots/mauri-web.png",
     icon: Leaf,
   },
   {
     name: "Veevu",
-    eyebrow: "Video-led discovery",
-    description:
-      "Short, human product previews that help people understand what they are choosing.",
+    description: "Short product video previews.",
     href: "/brand",
     image: "/app-screenshots/browse-products.webp",
-    icon: PlayCircle,
+    icon: Play,
   },
   {
     name: "iGLO",
-    eyebrow: "Authentic reviews",
-    description:
-      "Real journey tracking and reviews that show impact beyond a single product moment.",
+    description: "Track your journey with real authentic reviews.",
     href: "/creators",
     image: "/app-screenshots/discover.jpeg",
-    icon: Sparkles,
+    icon: BarChart3,
   },
   {
     name: "Future AI Pathways",
-    eyebrow: "Future readiness",
-    description:
-      "AI-supported pathways for discovering opportunities, building skills, and growing with confidence.",
+    description: "Discover opportunities and build the skills for what's next.",
     href: "/partner",
     image: "/app-screenshots/app-showcase-one.webp",
-    icon: BrainCircuit,
+    icon: Sparkles,
   },
 ];
 
 const principles = [
   {
-    title: "Mauri-led",
+    title: "Mauri led",
     description: "Rooted in Te Tiriti values and designed with matauranga Mauri.",
-    icon: HeartHandshake,
+    icon: Sparkles,
   },
   {
     title: "Ethical AI",
-    description: "AI that supports people without taking away agency or context.",
-    icon: BadgeCheck,
-  },
-  {
-    title: "Trusted and safe",
-    description: "Privacy-first experiences where data is protected and never sold.",
+    description: "AI that empowers, supports and uplifts people, not replaces.",
     icon: ShieldCheck,
   },
   {
+    title: "Trusted and safe",
+    description: "Your privacy is yours. Your data is protected and never sold.",
+    icon: Lock,
+  },
+  {
     title: "People first",
-    description: "Technology shaped around connection, wellbeing, and real potential.",
-    icon: Users,
+    description: "Technology that strengthens connection, wellbeing and potential.",
+    icon: Heart,
   },
 ];
 
-type EcosystemCard = {
-  title: string;
-  eyebrow: string;
+type ProductCard = {
+  name: string;
   description: string;
-  href?: string;
+  href: string;
+  image: string;
   icon: LucideIcon;
 };
 
-const ecosystemCards: EcosystemCard[] = [
-  ...products.map((product) => ({
-    title: product.name,
-    eyebrow: product.eyebrow,
-    description: product.description,
-    href: product.href,
-    icon: product.icon,
-  })),
-  ...principles.map((principle) => ({
-    title: principle.title,
-    eyebrow: "Tai Ora principle",
-    description: principle.description,
-    icon: principle.icon,
-  })),
-];
-
-const autoplayDuration = 5000;
-
-function EcosystemCard({
-  title,
-  eyebrow,
+function EcosystemProductCard({
+  name,
   description,
   href,
+  image,
   icon: Icon,
-}: EcosystemCard) {
-  const cardContent = (
-    <Card className="relative h-full w-full cursor-pointer gap-0 overflow-hidden rounded-md border border-border bg-surface p-0 text-foreground shadow-none ring-0 [--card-spacing:0px] transition-[background-color,border-color] hover:border-primary/45 hover:bg-surface-hover active:bg-surface-active">
-      <span className="absolute top-3 right-3 z-10 rounded-md bg-primary px-2.5 py-1 text-[0.65rem] font-bold uppercase leading-none text-primary-foreground shadow-md">
-        {eyebrow}
-      </span>
-      <CardContent className="flex min-h-40 flex-1 flex-col p-5">
-        <span className="mb-4 flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md">
-          <Icon aria-hidden="true" />
-        </span>
-        <h3
-          className="mt-2 overflow-hidden pr-20 text-base font-semibold leading-5 text-foreground [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
-          title={title}
-        >
-          {title}
-        </h3>
-        <p
-          className="mt-1 overflow-hidden text-sm font-medium leading-5 text-foreground/90 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
-          title={description}
-        >
-          {description}
-        </p>
-
-        <div className="mt-auto flex justify-end pt-2">
-          <span className="inline-flex items-center gap-2 text-sm font-bold text-link transition-colors group-hover:text-link-hover group-active:text-mauri-mint">
+}: ProductCard) {
+  return (
+    <Link
+      href={href}
+      className="group block h-full rounded-md no-underline focus-visible:ring-[3px] focus-visible:ring-ring/50"
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel={href.startsWith("http") ? "noreferrer" : undefined}
+    >
+      <Card className="relative h-full min-h-[25rem] overflow-hidden rounded-md border border-border bg-surface p-0 text-foreground shadow-none transition-[background-color,border-color,transform] hover:-translate-y-1 hover:border-primary/55 hover:bg-surface-hover active:translate-y-0 active:bg-surface-active">
+        <Image
+          src={image}
+          alt=""
+          fill
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover opacity-45 transition-opacity group-hover:opacity-55"
+          aria-hidden="true"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,76,69,0.18),rgba(0,18,16,0.82)_64%,rgba(0,18,16,0.94))]"
+        />
+        <CardContent className="relative flex h-full min-h-[25rem] flex-col items-center px-6 py-8 text-center">
+          <span className="flex size-20 items-center justify-center rounded-full border border-primary/25 bg-background/75 text-primary shadow-2xl shadow-black/30 ring-1 ring-mauri-sage/20 backdrop-blur">
+            <Icon aria-hidden="true" />
+          </span>
+          <h3 className="mt-10 text-2xl font-semibold uppercase leading-tight tracking-[0.2em] text-mauri-sage">
+            {name}
+          </h3>
+          <span className="mt-4 h-px w-10 bg-primary" aria-hidden="true" />
+          <p className="mt-8 text-balance text-lg font-medium leading-8 text-white">
+            {description}
+          </p>
+          <span className="mt-auto inline-flex items-center gap-2 pt-8 text-base font-semibold text-link transition-colors group-hover:text-link-hover group-active:text-mauri-mint">
             Learn more
             <ArrowRight aria-hidden="true" />
           </span>
-        </div>
-      </CardContent>
-    </Card>
-  );
-
-  return (
-    <div className="group flex h-full items-center justify-center">
-      {href ? (
-        <Link
-          href={href}
-          className="block h-full w-full rounded-md no-underline focus-visible:ring-[3px] focus-visible:ring-ring/50"
-          target={href.startsWith("http") ? "_blank" : undefined}
-          rel={href.startsWith("http") ? "noreferrer" : undefined}
-        >
-          {cardContent}
-        </Link>
-      ) : (
-        <div className="h-full w-full">{cardContent}</div>
-      )}
-    </div>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
 
 export function HomeProductsMarquee() {
-  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
-  const [progress, setProgress] = useState(0);
-  const startedAtRef = useRef<number | null>(null);
-  const frameRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (!carouselApi) {
-      return;
-    }
-
-    const resetProgress = () => {
-      startedAtRef.current = performance.now();
-      setProgress(0);
-    };
-
-    const tick = (timestamp: number) => {
-      if (startedAtRef.current === null) {
-        startedAtRef.current = timestamp;
-      }
-
-      const elapsed = timestamp - startedAtRef.current;
-      const nextProgress = Math.min(elapsed / autoplayDuration, 1);
-      setProgress(nextProgress);
-
-      if (elapsed >= autoplayDuration) {
-        carouselApi.scrollNext();
-        startedAtRef.current = timestamp;
-        setProgress(0);
-      }
-
-      frameRef.current = window.requestAnimationFrame(tick);
-    };
-
-    resetProgress();
-    carouselApi.on("select", resetProgress);
-    frameRef.current = window.requestAnimationFrame(tick);
-
-    return () => {
-      carouselApi.off("select", resetProgress);
-      if (frameRef.current !== null) {
-        window.cancelAnimationFrame(frameRef.current);
-      }
-      frameRef.current = null;
-    };
-  }, [carouselApi]);
-
-  const progressDegrees = progress * 360;
-
   return (
-    <section className="overflow-hidden bg-background px-6 py-16 md:px-10 md:py-24">
-      <div className="mx-auto flex max-w-7xl flex-col gap-16">
-        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <h2 className="text-4xl font-extrabold leading-tight text-balance text-foreground md:text-6xl">
-            Our ecosystem
+    <section id="ecosystem" className="bg-background px-4 py-16 text-foreground md:px-8 md:py-20">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8">
+        <div className="text-center">
+          <p className="font-mono text-sm font-semibold uppercase tracking-[0.45em] text-primary">
+            Discover the
+          </p>
+          <h2 className="mt-4 text-balance text-3xl font-semibold uppercase leading-tight tracking-[0.24em] text-foreground md:text-5xl">
+            Tai Ora Ecosystem
           </h2>
-
-          <div
-            aria-label={`${Math.round(progress * 100)}% until next ecosystem slide`}
-            className="relative flex size-14 shrink-0 items-center justify-center rounded-full bg-surface text-primary shadow-sm"
-          >
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: `conic-gradient(var(--primary) ${progressDegrees}deg, color-mix(in srgb, var(--primary) 18%, transparent) 0deg)`,
-              }}
-            />
-            <div className="relative flex size-11 items-center justify-center rounded-full bg-background">
-              <span className="size-2 rounded-full bg-primary" aria-hidden="true" />
-            </div>
-          </div>
         </div>
 
-        <Carousel
-          setApi={setCarouselApi}
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4 items-stretch">
-            {ecosystemCards.map((card) => (
-              <CarouselItem
-                key={card.title}
-                className="flex pl-4 md:basis-1/2 lg:basis-1/4"
-              >
-                <EcosystemCard {...card} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden bg-surface text-foreground hover:bg-surface-hover active:bg-surface-active md:inline-flex" />
-          <CarouselNext className="hidden bg-surface text-foreground hover:bg-surface-hover active:bg-surface-active md:inline-flex" />
-        </Carousel>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {products.map((product) => (
+            <EcosystemProductCard key={product.name} {...product} />
+          ))}
+        </div>
+
+        <div className="grid gap-6 rounded-md border border-border bg-surface/45 p-6 md:grid-cols-2 lg:grid-cols-4 lg:p-8">
+          {principles.map(({ title, description, icon: Icon }) => (
+            <div key={title} className="flex gap-4">
+              <span className="flex size-14 shrink-0 items-center justify-center rounded-full border border-primary/35 bg-background/65 text-primary">
+                <Icon aria-hidden="true" />
+              </span>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-base font-semibold uppercase leading-6 text-mauri-sage">
+                  {title}
+                </h3>
+                <p className="text-sm font-medium leading-6 text-foreground">
+                  {description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
