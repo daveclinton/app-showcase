@@ -1,5 +1,6 @@
 import { MdxContent } from "@/components/mdx-content";
 import { getBlogPostBySlug, getPublishedBlogPosts } from "@/lib/blog-posts";
+import { radialPageBackground } from "@/lib/page-background";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -56,7 +57,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <main className="min-h-dvh bg-background text-foreground">
+    <main className="min-h-dvh text-foreground" style={radialPageBackground}>
       <article className="px-6 pb-20 pt-32 md:px-10 md:pb-24 md:pt-40">
         <div className="mx-auto max-w-3xl">
           <Link

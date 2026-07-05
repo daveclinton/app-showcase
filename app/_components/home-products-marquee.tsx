@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { radialPageBackground } from "@/lib/page-background";
 import {
   ArrowRight,
   BarChart3,
@@ -125,7 +126,11 @@ function EcosystemProductCard({
 
 export function HomeProductsMarquee() {
   return (
-    <section id="ecosystem" className="bg-background px-4 py-16 text-foreground md:px-8 md:py-20">
+    <section
+      id="ecosystem"
+      className="px-4 py-16 text-foreground md:px-8 md:py-20"
+      style={radialPageBackground}
+    >
       <div className="mx-auto flex max-w-7xl flex-col gap-8">
         <div className="text-center">
           <p className="font-mono text-sm font-semibold uppercase tracking-[0.45em] text-primary">

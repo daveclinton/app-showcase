@@ -1,11 +1,15 @@
 import { HomeHero } from "./_components/home-hero";
 import { HomeProductsMarquee } from "./_components/home-products-marquee";
+import { radialPageBackground } from "@/lib/page-background";
 
 const youtubeEmbedUrl = "https://www.youtube-nocookie.com/embed/4PnOQZH9weU";
 
 function HomeVideoSection() {
   return (
-    <section className="bg-background px-4 pb-20 pt-6 text-foreground md:px-8 md:pb-28 md:pt-10">
+    <section
+      className="px-4 pb-20 pt-6 text-foreground md:px-8 md:pb-28 md:pt-10"
+      style={radialPageBackground}
+    >
       <div className="mx-auto flex max-w-6xl flex-col gap-8">
         <div className="text-center">
           <p className="font-mono text-sm font-semibold uppercase tracking-[0.36em] text-primary">
@@ -35,7 +39,7 @@ function HomeVideoSection() {
 
 export default function Home() {
   return (
-    <main className="bg-background text-foreground">
+    <main className="text-foreground" style={radialPageBackground}>
       <HomeHero />
       <HomeProductsMarquee />
       <HomeVideoSection />

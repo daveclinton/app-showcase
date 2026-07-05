@@ -1,5 +1,6 @@
 import { BlogArticleCard } from "@/components/blog-article-card";
 import { getPublishedBlogPosts } from "@/lib/blog-posts";
+import { radialPageBackground } from "@/lib/page-background";
 
 export default async function BlogPage() {
   const posts = await getPublishedBlogPosts();
@@ -8,7 +9,7 @@ export default async function BlogPage() {
   const gridPosts = remainingPosts.slice(2);
 
   return (
-    <main className="bg-background text-foreground">
+    <main className="text-foreground" style={radialPageBackground}>
       <section className="border-b border-border px-6 pb-20 pt-32 md:px-10 md:pb-24 md:pt-40">
         <div className="mx-auto max-w-7xl">
           <h1 className="max-w-4xl text-5xl font-extrabold leading-[0.95] tracking-normal text-balance text-foreground md:text-7xl">
