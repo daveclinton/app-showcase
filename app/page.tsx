@@ -104,6 +104,17 @@ export default function HomePage() {
         <BackgroundLight />
 
         <div className="relative z-10 mx-auto flex max-w-[1350px] flex-col items-center text-center">
+          <div className="flex size-[120px] items-center justify-center rounded-full bg-[radial-gradient(circle_at_35%_28%,#148f87_0%,#00514f_42%,#001b20_100%)] shadow-[0_0_22px_rgba(0,229,212,0.25),0_12px_28px_rgba(0,0,0,0.45)] md:size-[168px]">
+            <Image
+              src="/logo.png"
+              alt="Tai Ora koru"
+              width={168}
+              height={168}
+              priority
+              className="size-full rounded-full object-cover"
+            />
+          </div>
+
           <div className="mt-5 flex w-full max-w-[800px] items-center gap-5 md:mt-8">
             <span className="h-px flex-1 bg-[linear-gradient(90deg,transparent,#d88719)]" />
             <span className="flex size-12 items-center justify-center rounded-full border border-[#ffb51f] text-[#ffb51f] shadow-[0_0_16px_rgba(255,181,31,0.28)]">

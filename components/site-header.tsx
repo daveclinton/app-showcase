@@ -1,7 +1,6 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -27,26 +26,10 @@ export function SiteHeader() {
     <header className="fixed inset-x-0 top-4 z-50 px-4 text-[#f7f9f8] md:top-6">
       <div className="mx-auto max-w-[1280px]">
         <div className="flex min-h-16 items-center justify-between gap-3 rounded-full border border-[#00e5d4]/20 bg-[#001014]/82 px-3 py-2 shadow-[0_18px_42px_rgba(0,0,0,0.42),inset_0_0_28px_rgba(0,229,212,0.05)] backdrop-blur-xl md:px-4">
-          <Link
-            href="/"
-            className="flex shrink-0 items-center gap-3 rounded-full pr-2 text-[#f7f9f8] no-underline transition hover:text-[#ffb51f] focus-visible:ring-[3px] focus-visible:ring-[#00e5d4]/35"
-            aria-label="Tai Ora home"
-          >
-            <Image
-              src="/logo.png"
-              alt=""
-              width={44}
-              height={44}
-              className="size-11 rounded-full shadow-[0_0_18px_rgba(0,229,212,0.18)]"
-              aria-hidden="true"
-            />
-            <span className="hidden text-base font-semibold tracking-[0.18em] sm:inline">
-              TAI ORA
-            </span>
-          </Link>
+          <div className="h-11 w-0 shrink-0" aria-hidden="true" />
 
-          <nav aria-label="Site navigation" className="hidden lg:block">
-            <ul className="flex items-center gap-1">
+          <nav aria-label="Site navigation" className="hidden min-w-0 flex-1 lg:block">
+            <ul className="flex min-w-0 items-center gap-1">
               {navLinks.map((item) => {
                 const isActive = pathname === item.href;
 
@@ -71,7 +54,7 @@ export function SiteHeader() {
 
           <Link
             href="/contact"
-            className="hidden shrink-0 rounded-full border border-[#c97900] bg-[#000508]/70 px-4 py-2 text-sm font-semibold text-[#ffb51f] no-underline transition hover:-translate-y-0.5 hover:border-[#ffb51f] hover:text-[#ffe3a4] focus-visible:ring-[3px] focus-visible:ring-[#ffb51f]/35 active:translate-y-px sm:inline-flex"
+            className="ml-auto hidden shrink-0 rounded-full border border-[#c97900] bg-[#000508]/70 px-4 py-2 text-sm font-semibold text-[#ffb51f] no-underline transition hover:-translate-y-0.5 hover:border-[#ffb51f] hover:text-[#ffe3a4] focus-visible:ring-[3px] focus-visible:ring-[#ffb51f]/35 active:translate-y-px sm:inline-flex"
           >
             Let&apos;s Connect
           </Link>
