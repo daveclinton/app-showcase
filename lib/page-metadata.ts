@@ -6,9 +6,14 @@ export type PageMetadataInput = {
   title: string;
   description: string;
   path: string;
-  /** Absolute or site-relative image URL. Defaults to dynamic OG card. */
+  /**
+   * Absolute or site-relative image URL.
+   * Defaults to the dynamic `/og` card generator for this page.
+   */
   image?: string;
   imageAlt?: string;
+  /** Shown as the label on the generated OG card (e.g. author name). */
+  ogLabel?: string;
   type?: "website" | "article";
   publishedTime?: string;
   modifiedTime?: string;
@@ -19,15 +24,54 @@ export type PageMetadataInput = {
   absoluteTitle?: boolean;
 };
 
-function toAbsoluteImage(image: string) {
+/** Build a path for the dynamic OG image route (`app/og/route.tsx`). */
+export function buildOgImagePath({
+  title,
+  tagline,
+  author,
+}: {
+  title: string;
+  tagline?: string;
+  author?: string;
+}) {
+  const params = new URLSearchParams();
+  params.set("title", title.trim().slice(0, 140));
+
+  if (tagline?.trim()) {
+    params.set("tagline", tagline.trim().slice(0, 150));
+  }
+
+  if (author?.trim()) {
+    params.set("author", author.trim().slice(0, 50));
+  }
+
+  return `/og?${params.toString()}`;
+}
+
+/** Absolute URL for the dynamic OG image (for scrapers and social previews). */
+export function buildOgImageUrl(input: {
+  title: string;
+  tagline?: string;
+  author?: string;
+}) {
+  return absoluteUrl(buildOgImagePath(input));
+}
+
+function resolveImageUrl(image: string) {
   if (image.startsWith("http://") || image.startsWith("https://")) {
     return image;
   }
-  return absoluteUrl(image.startsWith("/") ? image : `/${image}`);
+
+  const path = image.startsWith("/") ? image : `/${image}`;
+  return absoluteUrl(path);
 }
 
 export function buildPageTitle(title: string, absoluteTitle = false) {
-  if (absoluteTitle || title === SITE_NAME || title.endsWith(`| ${SITE_NAME}`)) {
+  if (
+    absoluteTitle ||
+    title === SITE_NAME ||
+    title.endsWith(`| ${SITE_NAME}`)
+  ) {
     return title;
   }
   return `${title} | ${SITE_NAME}`;
@@ -39,6 +83,7 @@ export function createPageMetadata({
   path,
   image,
   imageAlt,
+  ogLabel,
   type = "website",
   publishedTime,
   modifiedTime,
@@ -48,15 +93,30 @@ export function createPageMetadata({
   absoluteTitle = false,
 }: PageMetadataInput): Metadata {
   const fullTitle = buildPageTitle(title, absoluteTitle);
-  const canonicalPath = path === "" ? "/" : path;
+  const canonicalPath = path === "" || path === "/" ? "/" : path;
   const url = absoluteUrl(canonicalPath);
-  const ogImage =
-    image != null
-      ? toAbsoluteImage(image)
-      : absoluteUrl(
-          `/og?title=${encodeURIComponent(title)}&tagline=${encodeURIComponent(description)}`,
-        );
+
+  // Prefer an explicit image; otherwise generate one via `/og` for this page.
+  const ogImage = resolveImageUrl(
+    image ??
+      buildOgImagePath({
+        title,
+        tagline: description,
+        author: ogLabel ?? authors?.[0],
+      }),
+  );
   const ogAlt = imageAlt ?? fullTitle;
+
+  const ogImages = [
+    {
+      url: ogImage,
+      secureUrl: ogImage,
+      width: 1200,
+      height: 630,
+      type: "image/png",
+      alt: ogAlt,
+    },
+  ];
 
   return {
     title: absoluteTitle ? { absolute: fullTitle } : title,
@@ -72,14 +132,7 @@ export function createPageMetadata({
       siteName: SITE_NAME,
       locale: "en_US",
       type,
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: ogAlt,
-        },
-      ],
+      images: ogImages,
       ...(type === "article"
         ? {
             publishedTime,

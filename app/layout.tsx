@@ -6,10 +6,11 @@ import { Footer } from "@/components/footer";
 import CookieConsent from "@/components/shadcn-space/blocks/cookie-consent-01";
 import { SiteHeader } from "@/components/site-header";
 import { Toaster } from "@/components/ui/sonner";
-import { absoluteUrl } from "@/lib/site";
+import { buildOgImageUrl } from "@/lib/page-metadata";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const siteUrl = "https://www.taiora.ai";
+const siteUrl = SITE_URL;
 const siteTitle = "Tai Ora - Wellbeing Through Authenticity & Connection";
 const siteDescription =
   "Tai Ora is a wellbeing platform built on authenticity, connection, and aroha. Rooted in Mauri values, we welcome all cultures to reclaim time, identity, and wellbeing.";
@@ -17,9 +18,10 @@ const openGraphDescription =
   "Join Tai Ora, a wellbeing platform grounded in cultural values, authenticity, and aroha. Reclaim your time, identity, and wellbeing through community and connection.";
 const twitterDescription =
   "Tai Ora is a cultural wellbeing platform rooted in authenticity, aroha, and community connection. Welcoming all cultures to live authentically.";
-const ogImageUrl = absoluteUrl(
-  `/og?title=${encodeURIComponent("Tai Ora")}&tagline=${encodeURIComponent(siteDescription)}`,
-);
+const ogImageUrl = buildOgImageUrl({
+  title: "Tai Ora",
+  tagline: siteDescription,
+});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -68,8 +70,10 @@ export const metadata: Metadata = {
     images: [
       {
         url: ogImageUrl,
+        secureUrl: ogImageUrl,
         width: 1200,
         height: 630,
+        type: "image/png",
         alt: "Tai Ora - Wellbeing Through Authenticity & Connection",
       },
     ],

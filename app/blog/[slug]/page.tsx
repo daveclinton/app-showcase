@@ -41,14 +41,12 @@ export async function generateMetadata({
     };
   }
 
-  const ogImage = `/og?title=${encodeURIComponent(post.title)}&author=${encodeURIComponent(post.author)}&tagline=${encodeURIComponent(post.subtitle)}`;
-
   return createPageMetadata({
     title: post.title,
     description: post.subtitle,
     path: `/blog/${post.slug}`,
-    image: ogImage,
     imageAlt: `${post.title} — ${post.collection}`,
+    ogLabel: post.author,
     type: "article",
     publishedTime: post.dateTime,
     authors: [post.author],
