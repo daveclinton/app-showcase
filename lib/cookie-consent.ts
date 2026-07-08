@@ -94,7 +94,14 @@ export function clearAnalyticsCookies() {
     .split(";")
     .map((cookie) => cookie.split("=")[0]?.trim())
     .filter((name): name is string => Boolean(name))
-    .filter((name) => name.startsWith("_ga") || name.startsWith("_gid") || name.startsWith("_gat"));
+    .filter(
+      (name) =>
+        name.startsWith("_ga") ||
+        name.startsWith("_gid") ||
+        name.startsWith("_gat") ||
+        name === "_fbp" ||
+        name === "_fbc",
+    );
 
   for (const name of cookieNames) {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;

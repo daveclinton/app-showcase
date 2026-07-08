@@ -1,10 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { socialLinks } from "@/lib/social-links";
+
 const footerLinks = [
   { href: "/business-card", label: "Business Card" },
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms-of-use", label: "Terms of Use" },
+];
+
+const socials = [
+  {
+    href: socialLinks.instagram,
+    label: "Instagram",
+    icon: "/instagram.svg",
+  },
+  {
+    href: socialLinks.facebook,
+    label: "Facebook",
+    icon: "/facebook.svg",
+  },
+  {
+    href: socialLinks.linkedin,
+    label: "LinkedIn",
+    icon: "/linkedin-logo-svgrepo-com.svg",
+  },
+  { href: socialLinks.x, label: "X", icon: "/x.svg" },
 ];
 
 export function Footer() {
@@ -34,6 +55,27 @@ export function Footer() {
           <p className="text-base font-semibold text-[#b4dac6]">
             Privacy-first. Consent-led. Values-aligned.
           </p>
+          <div className="flex gap-3">
+            {socials.map(({ href, label, icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                title={label}
+                aria-label={`Tai Ora on ${label}`}
+                className="inline-flex size-10 items-center justify-center rounded-full border border-[#00e5d4]/20 bg-[#001014] transition hover:-translate-y-0.5 hover:border-[#ffb51f] hover:bg-surface-hover active:translate-y-px active:bg-surface-active focus-visible:ring-[3px] focus-visible:ring-[#00e5d4]/35"
+              >
+                <Image
+                  src={icon}
+                  alt=""
+                  width={20}
+                  height={20}
+                  className="size-5 invert"
+                />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="flex flex-col gap-5 md:items-end md:text-right">
