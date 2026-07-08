@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { resolveOgScreenshotPath } from "@/lib/og-screenshots";
 import { absoluteUrl, getSiteUrl, SITE_NAME } from "@/lib/site";
 
 export type PageMetadataInput = {
@@ -7,8 +8,7 @@ export type PageMetadataInput = {
   description: string;
   path: string;
   /**
-   * Absolute or site-relative image URL.
-   * Defaults to the dynamic `/og` card generator for this page.
+   * Absolute or site-relative image URL used when no viewport screenshot exists.
    */
   image?: string;
   imageAlt?: string;
@@ -22,6 +22,11 @@ export type PageMetadataInput = {
   noIndex?: boolean;
   /** When true, do not append "| Tai Ora" (for the homepage default). */
   absoluteTitle?: boolean;
+  /**
+   * When true (default), prefer a captured viewport screenshot for this path
+   * over explicit `image` / designed /og card when the PNG exists.
+   */
+  preferScreenshot?: boolean;
 };
 
 /** Build a path for the dynamic OG image route (`app/og/route.tsx`). */
@@ -66,8 +71,6 @@ function toMetadataImageUrl(image: string) {
     try {
       const site = getSiteUrl();
       const parsed = new URL(image);
-      // If the absolute URL already points at this deployment, prefer pathname+search
-      // so metadataBase stays the source of truth.
       if (parsed.origin === site) {
         return `${parsed.pathname}${parsed.search}`;
       }
@@ -105,20 +108,29 @@ export function createPageMetadata({
   keywords,
   noIndex = false,
   absoluteTitle = false,
+  preferScreenshot = true,
 }: PageMetadataInput): Metadata {
   const fullTitle = buildPageTitle(title, absoluteTitle);
   const canonicalPath = path === "" || path === "/" ? "/" : path;
 
-  // Relative path → resolved against metadataBase (current deployment origin).
-  const ogImage = toMetadataImageUrl(
+  // Preference: viewport screenshot → explicit image → designed /og card.
+  const screenshot = preferScreenshot
+    ? resolveOgScreenshotPath(canonicalPath)
+    : undefined;
+
+  const resolvedSource =
+    screenshot ??
     image ??
-      buildOgImagePath({
-        title,
-        tagline: description,
-        author: ogLabel ?? authors?.[0],
-      }),
-  );
+    buildOgImagePath({
+      title,
+      tagline: description,
+      author: ogLabel ?? authors?.[0],
+    });
+
+  const ogImage = toMetadataImageUrl(resolvedSource);
   const ogAlt = imageAlt ?? fullTitle;
+  const isPng =
+    ogImage.includes(".png") || ogImage.startsWith("/og-screenshots/");
 
   return {
     title: absoluteTitle ? { absolute: fullTitle } : title,
@@ -130,7 +142,6 @@ export function createPageMetadata({
     openGraph: {
       title: fullTitle,
       description,
-      // Relative so Next resolves with metadataBase for this host.
       url: canonicalPath,
       siteName: SITE_NAME,
       locale: "en_US",
@@ -140,7 +151,7 @@ export function createPageMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          type: "image/png",
+          type: isPng ? "image/png" : undefined,
           alt: ogAlt,
         },
       ],

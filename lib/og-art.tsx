@@ -96,16 +96,6 @@ export function StandardOgArt({
           "radial-gradient(circle at 82% 16%, #164f46 0%, #071814 34%, #020806 72%)",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          top: 0,
-          width: 12,
-          height: "100%",
-          background: colors.gold,
-        }}
-      />
       <Identity logoUrl={logoUrl} label={label} />
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div
@@ -121,16 +111,8 @@ export function StandardOgArt({
         </div>
         <div
           style={{
-            width: 96,
-            height: 4,
-            marginTop: 30,
-            background: colors.gold,
-          }}
-        />
-        <div
-          style={{
             maxWidth: 900,
-            marginTop: 24,
+            marginTop: 28,
             color: colors.mint,
             fontSize: 25,
             lineHeight: 1.4,

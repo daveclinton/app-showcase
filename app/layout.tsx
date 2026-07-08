@@ -7,6 +7,7 @@ import CookieConsent from "@/components/shadcn-space/blocks/cookie-consent-01";
 import { SiteHeader } from "@/components/site-header";
 import { Toaster } from "@/components/ui/sonner";
 import { buildOgImagePath } from "@/lib/page-metadata";
+import { resolveOgScreenshotPath } from "@/lib/og-screenshots";
 import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -18,11 +19,13 @@ const openGraphDescription =
   "Join Tai Ora, a wellbeing platform grounded in cultural values, authenticity, and aroha. Reclaim your time, identity, and wellbeing through community and connection.";
 const twitterDescription =
   "Tai Ora is a cultural wellbeing platform rooted in authenticity, aroha, and community connection. Welcoming all cultures to live authentically.";
-// Relative path — resolved against metadataBase so OG images hit this deployment.
-const ogImagePath = buildOgImagePath({
-  title: "Tai Ora",
-  tagline: siteDescription,
-});
+// Viewport screenshot when present; otherwise designed /og card.
+const ogImagePath =
+  resolveOgScreenshotPath("/") ??
+  buildOgImagePath({
+    title: "Tai Ora",
+    tagline: siteDescription,
+  });
 
 const inter = Inter({
   variable: "--font-inter",

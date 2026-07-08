@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "knowledge-hub:migrate": "node scripts/migrate-knowledge-hub.mjs"
+    "knowledge-hub:migrate": "node scripts/migrate-knowledge-hub.mjs",
+    "og:screenshots": "node scripts/generate-og-screenshots.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

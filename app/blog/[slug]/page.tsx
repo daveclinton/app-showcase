@@ -42,10 +42,15 @@ export async function generateMetadata({
     };
   }
 
+  // Viewport screenshot (if generated) → article cover → designed /og card.
+  const coverImage =
+    post.image && !post.image.includes("/og?") ? post.image : undefined;
+
   return createPageMetadata({
     title: post.title,
     description: post.subtitle,
     path: `/blog/${post.slug}`,
+    image: coverImage,
     imageAlt: `${post.title} — ${post.collection}`,
     ogLabel: post.author,
     type: "article",
