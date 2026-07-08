@@ -6,11 +6,11 @@ import { Footer } from "@/components/footer";
 import CookieConsent from "@/components/shadcn-space/blocks/cookie-consent-01";
 import { SiteHeader } from "@/components/site-header";
 import { Toaster } from "@/components/ui/sonner";
-import { buildOgImageUrl } from "@/lib/page-metadata";
-import { SITE_URL } from "@/lib/site";
+import { buildOgImagePath } from "@/lib/page-metadata";
+import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
-const siteUrl = SITE_URL;
+const siteUrl = getSiteUrl();
 const siteTitle = "Tai Ora - Wellbeing Through Authenticity & Connection";
 const siteDescription =
   "Tai Ora is a wellbeing platform built on authenticity, connection, and aroha. Rooted in Mauri values, we welcome all cultures to reclaim time, identity, and wellbeing.";
@@ -18,7 +18,8 @@ const openGraphDescription =
   "Join Tai Ora, a wellbeing platform grounded in cultural values, authenticity, and aroha. Reclaim your time, identity, and wellbeing through community and connection.";
 const twitterDescription =
   "Tai Ora is a cultural wellbeing platform rooted in authenticity, aroha, and community connection. Welcoming all cultures to live authentically.";
-const ogImageUrl = buildOgImageUrl({
+// Relative path — resolved against metadataBase so OG images hit this deployment.
+const ogImagePath = buildOgImagePath({
   title: "Tai Ora",
   tagline: siteDescription,
 });
@@ -63,14 +64,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteTitle,
     description: openGraphDescription,
-    url: siteUrl,
+    url: "/",
     siteName: "Tai Ora",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: ogImageUrl,
-        secureUrl: ogImageUrl,
+        url: ogImagePath,
         width: 1200,
         height: 630,
         type: "image/png",
@@ -84,7 +84,14 @@ export const metadata: Metadata = {
     creator: "@taiora",
     title: siteTitle,
     description: twitterDescription,
-    images: [ogImageUrl],
+    images: [
+      {
+        url: ogImagePath,
+        width: 1200,
+        height: 630,
+        alt: "Tai Ora - Wellbeing Through Authenticity & Connection",
+      },
+    ],
   },
 };
 

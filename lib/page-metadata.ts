@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { absoluteUrl, SITE_NAME } from "@/lib/site";
+import { absoluteUrl, getSiteUrl, SITE_NAME } from "@/lib/site";
 
 export type PageMetadataInput = {
   title: string;
@@ -57,13 +57,27 @@ export function buildOgImageUrl(input: {
   return absoluteUrl(buildOgImagePath(input));
 }
 
-function resolveImageUrl(image: string) {
+/**
+ * Keep OG image URLs same-origin via relative paths when possible so Next.js
+ * metadataBase resolves them to the current deployment (showcase vs prod).
+ */
+function toMetadataImageUrl(image: string) {
   if (image.startsWith("http://") || image.startsWith("https://")) {
-    return image;
+    try {
+      const site = getSiteUrl();
+      const parsed = new URL(image);
+      // If the absolute URL already points at this deployment, prefer pathname+search
+      // so metadataBase stays the source of truth.
+      if (parsed.origin === site) {
+        return `${parsed.pathname}${parsed.search}`;
+      }
+      return image;
+    } catch {
+      return image;
+    }
   }
 
-  const path = image.startsWith("/") ? image : `/${image}`;
-  return absoluteUrl(path);
+  return image.startsWith("/") ? image : `/${image}`;
 }
 
 export function buildPageTitle(title: string, absoluteTitle = false) {
@@ -94,10 +108,9 @@ export function createPageMetadata({
 }: PageMetadataInput): Metadata {
   const fullTitle = buildPageTitle(title, absoluteTitle);
   const canonicalPath = path === "" || path === "/" ? "/" : path;
-  const url = absoluteUrl(canonicalPath);
 
-  // Prefer an explicit image; otherwise generate one via `/og` for this page.
-  const ogImage = resolveImageUrl(
+  // Relative path → resolved against metadataBase (current deployment origin).
+  const ogImage = toMetadataImageUrl(
     image ??
       buildOgImagePath({
         title,
@@ -106,17 +119,6 @@ export function createPageMetadata({
       }),
   );
   const ogAlt = imageAlt ?? fullTitle;
-
-  const ogImages = [
-    {
-      url: ogImage,
-      secureUrl: ogImage,
-      width: 1200,
-      height: 630,
-      type: "image/png",
-      alt: ogAlt,
-    },
-  ];
 
   return {
     title: absoluteTitle ? { absolute: fullTitle } : title,
@@ -128,11 +130,20 @@ export function createPageMetadata({
     openGraph: {
       title: fullTitle,
       description,
-      url,
+      // Relative so Next resolves with metadataBase for this host.
+      url: canonicalPath,
       siteName: SITE_NAME,
       locale: "en_US",
       type,
-      images: ogImages,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          type: "image/png",
+          alt: ogAlt,
+        },
+      ],
       ...(type === "article"
         ? {
             publishedTime,
@@ -145,7 +156,14 @@ export function createPageMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [ogImage],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: ogAlt,
+        },
+      ],
     },
     robots: noIndex
       ? {

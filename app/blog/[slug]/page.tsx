@@ -20,6 +20,7 @@ import {
 } from "@/lib/blog-posts";
 import { getCollectionDefinition } from "@/lib/knowledge-hub";
 import { createPageMetadata } from "@/lib/page-metadata";
+import { absoluteUrl } from "@/lib/site";
 import { socialLinks } from "@/lib/social-links";
 
 type BlogPostPageProps = {
@@ -75,7 +76,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const postsBySlug = new Map(
     publishedPosts.map((candidate) => [candidate.slug, candidate]),
   );
-  const canonicalUrl = `https://www.taiora.ai/blog/${post.slug}`;
+  const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
 
   return (
     <main className="min-h-dvh bg-background text-foreground">
