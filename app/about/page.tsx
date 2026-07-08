@@ -1,6 +1,6 @@
 import { SimpleCenteredPage } from "../_components/simple-centered-page";
 
-export default function AboutUsPage() {
+export default function AboutPage() {
   return (
     <SimpleCenteredPage
       title="About Tai Ora"

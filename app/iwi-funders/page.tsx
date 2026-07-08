@@ -1,6 +1,6 @@
 import { SimpleCenteredPage } from "../_components/simple-centered-page";
 
-export default function IwiAndFundersPage() {
+export default function IwiFundersPage() {
   return (
     <SimpleCenteredPage
       title="Iwi & Funders"
