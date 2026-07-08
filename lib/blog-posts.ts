@@ -1,4 +1,8 @@
 import { notionBlocksToMarkdown } from "@/lib/notion-blocks";
+import {
+  BLOG_COLLECTIONS,
+  type BlogCollection,
+} from "@/lib/knowledge-hub";
 
 type NotionRichText = {
   plain_text?: string;
@@ -16,6 +20,7 @@ type NotionProperty = {
   title?: NotionRichText[];
   rich_text?: NotionRichText[];
   checkbox?: boolean;
+  number?: number | null;
   date?: { start?: string | null } | null;
   select?: { name?: string } | null;
   multi_select?: { name?: string }[];
@@ -42,7 +47,10 @@ export type BlogPost = {
   id: string;
   title: string;
   subtitle: string;
-  category: "News" | "Insights";
+  collection: BlogCollection;
+  part: number | null;
+  author: string;
+  readTime: string;
   date: string;
   dateTime: string;
   image: string;
@@ -156,6 +164,10 @@ function propertyDate(property?: NotionProperty) {
   return property?.date?.start || propertyText(property);
 }
 
+function propertyNumber(property?: NotionProperty) {
+  return typeof property?.number === "number" ? property.number : null;
+}
+
 function coverUrl(page: NotionPage) {
   if (page.cover?.type === "external") {
     return page.cover.external?.url;
@@ -214,13 +226,27 @@ function pageToPost(page: NotionPage, content = ""): BlogPost {
     new Date().toISOString();
   const publishedProperty = getProperty(properties, ["Published", "Live", "Status"]);
   const published = publishedProperty ? propertyBoolean(publishedProperty) : true;
-  const categoryText = propertyText(getProperty(properties, ["Category", "Type"]));
+  const collectionText = propertyText(
+    getProperty(properties, ["Collection", "Category", "Type"]),
+  );
+  const collection =
+    BLOG_COLLECTIONS.find(
+      (candidate) =>
+        candidate.toLowerCase() === collectionText.toLowerCase(),
+    ) || "Building Tai Ora";
 
   return {
     id: page.id,
     title,
     subtitle,
-    category: categoryText.toLowerCase() === "news" ? "News" : "Insights",
+    collection,
+    part: propertyNumber(getProperty(properties, ["Part", "Order"])),
+    author:
+      propertyText(getProperty(properties, ["Author", "Byline"])) ||
+      "Tai Ora",
+    readTime:
+      propertyText(getProperty(properties, ["Read Time", "Reading Time"])) ||
+      "5 min read",
     date: formatDate(dateTime),
     dateTime,
     image: coverUrl(page) || "https://picsum.photos/seed/taiora-notion-post/1100/680",
@@ -281,7 +307,13 @@ export async function getPublishedBlogPosts() {
   const posts = await getBlogPosts();
   return posts
     .filter((post) => post.published)
-    .sort((a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime());
+    .sort((a, b) => {
+      if (a.collection === b.collection && a.part && b.part) {
+        return a.part - b.part;
+      }
+
+      return new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime();
+    });
 }
 
 export async function getBlogPostBySlug(slug: string) {

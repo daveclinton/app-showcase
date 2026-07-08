@@ -1,0 +1,104 @@
+"use client";
+
+import { useMemo, useState } from "react";
+
+import { BlogArticleCard } from "@/components/blog-article-card";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import type { BlogPost } from "@/lib/blog-posts";
+import {
+  BLOG_COLLECTIONS,
+  collectionDefinitions,
+  type BlogCollection,
+} from "@/lib/knowledge-hub";
+
+export function KnowledgeHub({ posts }: { posts: BlogPost[] }) {
+  const [activeCollection, setActiveCollection] =
+    useState<BlogCollection>("Building Tai Ora");
+  const collection =
+    collectionDefinitions.find(
+      (definition) => definition.name === activeCollection,
+    ) || collectionDefinitions[0];
+  const postsBySlug = useMemo(
+    () => new Map(posts.map((post) => [post.slug, post])),
+    [posts],
+  );
+
+  return (
+    <div className="flex flex-col gap-10">
+      <ToggleGroup
+        type="single"
+        value={activeCollection}
+        onValueChange={(value) => {
+          if (value) {
+            setActiveCollection(value as BlogCollection);
+          }
+        }}
+        variant="outline"
+        spacing={2}
+        aria-label="Choose a Knowledge Hub collection"
+        className="grid w-full grid-cols-1 sm:grid-cols-3"
+      >
+        {BLOG_COLLECTIONS.map((name) => (
+          <ToggleGroupItem
+            key={name}
+            value={name}
+            className="h-auto min-h-12 whitespace-normal px-4 py-3 text-center"
+          >
+            {name}
+          </ToggleGroupItem>
+        ))}
+      </ToggleGroup>
+
+      <section aria-labelledby="active-collection-title">
+        <header className="mb-8 grid gap-4 border-b border-border pb-8 md:grid-cols-[auto_1fr] md:items-start">
+          <div className="flex size-12 items-center justify-center rounded-full border border-primary/40 bg-surface text-primary">
+            <collection.icon aria-hidden="true" />
+          </div>
+          <div>
+            <h2
+              id="active-collection-title"
+              className="text-3xl font-bold text-foreground"
+            >
+              {collection.name}
+            </h2>
+            <p className="mt-2 max-w-3xl text-lg leading-8 text-foreground/85">
+              {collection.purpose}
+            </p>
+            <p className="mt-2 max-w-3xl leading-7 text-muted-foreground">
+              {collection.description}
+            </p>
+          </div>
+        </header>
+
+        {collection.articles.length ? (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {collection.articles.map((article, index) => {
+              const post = postsBySlug.get(article.slug);
+
+              return (
+                <BlogArticleCard
+                  key={article.slug}
+                  post={post}
+                  title={article.title}
+                  part={article.part}
+                  comingSoon={article.comingSoon || !post}
+                  priority={index === 0}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <div className="rounded-lg border border-border bg-surface p-8">
+            <h3 className="text-xl font-semibold text-foreground">
+              Technical articles are in development
+            </h3>
+            <p className="mt-3 max-w-2xl leading-7 text-muted-foreground">
+              Architecture, privacy, ethical AI and product engineering stories
+              will be added here over time.
+            </p>
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}
