@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 
 import { Badge } from "@/components/ui/badge";
 import {
@@ -28,6 +31,7 @@ export function BlogArticleCard({
   comingSoon,
   priority = false,
 }: BlogArticleCardProps) {
+  const reduceMotion = useReducedMotion();
   const available = Boolean(post) && !comingSoon;
 
   const card = (
@@ -80,16 +84,33 @@ export function BlogArticleCard({
   );
 
   if (!available || !post) {
-    return <div data-available="false">{card}</div>;
+    return (
+      <motion.div
+        data-available="false"
+        initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        {card}
+      </motion.div>
+    );
   }
 
   return (
-    <Link
-      href={`/blog/${post.slug}`}
-      className="block h-full rounded-lg no-underline focus-visible:ring-[3px] focus-visible:ring-ring/50"
-      data-available="true"
+    <motion.div
+      initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
     >
-      {card}
-    </Link>
+      <Link
+        href={`/blog/${post.slug}`}
+        className="block h-full rounded-lg no-underline focus-visible:ring-[3px] focus-visible:ring-ring/50"
+        data-available="true"
+      >
+        {card}
+      </Link>
+    </motion.div>
   );
 }

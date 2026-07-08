@@ -21,6 +21,7 @@ import {
 import { getCollectionDefinition } from "@/lib/knowledge-hub";
 import { radialPageBackground } from "@/lib/page-background";
 import { socialLinks } from "@/lib/social-links";
+import { absoluteUrl } from "@/lib/site";
 
 type BlogPostPageProps = {
   params: Promise<{
@@ -38,6 +39,10 @@ export async function generateMetadata({
     return {};
   }
 
+  const ogImage = absoluteUrl(
+    `/og?title=${encodeURIComponent(post.title)}&author=${encodeURIComponent(post.author)}&tagline=${encodeURIComponent(post.subtitle)}`,
+  );
+
   return {
     title: post.title,
     description: post.subtitle,
@@ -52,7 +57,7 @@ export async function generateMetadata({
       authors: [post.author],
       images: [
         {
-          url: post.image,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: `${post.title} cover`,
@@ -63,7 +68,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: post.title,
       description: post.subtitle,
-      images: [post.image],
+      images: [ogImage],
     },
   };
 }

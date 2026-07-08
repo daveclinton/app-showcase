@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import CookieConsent from "@/components/shadcn-space/blocks/cookie-consent-01";
 import { SiteHeader } from "@/components/site-header";
 import { Toaster } from "@/components/ui/sonner";
+import { absoluteUrl } from "@/lib/site";
 import "./globals.css";
 
 const siteUrl = "https://www.taiora.ai";
@@ -16,7 +17,9 @@ const openGraphDescription =
   "Join Tai Ora, a wellbeing platform grounded in cultural values, authenticity, and aroha. Reclaim your time, identity, and wellbeing through community and connection.";
 const twitterDescription =
   "Tai Ora is a cultural wellbeing platform rooted in authenticity, aroha, and community connection. Welcoming all cultures to live authentically.";
-const ogImageUrl = "/api/og?mode=dark";
+const ogImageUrl = absoluteUrl(
+  `/og?title=${encodeURIComponent("Tai Ora")}&tagline=${encodeURIComponent(siteDescription)}`,
+);
 
 const inter = Inter({
   variable: "--font-inter",
