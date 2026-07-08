@@ -19,7 +19,6 @@ import {
   getPublishedBlogPosts,
 } from "@/lib/blog-posts";
 import { getCollectionDefinition } from "@/lib/knowledge-hub";
-import { radialPageBackground } from "@/lib/page-background";
 import { socialLinks } from "@/lib/social-links";
 import { absoluteUrl } from "@/lib/site";
 
@@ -91,15 +90,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const canonicalUrl = `https://www.taiora.ai/blog/${post.slug}`;
 
   return (
-    <main className="min-h-dvh text-foreground" style={radialPageBackground}>
-      <div className="mx-auto max-w-7xl px-6 pb-20 pt-28 md:px-10 md:pb-28 md:pt-36">
-        <Link
-          href="/blog"
-          className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-link no-underline transition-colors hover:text-link-hover active:text-mauri-mint focus-visible:ring-[3px] focus-visible:ring-ring/50"
-        >
-          <ArrowLeft aria-hidden="true" />
-          Knowledge Hub
-        </Link>
+    <main className="min-h-dvh bg-background text-foreground">
+      <div className="mx-auto max-w-7xl px-6 pb-20 pt-8 md:px-10 md:pb-28 md:pt-12">
+        <div className="mb-8 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-link no-underline transition-colors hover:text-link-hover active:text-mauri-mint focus-visible:ring-[3px] focus-visible:ring-ring/50"
+          >
+            <ArrowLeft aria-hidden="true" className="size-4" />
+            Go back home
+          </Link>
+          <span className="text-muted-foreground/50" aria-hidden="true">
+            /
+          </span>
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-link no-underline transition-colors hover:text-link-hover active:text-mauri-mint focus-visible:ring-[3px] focus-visible:ring-ring/50"
+          >
+            Knowledge Hub
+          </Link>
+        </div>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start xl:gap-14">
           <div className="min-w-0">
@@ -268,7 +278,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 Tai Ora journey.
               </p>
               <Button asChild className="mt-5 w-full">
-                <Link href="/waitlist">Join the waitlist</Link>
+                <Link href="/waitlist">Join the newsletter</Link>
               </Button>
               <p className="mt-3 text-xs text-muted-foreground">
                 Privacy-first. No spam.

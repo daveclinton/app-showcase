@@ -22,6 +22,11 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Blog listing and article pages use their own navigation chrome.
+  if (pathname === "/blog" || pathname.startsWith("/blog/")) {
+    return null;
+  }
+
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4 text-[#f7f9f8] md:top-6">
       <div className="mx-auto max-w-[1280px]">

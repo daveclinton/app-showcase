@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 import { BlogArticleCard } from "@/components/blog-article-card";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { AnimatedTabs } from "@/components/ui/animated-tabs";
 import type { BlogPost } from "@/lib/blog-posts";
 import {
   BLOG_COLLECTIONS,
@@ -25,37 +25,36 @@ export function KnowledgeHub({ posts }: { posts: BlogPost[] }) {
     [posts],
   );
 
+  const tabs = useMemo(
+    () =>
+      BLOG_COLLECTIONS.map((name) => ({
+        title: name,
+        value: name,
+      })),
+    [],
+  );
+
   return (
     <div className="flex flex-col gap-10">
-      <motion.div
-        initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-      >
-        <ToggleGroup
-          type="single"
-          value={activeCollection}
-          onValueChange={(value) => {
-            if (value) {
-              setActiveCollection(value as BlogCollection);
-            }
-          }}
-          variant="outline"
-          spacing={2}
-          aria-label="Choose a Knowledge Hub collection"
-          className="grid w-full grid-cols-1 sm:grid-cols-3"
+      <div className="sticky top-4 z-40 -mx-1 px-1">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="rounded-full border border-border/80 bg-background/90 p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.22)] backdrop-blur-xl"
         >
-          {BLOG_COLLECTIONS.map((name) => (
-            <ToggleGroupItem
-              key={name}
-              value={name}
-              className="h-auto min-h-12 whitespace-normal px-4 py-3 text-center"
-            >
-              {name}
-            </ToggleGroupItem>
-          ))}
-        </ToggleGroup>
-      </motion.div>
+          <AnimatedTabs
+            tabs={tabs}
+            value={activeCollection}
+            onValueChange={(value) => {
+              setActiveCollection(value as BlogCollection);
+            }}
+            containerClassName="justify-start gap-1 sm:justify-center"
+            tabClassName="min-h-11 flex-1 whitespace-normal px-3 py-2.5 text-center sm:flex-none sm:px-5"
+            activeTabClassName="bg-primary"
+          />
+        </motion.div>
+      </div>
 
       <AnimatePresence mode="wait">
         <motion.section
