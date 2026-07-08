@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/page-metadata";
 import { SimpleCenteredPage } from "../_components/simple-centered-page";
+
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Iwi & Funders',
+  description: 'Building with integrity, guided by kaupapa Māori and open to partnerships that honour tino rangatiratanga, cultural safety and community benefit.',
+  path: '/iwi-funders',
+});
 
 export default function IwiFundersPage() {
   return (

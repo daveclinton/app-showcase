@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/page-metadata";
 import { SimpleCenteredPage } from "../_components/simple-centered-page";
+
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Privacy Policy',
+  description: 'We collect the minimum data needed to operate Tai Ora and its features. We do not sell personal data.',
+  path: '/privacy-policy',
+});
 
 export default function PrivacyPolicyPage() {
   return (

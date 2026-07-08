@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/page-metadata";
 import Image from "next/image";
 
 import { WaitlistForm } from "@/components/forms/waitlist-form";
+
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Join the Waitlist',
+  description: 'Be the first to hear about launches, product updates, and early access across the Tai Ora ecosystem.',
+  path: '/waitlist',
+});
 
 export default function WaitlistPage() {
   return (

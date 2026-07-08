@@ -39,7 +39,10 @@ const sourceSerif = Source_Serif_4({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: siteTitle,
+  title: {
+    default: siteTitle,
+    template: "%s | Tai Ora",
+  },
   description: siteDescription,
   applicationName: "Tai Ora",
   authors: [{ name: "Tai Ora" }],

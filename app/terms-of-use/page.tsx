@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/page-metadata";
 import { SimpleCenteredPage } from "../_components/simple-centered-page";
+
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Terms of Use',
+  description: 'Use Tai Ora responsibly. Your content remains yours, and you can choose when to license it.',
+  path: '/terms-of-use',
+});
 
 export default function TermsOfUsePage() {
   return (

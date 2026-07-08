@@ -19,8 +19,8 @@ import {
   getPublishedBlogPosts,
 } from "@/lib/blog-posts";
 import { getCollectionDefinition } from "@/lib/knowledge-hub";
+import { createPageMetadata } from "@/lib/page-metadata";
 import { socialLinks } from "@/lib/social-links";
-import { absoluteUrl } from "@/lib/site";
 
 type BlogPostPageProps = {
   params: Promise<{
@@ -35,41 +35,31 @@ export async function generateMetadata({
   const post = await getBlogPostBySlug(slug);
 
   if (!post) {
-    return {};
+    return {
+      title: "Article not found",
+      robots: { index: false, follow: false },
+    };
   }
 
-  const ogImage = absoluteUrl(
-    `/og?title=${encodeURIComponent(post.title)}&author=${encodeURIComponent(post.author)}&tagline=${encodeURIComponent(post.subtitle)}`,
-  );
+  const ogImage = `/og?title=${encodeURIComponent(post.title)}&author=${encodeURIComponent(post.author)}&tagline=${encodeURIComponent(post.subtitle)}`;
 
-  return {
+  return createPageMetadata({
     title: post.title,
     description: post.subtitle,
-    alternates: {
-      canonical: `/blog/${post.slug}`,
-    },
-    openGraph: {
-      title: post.title,
-      description: post.subtitle,
-      type: "article",
-      publishedTime: post.dateTime,
-      authors: [post.author],
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: `${post.title} cover`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.subtitle,
-      images: [ogImage],
-    },
-  };
+    path: `/blog/${post.slug}`,
+    image: ogImage,
+    imageAlt: `${post.title} — ${post.collection}`,
+    type: "article",
+    publishedTime: post.dateTime,
+    authors: [post.author],
+    keywords: [
+      post.title,
+      post.collection,
+      "Tai Ora",
+      post.author,
+      "Knowledge Hub",
+    ],
+  });
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

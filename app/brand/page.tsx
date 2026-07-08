@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/page-metadata";
 import { SimpleCenteredPage } from "../_components/simple-centered-page";
+
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'For Brands',
+  description: 'Partner with Tai Ora to showcase your products through authentic previews and real journeys that build trust and loyalty.',
+  path: '/brand',
+});
 
 export default function BrandPage() {
   return (

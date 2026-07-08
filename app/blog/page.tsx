@@ -1,9 +1,26 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 import { KnowledgeHub } from "@/components/knowledge-hub";
 import { getPublishedBlogPosts } from "@/lib/blog-posts";
+import { createPageMetadata } from "@/lib/page-metadata";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Knowledge Hub",
+  description:
+    "Explore the story behind Tai Ora, personal reflections from our founder, and deeper perspectives on the technology we are building.",
+  path: "/blog",
+  keywords: [
+    "Tai Ora blog",
+    "Knowledge Hub",
+    "wellbeing stories",
+    "ethical AI",
+    "VeeVu",
+    "iGlo",
+  ],
+});
 
 export default async function BlogPage() {
   const posts = await getPublishedBlogPosts();

@@ -7,9 +7,29 @@ import {
   LockKeyhole,
   Play,
 } from "lucide-react";
+import type { Metadata } from "next";
 import type { ComponentType, SVGProps } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
+import { createPageMetadata } from "@/lib/page-metadata";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Tai Ora - Wellbeing Through Authenticity & Connection",
+  description:
+    "Tai Ora is a wellbeing platform built on authenticity, connection, and aroha. Rooted in Mauri values, we welcome all cultures to reclaim time, identity, and wellbeing.",
+  path: "/",
+  absoluteTitle: true,
+  keywords: [
+    "Tai Ora",
+    "wellbeing platform",
+    "authenticity and connection",
+    "aroha",
+    "VeeVu",
+    "iGlo",
+    "Mauri",
+  ],
+});
 
 type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 

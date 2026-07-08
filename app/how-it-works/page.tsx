@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/page-metadata";
 import { SimpleCenteredPage } from "../_components/simple-centered-page";
+
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'How It Works',
+  description: 'Wellbeing is personal. So is Tai Ora. We guide users to creators and brands that align with their individual journeys.',
+  path: '/how-it-works',
+});
 
 export default function HowItWorksPage() {
   return (

@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/page-metadata";
 import { SimpleCenteredPage } from "../_components/simple-centered-page";
+
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Partner With Tai Ora',
+  description: 'A values-led wellbeing platform helping people make informed choices through authentic journeys and trusted guidance.',
+  path: '/partner',
+});
 
 export default function PartnerPage() {
   return (

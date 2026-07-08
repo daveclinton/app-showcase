@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/page-metadata";
 import { SimpleCenteredPage } from "../_components/simple-centered-page";
+
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'About Us',
+  description: 'Tai Ora was created to restore trust in the choices people make about their wellbeing.',
+  path: '/about-us',
+});
 
 export default function AboutUsPage() {
   return (

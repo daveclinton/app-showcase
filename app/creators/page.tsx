@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/page-metadata";
 import { SimpleCenteredPage } from "../_components/simple-centered-page";
+
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'For Creators',
+  description: 'iGlo™ allows creators to journal authentic experiences and monetise their reviews. Only the original creator can earn from their content.',
+  path: '/creators',
+});
 
 export default function CreatorsPage() {
   return (

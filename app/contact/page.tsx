@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/page-metadata";
 import Image from "next/image";
 import { ExternalLink, Mail } from "lucide-react";
 
 import { ContactForm } from "@/components/forms/contact-form";
 import { socialLinks } from "@/lib/social-links";
+
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Contact',
+  description: "We'd love to hear from you — whether you're curious about Tai Ora, want to collaborate, or just want to say kia ora.",
+  path: '/contact',
+});
 
 const socials = [
   {
