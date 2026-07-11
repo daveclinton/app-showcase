@@ -50,11 +50,11 @@ const ecosystemCards = [
     title: "MAURI",
     body: "Pause, reflect and process your thoughts.",
     logo: {
-      src: "/mauri-new.png",
+      src: "/mauri-logo.png",
       alt: "Mauri logo",
       className: "size-[88px] md:size-[102px]",
     },
-    href: "https://mauri.taiora.ai/",
+    href: "https://mauri-logo.taiora.ai/",
     art: "from-[#003b3d]/80 via-[#00141a]/75 to-[#000508]",
     glow: "bg-[#00e5d4]/20",
     label: "Live now",
@@ -553,6 +553,7 @@ function EcosystemCard({
             alt={logo.alt}
             width={96}
             height={96}
+            loading="eager"
             className={`object-contain object-center drop-shadow-[0_0_12px_rgba(255,181,31,0.38)] ${
               logo.className || "size-[76px] md:size-[88px]"
             }`}
