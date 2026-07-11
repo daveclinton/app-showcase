@@ -1,9 +1,21 @@
 import fs from "node:fs";
 
 const applyChanges = process.argv.includes("--apply");
-const searchText = "Bunnings";
-const replacementText = "Hardware store";
 const notionVersion = "2022-06-28";
+
+function getArg(name) {
+  const prefix = `--${name}=`;
+  return process.argv.find((arg) => arg.startsWith(prefix))?.slice(prefix.length);
+}
+
+const searchText = getArg("search");
+const replacementText = getArg("replace");
+
+if (!searchText || !replacementText) {
+  throw new Error(
+    "Usage: node scripts/replace-notion-text.mjs --search=<text> --replace=<text> [--apply]",
+  );
+}
 
 function readEnv() {
   return Object.fromEntries(
