@@ -52,6 +52,7 @@ const ecosystemCards = [
     logo: {
       src: "/mauri-logo.png",
       alt: "Mauri logo",
+      className: "size-[80px] md:size-[92px]",
     },
     href: "https://mauri.taiora.ai/",
     art: "from-[#003b3d]/80 via-[#00141a]/75 to-[#000508]",
@@ -64,8 +65,9 @@ const ecosystemCards = [
     logo: {
       src: "/veevu.png",
       alt: "Veevu logo",
+      className: "size-[84px] translate-x-px translate-y-0.5 md:size-[96px]",
     },
-    href: "/creators",
+    href: "/brand",
     art: "from-[#3c2f11]/55 via-[#00141a]/85 to-[#000508]",
     glow: "bg-[#ffb51f]/20",
   },
@@ -75,8 +77,9 @@ const ecosystemCards = [
     logo: {
       src: "/iglo.png",
       alt: "Iglo logo",
+      className: "size-[84px] translate-x-px translate-y-0.5 md:size-[96px]",
     },
-    href: "/brand",
+    href: "/creators",
     art: "from-[#004645]/70 via-[#001a1d]/85 to-[#000508]",
     glow: "bg-[#00bdb2]/20",
   },
@@ -86,6 +89,7 @@ const ecosystemCards = [
     logo: {
       src: "/future-pathways.png",
       alt: "Future AI Pathways logo",
+      className: "size-[84px] translate-x-px translate-y-0.5 md:size-[96px]",
     },
     href: "/partner",
     art: "from-[#151527] via-[#11101c] to-[#000508]",
@@ -509,6 +513,7 @@ function EcosystemCard({
   logo?: {
     src: string;
     alt: string;
+    className?: string;
   };
   href: string;
   art: string;
@@ -548,7 +553,9 @@ function EcosystemCard({
             alt={logo.alt}
             width={96}
             height={96}
-            className="size-[76px] object-contain drop-shadow-[0_0_12px_rgba(255,181,31,0.38)] md:size-[88px]"
+            className={`object-contain object-center drop-shadow-[0_0_12px_rgba(255,181,31,0.38)] ${
+              logo.className || "size-[76px] md:size-[88px]"
+            }`}
           />
         ) : Icon ? (
           <Icon
