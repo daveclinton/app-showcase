@@ -50,9 +50,9 @@ const ecosystemCards = [
     title: "MAURI",
     body: "Pause, reflect and process your thoughts.",
     logo: {
-      src: "/mauri-logo.png",
+      src: "/mauri-new.png",
       alt: "Mauri logo",
-      className: "size-[72px] translate-y-0.5 md:size-[84px]",
+      className: "size-[88px] md:size-[102px]",
     },
     href: "https://mauri.taiora.ai/",
     art: "from-[#003b3d]/80 via-[#00141a]/75 to-[#000508]",
@@ -63,7 +63,7 @@ const ecosystemCards = [
     title: "VEEVU™",
     body: "Short product video previews.",
     logo: {
-      src: "/veevu-new",
+      src: "/veevu-new.png",
       alt: "Veevu logo",
       className: "size-[88px] md:size-[102px]",
     },
