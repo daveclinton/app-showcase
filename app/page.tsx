@@ -52,7 +52,7 @@ const ecosystemCards = [
     logo: {
       src: "/mauri-logo.png",
       alt: "Mauri logo",
-      className: "size-[80px] md:size-[92px]",
+      className: "size-[72px] translate-y-0.5 md:size-[84px]",
     },
     href: "https://mauri.taiora.ai/",
     art: "from-[#003b3d]/80 via-[#00141a]/75 to-[#000508]",
@@ -63,9 +63,9 @@ const ecosystemCards = [
     title: "VEEVU™",
     body: "Short product video previews.",
     logo: {
-      src: "/veevu.png",
+      src: "/veevu-new",
       alt: "Veevu logo",
-      className: "size-[84px] translate-x-px translate-y-0.5 md:size-[96px]",
+      className: "size-[88px] md:size-[102px]",
     },
     href: "/brand",
     art: "from-[#3c2f11]/55 via-[#00141a]/85 to-[#000508]",
@@ -75,9 +75,9 @@ const ecosystemCards = [
     title: "IGLO™",
     body: "Track your journey with real authentic reviews.",
     logo: {
-      src: "/iglo.png",
+      src: "/iglo-new.png",
       alt: "Iglo logo",
-      className: "size-[84px] translate-x-px translate-y-0.5 md:size-[96px]",
+      className: "size-[88px] md:size-[102px]",
     },
     href: "/creators",
     art: "from-[#004645]/70 via-[#001a1d]/85 to-[#000508]",
@@ -87,9 +87,9 @@ const ecosystemCards = [
     title: "FUTURE AI PATHWAYS",
     body: "Discover opportunities and build the skills for what's next.",
     logo: {
-      src: "/future-pathways.png",
+      src: "/future-pathways-new.png",
       alt: "Future AI Pathways logo",
-      className: "size-[84px] translate-x-px translate-y-0.5 md:size-[96px]",
+      className: "size-[88px] md:size-[102px]",
     },
     href: "/partner",
     art: "from-[#151527] via-[#11101c] to-[#000508]",
@@ -605,8 +605,6 @@ function CardScene({ purple }: { purple?: boolean }) {
     <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-48 opacity-70">
       <div className="absolute bottom-8 left-6 right-6 h-px bg-[linear-gradient(90deg,transparent,rgba(0,229,212,0.45),transparent)]" />
       <div className="absolute bottom-16 left-8 right-10 h-px bg-[linear-gradient(90deg,transparent,rgba(255,181,31,0.3),transparent)]" />
-      <div className="absolute bottom-24 left-1/3 size-2 rounded-full bg-[#00e5d4] shadow-[0_0_18px_rgba(0,229,212,0.7)]" />
-      <div className="absolute bottom-32 right-1/3 size-1.5 rounded-full bg-[#ffb51f] shadow-[0_0_14px_rgba(255,181,31,0.7)]" />
     </div>
   );
 }
