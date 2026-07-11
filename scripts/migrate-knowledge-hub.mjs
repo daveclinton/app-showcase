@@ -25,7 +25,7 @@ const firstArticle = {
   title: "Why We Built VeeVu",
   slug: "why-we-built-veevu",
   summary:
-    "How one overwhelming product decision in a Bunnings aisle became the first step toward Tai Ora.",
+    "How one overwhelming product decision in a hardware store aisle became the first step toward Tai Ora.",
   collection: "Building Tai Ora",
   part: 1,
   author: "From the Founder",
@@ -35,7 +35,7 @@ const firstArticle = {
   content: [
     "When people ask me where the idea for VeeVu came from, they often assume it started with technology.",
     "It didn't.",
-    "It started in the lawnmower aisle at Bunnings.",
+    "It started in the lawnmower aisle at a hardware store.",
     "I was looking for a new lawnmower and found myself standing in front of about ten different options. Every box made similar promises, but I had no idea which one was actually right for me. There wasn't anyone available to ask, and there wasn't enough information in front of me to make a confident decision.",
     "So I did what most of us do.",
     "I pulled out my phone and started researching.",
@@ -61,7 +61,7 @@ const firstArticle = {
     "It was the first step.",
     "As I explored that original idea, more questions started popping into my head. What happens after someone buys a product? How do they know if it actually worked for them? How can people learn from real experiences over time? Could technology help make those decisions a little easier without taking them away from people?",
     "That's really where Tai Ora started to take shape.",
-    "What began as one simple idea in a Bunnings aisle slowly grew into something much bigger than product discovery.",
+    "What began as one simple idea in a hardware store aisle slowly grew into something much bigger than product discovery.",
     "And it all started with a lawnmower.",
   ],
 };
