@@ -2,9 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Inter, Source_Serif_4 } from "next/font/google";
 import { CookieConsentProvider } from "@/components/cookie-consent/cookie-consent-provider";
 import { CookieConsentScripts } from "@/components/cookie-consent/cookie-consent-scripts";
-import { Footer } from "@/components/footer";
+import { SiteShell } from "@/components/site-shell";
 import CookieConsent from "@/components/shadcn-space/blocks/cookie-consent-01";
-import { SiteHeader } from "@/components/site-header";
 import { Toaster } from "@/components/ui/sonner";
 import { buildOgImagePath } from "@/lib/page-metadata";
 import { resolveOgScreenshotPath } from "@/lib/og-screenshots";
@@ -115,11 +114,7 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-background text-foreground">
         <CookieConsentProvider>
-          <div className="flex min-h-dvh flex-col">
-            <SiteHeader />
-            <div className="flex-1">{children}</div>
-            <Footer />
-          </div>
+          <SiteShell>{children}</SiteShell>
           <CookieConsent />
           <CookieConsentScripts />
           <Toaster theme="dark" position="top-right" />

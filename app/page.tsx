@@ -1,11 +1,8 @@
 import {
   ArrowDown,
   ArrowRight,
-  BarChart3,
-  Compass,
   Heart,
   LockKeyhole,
-  Play,
 } from "lucide-react";
 import type { Metadata } from "next";
 import type { ComponentType, SVGProps } from "react";
@@ -52,7 +49,10 @@ const ecosystemCards = [
   {
     title: "MAURI",
     body: "Pause, reflect and process your thoughts.",
-    icon: KoruMark,
+    logo: {
+      src: "/mauri-logo.png",
+      alt: "Mauri logo",
+    },
     href: "https://mauri.taiora.ai/",
     art: "from-[#003b3d]/80 via-[#00141a]/75 to-[#000508]",
     glow: "bg-[#00e5d4]/20",
@@ -61,7 +61,10 @@ const ecosystemCards = [
   {
     title: "VEEVU™",
     body: "Short product video previews.",
-    icon: Play,
+    logo: {
+      src: "/veevu.png",
+      alt: "Veevu logo",
+    },
     href: "/creators",
     art: "from-[#3c2f11]/55 via-[#00141a]/85 to-[#000508]",
     glow: "bg-[#ffb51f]/20",
@@ -69,7 +72,10 @@ const ecosystemCards = [
   {
     title: "IGLO™",
     body: "Track your journey with real authentic reviews.",
-    icon: BarChart3,
+    logo: {
+      src: "/iglo.png",
+      alt: "Iglo logo",
+    },
     href: "/brand",
     art: "from-[#004645]/70 via-[#001a1d]/85 to-[#000508]",
     glow: "bg-[#00bdb2]/20",
@@ -77,7 +83,10 @@ const ecosystemCards = [
   {
     title: "FUTURE AI PATHWAYS",
     body: "Discover opportunities and build the skills for what's next.",
-    icon: Compass,
+    logo: {
+      src: "/future-pathways.png",
+      alt: "Future AI Pathways logo",
+    },
     href: "/partner",
     art: "from-[#151527] via-[#11101c] to-[#000508]",
     glow: "bg-[#8e4dcc]/25",
@@ -120,53 +129,46 @@ const values = [
 export default function HomePage() {
   return (
     <main className="min-h-dvh overflow-hidden bg-[#000508] text-[#f7f9f8]">
-      <section className="relative isolate min-h-[860px] overflow-hidden px-5 pb-16 pt-32 sm:px-8 md:min-h-[980px] md:px-10 md:pt-40 lg:min-h-[1080px] lg:px-11">
+      <section className="relative isolate flex min-h-svh items-center overflow-hidden px-5 py-10 sm:px-8 sm:py-14 md:px-10 md:py-16 lg:px-11">
         <BackgroundLight />
 
         <div className="relative z-10 mx-auto flex max-w-[1350px] flex-col items-center text-center">
-          <div className="flex size-[120px] items-center justify-center rounded-full bg-[radial-gradient(circle_at_35%_28%,#148f87_0%,#00514f_42%,#001b20_100%)] shadow-[0_0_22px_rgba(0,229,212,0.25),0_12px_28px_rgba(0,0,0,0.45)] md:size-[168px]">
+          <div className="flex size-[76px] items-center justify-center rounded-full bg-[radial-gradient(circle_at_35%_28%,#148f87_0%,#00514f_42%,#001b20_100%)] shadow-[0_0_22px_rgba(0,229,212,0.25),0_12px_28px_rgba(0,0,0,0.45)] sm:size-[96px] md:size-[116px] lg:size-[124px]">
             <Image
-              src="/logo.png"
-              alt="Tai Ora koru"
+              src="/new-tai-ora-logo.png"
+              alt="Tai Ora logo"
               width={168}
               height={168}
               priority
-              className="size-full rounded-full object-cover"
+              className="size-full rounded-full object-contain"
             />
           </div>
 
-          <div className="mt-5 flex w-full max-w-[800px] items-center gap-5 md:mt-8">
+          <div className="mt-3 flex w-full max-w-[620px] items-center gap-3 md:mt-5 md:gap-4">
             <span className="h-px flex-1 bg-[linear-gradient(90deg,transparent,#d88719)]" />
-            <span className="flex size-12 items-center justify-center rounded-full border border-[#ffb51f] text-[#ffb51f] shadow-[0_0_16px_rgba(255,181,31,0.28)]">
-              <KoruLine aria-hidden="true" className="size-7" />
+            <span className="flex size-9 items-center justify-center rounded-full border border-[#ffb51f] text-[#ffb51f] shadow-[0_0_16px_rgba(255,181,31,0.28)] md:size-11">
+              <KoruLine aria-hidden="true" className="size-5 md:size-6" />
             </span>
             <span className="h-px flex-1 bg-[linear-gradient(90deg,#d88719,transparent)]" />
           </div>
 
           <h1
             aria-label="TAI ORA"
-            className="relative mt-16 flex max-w-full flex-wrap items-center justify-center gap-x-5 gap-y-1 text-[64px] font-light leading-none text-[#f7f9f8] drop-shadow-[0_0_18px_rgba(255,255,255,0.16)] sm:gap-x-8 sm:text-[88px] md:text-[112px] lg:gap-x-11 lg:text-[132px]"
+            className="relative mt-5 flex w-full justify-center md:mt-8"
           >
-            <span>T</span>
-            <span className="relative inline-flex">
-              A
-              <span className="absolute bottom-[0.2em] left-1/2 size-3 -translate-x-1/2 rounded-full bg-[#00e5d4] shadow-[0_0_12px_rgba(0,229,212,0.8)] md:size-4" />
-            </span>
-            <span>I</span>
-            <span className="relative">
-              O
-              <span className="absolute -right-2 -top-1 size-9 rounded-full bg-[#ffe3a4]/70 blur-xl md:size-12" />
-            </span>
-            <span>R</span>
-            <span className="relative inline-flex">
-              A
-              <span className="absolute bottom-[0.2em] left-1/2 size-3 -translate-x-1/2 rounded-full bg-[#00e5d4] shadow-[0_0_12px_rgba(0,229,212,0.8)] md:size-4" />
-            </span>
+            <Image
+              src="/tai-ora-hero-name.png"
+              alt=""
+              width={1038}
+              height={240}
+              priority
+              className="h-auto w-full max-w-[340px] drop-shadow-[0_0_18px_rgba(255,255,255,0.16)] sm:max-w-[560px] md:max-w-[720px] lg:max-w-[820px]"
+            />
           </h1>
 
           <p
             aria-label="I SEE YOU"
-            className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[34px] font-medium leading-tight text-[#ffb51f] sm:text-[44px] md:text-[58px] lg:text-[64px]"
+            className="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[26px] font-medium leading-tight text-[#ffb51f] sm:text-[34px] md:text-[44px] lg:text-[50px]"
           >
             {"I SEE YOU".split("").map((char, index) => (
               <span key={`${char}-${index}`}>
@@ -175,14 +177,14 @@ export default function HomePage() {
             ))}
           </p>
 
-          <p className="mt-7 max-w-[850px] text-xl leading-8 text-[#f7f9f8] sm:text-2xl sm:leading-10 md:text-[32px] md:leading-[1.45]">
+          <p className="mt-4 max-w-[720px] text-base leading-7 text-[#f7f9f8] sm:text-lg sm:leading-8 md:text-2xl md:leading-9">
             Empowering people through{" "}
             <span className="text-[#00e5d4]">ethical</span>,{" "}
             <span className="text-[#00e5d4]">practical</span> and{" "}
             <span className="text-[#00e5d4]">supportive</span> AI pathways.
           </p>
 
-          <div className="mt-9 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 md:gap-12">
+          <div className="mt-5 flex w-full flex-col items-center justify-center gap-2.5 sm:flex-row sm:gap-5 md:mt-6 md:gap-8">
             {storeLinks.map((store) => (
               <Link
                 key={store.label}
@@ -190,21 +192,21 @@ export default function HomePage() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`${store.kicker} ${store.label}`}
-                className="flex min-h-20 w-full max-w-[315px] items-center justify-center gap-4 rounded-[14px] border border-[#c97900] bg-[#000508]/85 px-7 py-4 text-white no-underline shadow-[0_0_18px_rgba(255,181,31,0.1)] transition hover:-translate-y-0.5 hover:border-[#ffb51f] hover:text-white hover:shadow-[0_0_24px_rgba(255,181,31,0.25)] focus-visible:ring-[3px] focus-visible:ring-[#ffb51f]/35 active:translate-y-px active:border-[#d88719] md:min-h-[98px]"
+                className="flex min-h-14 w-full max-w-[250px] items-center justify-center gap-3 rounded-[14px] border border-[#c97900] bg-[#000508]/85 px-4 py-2.5 text-white no-underline shadow-[0_0_18px_rgba(255,181,31,0.1)] transition hover:-translate-y-0.5 hover:border-[#ffb51f] hover:text-white hover:shadow-[0_0_24px_rgba(255,181,31,0.25)] focus-visible:ring-[3px] focus-visible:ring-[#ffb51f]/35 active:translate-y-px active:border-[#d88719] sm:max-w-[270px] md:min-h-[76px]"
               >
                 <Image
                   src={store.icon}
                   alt=""
                   width={48}
                   height={48}
-                  className="size-10 md:size-12"
+                  className="size-8 md:size-10"
                   aria-hidden="true"
                 />
                 <span className="flex flex-col items-start leading-none">
-                  <span className="text-sm font-medium md:text-base">
+                  <span className="text-[11px] font-medium md:text-sm">
                     {store.kicker}
                   </span>
-                  <span className="mt-1 text-2xl font-semibold md:text-[32px]">
+                  <span className="mt-1 text-lg font-semibold md:text-2xl">
                     {store.label}
                   </span>
                 </span>
@@ -214,10 +216,10 @@ export default function HomePage() {
 
           <a
             href="#ecosystem"
-            className="mt-11 flex flex-col items-center gap-3 text-base font-medium text-[#ffb51f] no-underline transition hover:text-[#ffe3a4] focus-visible:ring-[3px] focus-visible:ring-[#ffb51f]/35 active:text-[#d88719] md:text-lg"
+            className="mt-5 flex animate-bounce flex-col items-center gap-1.5 text-sm font-medium text-[#ffb51f] no-underline transition hover:text-[#ffe3a4] focus-visible:ring-[3px] focus-visible:ring-[#ffb51f]/35 active:text-[#d88719] md:mt-7 md:gap-2 md:text-base"
           >
             Scroll to explore
-            <ArrowDown aria-hidden="true" className="size-7" />
+            <ArrowDown aria-hidden="true" className="size-6" />
           </a>
         </div>
       </section>
@@ -273,48 +275,219 @@ export default function HomePage() {
 
 function BackgroundLight() {
   return (
-    <div aria-hidden="true" className="absolute inset-0 -z-10">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_18%,rgba(255,181,31,0.12)_0%,transparent_18%),radial-gradient(circle_at_62%_25%,rgba(0,180,170,0.18)_0%,transparent_34%),radial-gradient(circle_at_50%_55%,rgba(0,65,70,0.20)_0%,transparent_40%),linear-gradient(180deg,#000508_0%,#001116_42%,#000a0e_100%)]" />
-      <div className="absolute right-[-18%] top-[22%] h-[620px] w-[520px] rotate-[30deg] rounded-full border border-[#ffb51f]/35 shadow-[0_0_34px_rgba(255,181,31,0.34),inset_0_0_28px_rgba(0,229,212,0.18)] md:right-[-6%] md:h-[860px] md:w-[700px]" />
-      <div className="absolute right-[-16%] top-[25%] h-[650px] w-[560px] rotate-[31deg] rounded-full border border-[#00e5d4]/20 md:right-[-7%] md:h-[880px] md:w-[740px]" />
+    <div
+      aria-hidden="true"
+      className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#020712_0%,#030b16_46%,#000508_100%)]"
+    >
       <svg
         viewBox="0 0 1440 520"
         preserveAspectRatio="none"
-        className="absolute bottom-0 left-0 h-[430px] w-full opacity-90"
+        className="absolute inset-x-0 bottom-0 h-[44%] w-full sm:h-[48%] md:h-[52%]"
       >
-        <path
-          d="M0 388 C 172 305, 255 375, 394 336 C 579 285, 737 208, 920 263 C 1103 318, 1231 203, 1440 61"
-          fill="none"
-          stroke="url(#goldWave)"
-          strokeWidth="4"
-        />
-        <path
-          d="M0 420 C 202 315, 279 423, 469 348 C 658 272, 813 285, 1002 312 C 1173 336, 1299 209, 1440 121"
-          fill="none"
-          stroke="url(#tealWave)"
-          strokeWidth="2"
-        />
-        <path
-          d="M0 448 C 210 367, 313 404, 493 374 C 701 339, 837 379, 1029 354 C 1188 333, 1290 265, 1440 190"
-          fill="none"
-          stroke="rgba(255,227,164,0.28)"
-          strokeWidth="1"
-        />
         <defs>
-          <linearGradient id="goldWave" x1="0" x2="1440" y1="0" y2="0">
-            <stop stopColor="rgba(255,181,31,0)" />
-            <stop offset="0.16" stopColor="#FFE3A4" />
-            <stop offset="0.55" stopColor="#D88719" />
-            <stop offset="1" stopColor="#FFB51F" />
+          <linearGradient
+            id="heroRibbonGold"
+            x1="0"
+            x2="1440"
+            y1="520"
+            y2="0"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#003b3d" stopOpacity="0" />
+            <stop offset="0.24" stopColor="#006a64" stopOpacity="0.28" />
+            <stop offset="0.54" stopColor="#00b7a8" stopOpacity="0.48" />
+            <stop offset="0.74" stopColor="#e8b24a" stopOpacity="0.96" />
+            <stop offset="1" stopColor="#f2c14e" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="tealWave" x1="0" x2="1440" y1="0" y2="0">
-            <stop stopColor="rgba(0,229,212,0)" />
-            <stop offset="0.4" stopColor="#008D85" />
-            <stop offset="1" stopColor="#00E5D4" />
+          <linearGradient
+            id="heroRibbonTeal"
+            x1="0"
+            x2="1440"
+            y1="520"
+            y2="0"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#00b7a8" stopOpacity="0" />
+            <stop offset="0.36" stopColor="#00b7a8" stopOpacity="0.5" />
+            <stop offset="0.72" stopColor="#f2c14e" stopOpacity="0.72" />
+            <stop offset="1" stopColor="#f2c14e" stopOpacity="0" />
           </linearGradient>
+          <linearGradient
+            id="heroRibbonGoldSoft"
+            x1="0"
+            x2="1440"
+            y1="520"
+            y2="0"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#003b3d" stopOpacity="0" />
+            <stop offset="0.42" stopColor="#00b7a8" stopOpacity="0.22" />
+            <stop offset="0.76" stopColor="#e8b24a" stopOpacity="0.46" />
+            <stop offset="1" stopColor="#f2c14e" stopOpacity="0" />
+          </linearGradient>
+          <filter
+            id="heroRibbonBloom"
+            x="-20%"
+            y="-40%"
+            width="140%"
+            height="180%"
+            colorInterpolationFilters="sRGB"
+          >
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <filter
+            id="heroRibbonGlow"
+            x="-20%"
+            y="-40%"
+            width="140%"
+            height="180%"
+            colorInterpolationFilters="sRGB"
+          >
+            <feGaussianBlur stdDeviation="3.2" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
+
+        <path
+          d="M-160 492 C 124 438, 302 378, 514 296 C 730 212, 926 162, 1151 98 C 1296 57, 1390 28, 1548 -28"
+          fill="none"
+          stroke="url(#heroRibbonGoldSoft)"
+          strokeLinecap="round"
+          strokeWidth="2"
+          opacity="0.14"
+        />
+        <path
+          d="M-140 474 C 132 420, 340 374, 538 290 C 730 208, 908 170, 1128 112 C 1298 67, 1398 36, 1552 -18"
+          fill="none"
+          stroke="url(#heroRibbonTeal)"
+          strokeLinecap="round"
+          strokeWidth="1.25"
+          opacity="0.18"
+        />
+        <path
+          d="M-122 456 C 154 406, 338 352, 554 268 C 746 193, 934 146, 1150 86 C 1320 39, 1422 12, 1556 -46"
+          fill="none"
+          stroke="url(#heroRibbonGoldSoft)"
+          strokeLinecap="round"
+          strokeWidth="3"
+          opacity="0.18"
+        />
+        <path
+          d="M-102 438 C 170 389, 358 332, 574 250 C 770 176, 960 134, 1172 72 C 1336 24, 1436 -4, 1562 -62"
+          fill="none"
+          stroke="url(#heroRibbonTeal)"
+          strokeLinecap="round"
+          strokeWidth="1"
+          opacity="0.22"
+        />
+        <path
+          d="M-84 420 C 190 366, 382 306, 600 226 C 800 153, 980 115, 1190 52 C 1350 4, 1448 -22, 1570 -84"
+          fill="none"
+          stroke="url(#heroRibbonGold)"
+          strokeLinecap="round"
+          strokeWidth="4"
+          opacity="0.32"
+          filter="url(#heroRibbonGlow)"
+        />
+        <path
+          d="M-60 402 C 212 345, 404 286, 620 204 C 820 128, 1002 96, 1210 34 C 1366 -12, 1470 -38, 1586 -106"
+          fill="none"
+          stroke="url(#heroRibbonTeal)"
+          strokeLinecap="round"
+          strokeWidth="1.5"
+          opacity="0.3"
+        />
+        <path
+          d="M-48 382 C 232 322, 430 260, 646 178 C 850 100, 1028 76, 1230 14 C 1388 -35, 1488 -58, 1598 -128"
+          fill="none"
+          stroke="url(#heroRibbonGold)"
+          strokeLinecap="round"
+          strokeWidth="6"
+          opacity="0.66"
+          filter="url(#heroRibbonBloom)"
+        />
+        <path
+          d="M-24 360 C 250 298, 452 234, 670 152 C 874 75, 1060 54, 1254 -6 C 1410 -54, 1506 -78, 1612 -154"
+          fill="none"
+          stroke="url(#heroRibbonGold)"
+          strokeLinecap="round"
+          strokeWidth="8"
+          opacity="0.84"
+          filter="url(#heroRibbonBloom)"
+        />
+        <path
+          d="M-6 338 C 270 274, 476 212, 694 128 C 894 51, 1086 34, 1274 -28 C 1426 -78, 1520 -98, 1622 -178"
+          fill="none"
+          stroke="url(#heroRibbonTeal)"
+          strokeLinecap="round"
+          strokeWidth="2"
+          opacity="0.42"
+          filter="url(#heroRibbonGlow)"
+        />
+        <path
+          d="M20 316 C 292 250, 500 186, 720 100 C 918 23, 1110 8, 1300 -54 C 1448 -102, 1536 -124, 1632 -204"
+          fill="none"
+          stroke="url(#heroRibbonGoldSoft)"
+          strokeLinecap="round"
+          strokeWidth="4"
+          opacity="0.26"
+        />
+        <path
+          d="M42 292 C 318 224, 526 160, 746 76 C 948 -1, 1134 -16, 1320 -78 C 1464 -126, 1550 -146, 1644 -230"
+          fill="none"
+          stroke="url(#heroRibbonTeal)"
+          strokeLinecap="round"
+          strokeWidth="1.25"
+          opacity="0.34"
+        />
+        <path
+          d="M70 268 C 340 198, 558 134, 776 50 C 974 -26, 1162 -42, 1340 -104 C 1484 -154, 1570 -174, 1654 -256"
+          fill="none"
+          stroke="url(#heroRibbonGoldSoft)"
+          strokeLinecap="round"
+          strokeWidth="3"
+          opacity="0.18"
+        />
+        <path
+          d="M98 240 C 366 170, 584 106, 802 22 C 1000 -54, 1184 -68, 1362 -134 C 1500 -185, 1586 -206, 1666 -286"
+          fill="none"
+          stroke="url(#heroRibbonTeal)"
+          strokeLinecap="round"
+          strokeWidth="1"
+          opacity="0.24"
+        />
+        <path
+          d="M130 210 C 394 142, 612 78, 832 -8 C 1024 -83, 1216 -100, 1384 -164 C 1520 -216, 1602 -238, 1678 -318"
+          fill="none"
+          stroke="url(#heroRibbonGoldSoft)"
+          strokeLinecap="round"
+          strokeWidth="2"
+          opacity="0.16"
+        />
+        <path
+          d="M162 178 C 420 114, 640 48, 860 -40 C 1050 -116, 1240 -132, 1408 -198 C 1540 -250, 1618 -270, 1690 -352"
+          fill="none"
+          stroke="url(#heroRibbonTeal)"
+          strokeLinecap="round"
+          strokeWidth="1"
+          opacity="0.16"
+        />
+        <path
+          d="M198 142 C 452 82, 668 16, 890 -70 C 1080 -144, 1264 -164, 1434 -232 C 1562 -284, 1640 -306, 1704 -390"
+          fill="none"
+          stroke="url(#heroRibbonGoldSoft)"
+          strokeLinecap="round"
+          strokeWidth="1.5"
+          opacity="0.1"
+        />
       </svg>
-      <div className="absolute bottom-24 left-[8%] size-24 rounded-full bg-[#ffb51f]/20 blur-2xl" />
     </div>
   );
 }
@@ -323,6 +496,7 @@ function EcosystemCard({
   title,
   body,
   icon: Icon,
+  logo,
   href,
   art,
   glow,
@@ -331,7 +505,11 @@ function EcosystemCard({
 }: {
   title: string;
   body: string;
-  icon: IconComponent;
+  icon?: IconComponent;
+  logo?: {
+    src: string;
+    alt: string;
+  };
   href: string;
   art: string;
   glow: string;
@@ -364,12 +542,22 @@ function EcosystemCard({
           purple ? "border-[#8e4dcc]/60" : "border-[#00e5d4]/40"
         }`}
       >
-        <Icon
-          aria-hidden="true"
-          className={`size-12 drop-shadow-[0_0_10px_rgba(255,181,31,0.42)] md:size-14 ${
-            purple ? "text-[#d58aff]" : "text-[#ffb51f]"
-          }`}
-        />
+        {logo ? (
+          <Image
+            src={logo.src}
+            alt={logo.alt}
+            width={96}
+            height={96}
+            className="size-[76px] object-contain drop-shadow-[0_0_12px_rgba(255,181,31,0.38)] md:size-[88px]"
+          />
+        ) : Icon ? (
+          <Icon
+            aria-hidden="true"
+            className={`size-12 drop-shadow-[0_0_10px_rgba(255,181,31,0.42)] md:size-14 ${
+              purple ? "text-[#d58aff]" : "text-[#ffb51f]"
+            }`}
+          />
+        ) : null}
       </span>
 
       <h3
@@ -384,11 +572,11 @@ function EcosystemCard({
         {body}
       </p>
 
-      <span className="absolute inset-x-8 bottom-8 flex items-center justify-center gap-3 text-lg font-medium text-[#ffb51f] transition group-hover/card:text-[#ffe3a4]">
+      <span className="absolute inset-x-8 bottom-8 flex items-center justify-center gap-2 text-sm font-semibold text-[#ffb51f] transition group-hover/card:text-[#ffe3a4] md:text-base">
         Learn more
         <ArrowRight
           aria-hidden="true"
-          className="size-5 transition group-hover/card:translate-x-1.5"
+          className="size-4 transition group-hover/card:translate-x-1.5"
         />
       </span>
     </Link>
@@ -452,23 +640,6 @@ function ValueItem({
       </h3>
       <p className="text-base leading-8 text-[#f7f9f8] md:text-lg">{body}</p>
     </div>
-  );
-}
-
-function KoruMark({ className, ...props }: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 64 64" fill="none" className={className} {...props}>
-      <path
-        d="M43 16c-11-9-29 1-27 17 1 11 10 17 19 15 8-2 12-9 9-15-3-7-13-7-16-1-2 4 0 8 4 9"
-        stroke="currentColor"
-        strokeWidth="6"
-        strokeLinecap="round"
-      />
-      <path
-        d="M34 49c3-9 10-14 20-17-8 7-12 14-13 22-3-2-5-3-7-5Z"
-        fill="currentColor"
-      />
-    </svg>
   );
 }
 

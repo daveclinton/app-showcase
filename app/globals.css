@@ -311,7 +311,7 @@
   }
   article,
   .article-content {
-    @apply font-serif text-lg leading-8 tracking-normal text-foreground;
+    @apply font-sans text-lg leading-8 tracking-normal text-foreground;
   }
   article h1,
   .article-content h1 {
