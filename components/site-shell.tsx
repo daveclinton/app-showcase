@@ -13,14 +13,15 @@ function isBlogPath(pathname: string) {
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const hideSiteChrome = isHome || isBlogPath(pathname);
+  const hideSiteHeader = isHome || isBlogPath(pathname);
+  const hideSiteFooter = isHome;
 
   return (
     <div className="flex min-h-dvh flex-col">
-      {hideSiteChrome ? null : <SiteHeader />}
+      {hideSiteHeader ? null : <SiteHeader />}
       {isHome ? <HomeConnectLink /> : null}
       <div className="flex-1">{children}</div>
-      {hideSiteChrome ? null : <Footer />}
+      {hideSiteFooter ? null : <Footer />}
     </div>
   );
 }
