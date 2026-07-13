@@ -31,7 +31,13 @@ export function SiteHeader() {
     <header className="fixed inset-x-0 top-4 z-50 px-4 text-[#f7f9f8] md:top-6">
       <div className="mx-auto max-w-[1280px]">
         <div className="flex min-h-16 items-center justify-between gap-3 rounded-full border border-[#00e5d4]/20 bg-[#001014]/82 px-3 py-2 shadow-[0_18px_42px_rgba(0,0,0,0.42),inset_0_0_28px_rgba(0,229,212,0.05)] backdrop-blur-xl md:px-4">
-          <div className="h-11 w-0 shrink-0" aria-hidden="true" />
+          <Link
+            href="/"
+            className="inline-flex min-h-11 shrink-0 items-center rounded-full px-3 text-lg font-semibold text-[#ffb51f] no-underline transition hover:text-[#ffe3a4] focus-visible:ring-[3px] focus-visible:ring-[#00e5d4]/35 active:text-[#d88719] lg:hidden"
+            onClick={() => setMenuOpen(false)}
+          >
+            Tai Ora
+          </Link>
 
           <nav aria-label="Site navigation" className="hidden min-w-0 flex-1 lg:block">
             <ul className="flex min-w-0 items-center gap-1">
