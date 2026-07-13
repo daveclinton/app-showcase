@@ -103,6 +103,10 @@ const values = [
     title: "MĀORI LED",
     body: "Rooted in Te Tiriti values and designed with mātauranga Māori.",
     icon: KoruLine,
+    logo: {
+      src: "/mauri-led-2.png",
+      alt: "",
+    },
     tone: "teal",
   },
   {
@@ -127,6 +131,10 @@ const values = [
   title: string;
   body: string;
   icon: IconComponent;
+  logo?: {
+    src: string;
+    alt: string;
+  };
   tone: "teal" | "gold";
 }[];
 
@@ -614,11 +622,16 @@ function ValueItem({
   title,
   body,
   icon: Icon,
+  logo,
   tone,
 }: {
   title: string;
   body: string;
   icon: IconComponent;
+  logo?: {
+    src: string;
+    alt: string;
+  };
   tone: "teal" | "gold";
 }) {
   const isGold = tone === "gold";
@@ -626,16 +639,32 @@ function ValueItem({
   return (
     <div className="relative flex min-h-[230px] flex-col gap-4 border-b border-[#00e5d4]/20 p-8 last:border-b-0 md:border-r md:last:border-r-0 xl:border-b-0">
       <span
-        className={`flex size-16 items-center justify-center rounded-full border shadow-[0_10px_20px_rgba(0,0,0,0.36)] ${
-          isGold
-            ? "border-[#ffb51f]/45 bg-[#1a1508]"
-            : "border-[#00e5d4]/35 bg-[#003b3d]"
-        }`}
+        className={
+          logo
+            ? "flex size-16 items-center justify-center overflow-hidden"
+            : `flex size-16 items-center justify-center overflow-hidden rounded-full border shadow-[0_10px_20px_rgba(0,0,0,0.36)] ${
+                isGold
+                  ? "border-[#ffb51f]/45 bg-[#1a1508]"
+                  : "border-[#00e5d4]/35 bg-[#003b3d]"
+              }`
+        }
       >
-        <Icon
-          aria-hidden="true"
-          className={`size-8 ${isGold ? "text-[#ffb51f]" : "text-[#00e5d4]"}`}
-        />
+        {logo ? (
+          <Image
+            src={logo.src}
+            alt={logo.alt}
+            width={1254}
+            height={1254}
+            className="size-14 scale-[2.15] object-cover"
+          />
+        ) : (
+          <Icon
+            aria-hidden="true"
+            className={`size-8 ${
+              isGold ? "text-[#ffb51f]" : "text-[#00e5d4]"
+            }`}
+          />
+        )}
       </span>
       <h3
         className={`text-xl font-semibold leading-snug ${
