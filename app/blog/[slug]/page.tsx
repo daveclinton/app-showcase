@@ -10,6 +10,7 @@ import {
   UserRound,
 } from "lucide-react";
 
+import { BlogCollectionNav } from "@/components/blog-collection-nav";
 import { MdxContent } from "@/components/mdx-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -78,10 +79,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const collection = getCollectionDefinition(post.collection);
-  const postsBySlug = new Map(
-    publishedPosts.map((candidate) => [candidate.slug, candidate]),
-  );
+  const availableSlugs = publishedPosts.map((entry) => entry.slug);
   const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
+  // SVGs/illustrations need contain + padding; photos should fill the frame.
+  const isIllustrationCover = (() => {
+    try {
+      const path = post.image.startsWith("http")
+        ? new URL(post.image).pathname
+        : post.image;
+      return /\.svg$/i.test(path);
+    } catch {
+      return /\.svg(?:$|\?)/i.test(post.image);
+    }
+  })();
 
   return (
     <main className="min-h-dvh bg-background text-foreground">
@@ -112,7 +122,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {post.collection}
                 {post.part ? ` — Part ${post.part}` : ""}
               </Badge>
-              <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight text-balance md:text-6xl">
+              <h1 className="mx-auto mt-5 max-w-4xl text-center text-pretty text-4xl font-extrabold leading-tight tracking-tighter md:text-6xl">
                 {post.title}
               </h1>
               <p className="mt-5 max-w-3xl text-lg leading-8 text-foreground/85 md:text-xl">
@@ -134,47 +144,42 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             </header>
 
-            <figure className="relative mt-9 aspect-[1.72/1] overflow-hidden rounded-lg border border-border bg-surface">
-              <Image
-                src={post.image}
-                alt={`${post.title} cover`}
-                fill
-                priority
-                sizes="(min-width: 1280px) 850px, (min-width: 1024px) 65vw, 100vw"
-                className="object-cover"
-                unoptimized={post.image.startsWith("http")}
-              />
-            </figure>
+            {isIllustrationCover ? (
+              <figure className="mt-9 overflow-hidden rounded-lg border border-border bg-surface p-4 sm:p-6">
+                <Image
+                  src={post.image}
+                  alt={`${post.title} cover`}
+                  width={1200}
+                  height={700}
+                  priority
+                  sizes="(min-width: 1280px) 850px, (min-width: 1024px) 65vw, 100vw"
+                  className="mx-auto block max-h-[min(24rem,50vh)] max-w-full object-contain"
+                  style={{ width: "auto", height: "auto" }}
+                  unoptimized={post.image.startsWith("http")}
+                />
+              </figure>
+            ) : (
+              <figure className="relative mt-9 aspect-[16/9] overflow-hidden rounded-lg border border-border bg-surface">
+                <Image
+                  src={post.image}
+                  alt={`${post.title} cover`}
+                  fill
+                  priority
+                  sizes="(min-width: 1280px) 850px, (min-width: 1024px) 65vw, 100vw"
+                  className="object-cover"
+                  unoptimized={post.image.startsWith("http")}
+                />
+              </figure>
+            )}
 
             {collection ? (
               <section className="mt-8 rounded-lg border border-border bg-surface p-5 lg:hidden">
-                <h2 className="text-lg font-semibold">In this collection</h2>
-                <ol className="mt-4 flex flex-col gap-3">
-                  {collection.articles.map((article) => {
-                    const availablePost = postsBySlug.get(article.slug);
-                    const current = article.slug === post.slug;
-
-                    return (
-                      <li key={article.slug}>
-                        {availablePost ? (
-                          <Link
-                            href={`/blog/${article.slug}`}
-                            aria-current={current ? "page" : undefined}
-                            className="block rounded-md border border-transparent px-3 py-2 text-sm no-underline transition-colors hover:bg-surface-hover aria-[current=page]:border-primary/40 aria-[current=page]:bg-surface-selected aria-[current=page]:text-link"
-                          >
-                            {article.part ? `Part ${article.part}: ` : ""}
-                            {article.title}
-                          </Link>
-                        ) : (
-                          <span className="block px-3 py-2 text-sm text-muted-foreground">
-                            {article.part ? `Part ${article.part}: ` : ""}
-                            {article.title} — Coming soon
-                          </span>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ol>
+                <BlogCollectionNav
+                  articles={collection.articles}
+                  currentSlug={post.slug}
+                  availableSlugs={availableSlugs}
+                  variant="compact"
+                />
               </section>
             ) : null}
 
@@ -228,39 +233,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   {collection.description}
                 </p>
-                <ol className="mt-5 flex flex-col gap-2">
-                  {collection.articles.map((article) => {
-                    const availablePost = postsBySlug.get(article.slug);
-                    const current = article.slug === post.slug;
-
-                    return (
-                      <li key={article.slug}>
-                        {availablePost ? (
-                          <Link
-                            href={`/blog/${article.slug}`}
-                            aria-current={current ? "page" : undefined}
-                            className="block rounded-md border border-transparent px-3 py-3 text-sm leading-5 no-underline transition-colors hover:bg-surface-hover aria-[current=page]:border-primary/40 aria-[current=page]:bg-surface-selected aria-[current=page]:text-link"
-                          >
-                            <span className="block text-xs font-semibold text-muted-foreground">
-                              {article.part ? `Part ${article.part}` : "Story"}
-                            </span>
-                            <span className="mt-1 block font-semibold">
-                              {article.title}
-                            </span>
-                          </Link>
-                        ) : (
-                          <span className="block px-3 py-3 text-sm leading-5 text-muted-foreground">
-                            <span className="block text-xs font-semibold">
-                              {article.part ? `Part ${article.part}` : "Story"}
-                            </span>
-                            <span className="mt-1 block">{article.title}</span>
-                            <span className="mt-1 block text-xs">Coming soon</span>
-                          </span>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ol>
+                <div className="mt-5 border-t border-border pt-4">
+                  <BlogCollectionNav
+                    articles={collection.articles}
+                    currentSlug={post.slug}
+                    availableSlugs={availableSlugs}
+                    variant="sidebar"
+                  />
+                </div>
               </section>
             ) : null}
 
