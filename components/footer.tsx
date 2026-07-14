@@ -105,7 +105,7 @@ export function Footer() {
           </nav>
 
           <p className="text-sm font-medium text-[#aab8b7]">
-            © Tai Ora 2025–2026. Patent pending.
+            © Tai Ora 2025–2026. All rights reserved. Patent pending.
           </p>
         </div>
       </div>
