@@ -122,7 +122,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {post.collection}
                 {post.part ? ` — Part ${post.part}` : ""}
               </Badge>
-              <h1 className="mx-auto mt-5 max-w-4xl text-center text-pretty text-4xl font-extrabold leading-tight tracking-tighter md:text-6xl">
+              <h1 className="mt-5 max-w-4xl text-pretty text-4xl font-extrabold leading-tight tracking-tighter md:text-6xl">
                 {post.title}
               </h1>
               <p className="mt-5 max-w-3xl text-lg leading-8 text-foreground/85 md:text-xl">
