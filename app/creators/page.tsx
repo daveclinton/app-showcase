@@ -54,13 +54,6 @@ export default function CreatorsPage() {
           ],
         },
       ]}
-      form={{
-        title: "Apply to Become a Creator",
-        description: "Join our community of authentic creators and start turning your passion into purpose.",
-        fields: ["Name", "Email", "Social media", "Why you want to join"],
-        note: "Applications are reviewed for fit with Tai Ora's authentic, ethical creator community.",
-        submitLabel: "Contact Tai Ora",
-      }}
       ctaLabel="Contact Tai Ora"
       ctaHref="/contact"
     />

@@ -57,7 +57,6 @@ const ecosystemCards = [
     href: "https://mauri-logo.taiora.ai/",
     art: "from-[#003b3d]/80 via-[#00141a]/75 to-[#000508]",
     glow: "bg-[#00e5d4]/20",
-    label: "Live now",
   },
   {
     title: "VEEVU™",
@@ -92,9 +91,9 @@ const ecosystemCards = [
       className: "size-[88px] md:size-[102px]",
     },
     href: "/partner",
-    art: "from-[#151527] via-[#11101c] to-[#000508]",
-    glow: "bg-[#8e4dcc]/25",
-    purple: true,
+    art: "from-[#004645]/70 via-[#001a1d]/85 to-[#000508]",
+    glow: "bg-[#00bdb2]/20",
+    label: "Coming soon",
   },
 ];
 
@@ -513,7 +512,6 @@ function EcosystemCard({
   art,
   glow,
   label,
-  purple,
 }: {
   title: string;
   body: string;
@@ -527,22 +525,18 @@ function EcosystemCard({
   art: string;
   glow: string;
   label?: string;
-  purple?: boolean;
 }) {
   return (
     <Link
       href={href}
       target={href.startsWith("http") ? "_blank" : undefined}
       rel={href.startsWith("http") ? "noreferrer" : undefined}
-      className={`group/card relative min-h-[430px] overflow-hidden rounded-2xl border bg-[linear-gradient(180deg,rgba(0,70,70,0.52),rgba(0,8,12,0.92))] p-8 text-center no-underline shadow-[0_18px_40px_rgba(0,0,0,0.38),inset_0_0_40px_rgba(0,229,212,0.05)] transition hover:-translate-y-1.5 hover:border-[#ffb51f]/70 hover:text-inherit hover:shadow-[0_22px_48px_rgba(0,0,0,0.45),0_0_28px_rgba(0,229,212,0.18)] focus-visible:ring-[3px] focus-visible:ring-[#00e5d4]/35 active:translate-y-px md:min-h-[538px] ${
-        purple ? "border-[#704a88]" : "border-[#00e5d4]/35"
-      }`}
+      className="group/card relative min-h-[430px] overflow-hidden rounded-2xl border border-[#00e5d4]/35 bg-[linear-gradient(180deg,rgba(0,70,70,0.52),rgba(0,8,12,0.92))] p-8 text-center no-underline shadow-[0_18px_40px_rgba(0,0,0,0.38),inset_0_0_40px_rgba(0,229,212,0.05)] transition hover:-translate-y-1.5 hover:border-[#ffb51f]/70 hover:text-inherit hover:shadow-[0_22px_48px_rgba(0,0,0,0.45),0_0_28px_rgba(0,229,212,0.18)] focus-visible:ring-[3px] focus-visible:ring-[#00e5d4]/35 active:translate-y-px md:min-h-[538px]"
     >
       <div className={`absolute inset-0 -z-10 bg-gradient-to-b ${art}`} />
       <div
         className={`absolute left-1/2 top-12 -z-10 size-40 -translate-x-1/2 rounded-full ${glow} blur-2xl`}
       />
-      <CardScene purple={purple} />
 
       {label ? (
         <span className="absolute right-4 top-4 rounded-full border border-[#ffb51f]/45 bg-[#000508]/70 px-3 py-1 text-xs font-semibold text-[#ffb51f]">
@@ -551,9 +545,7 @@ function EcosystemCard({
       ) : null}
 
       <span
-        className={`mx-auto flex size-24 items-center justify-center rounded-full border bg-[radial-gradient(circle_at_35%_25%,rgba(0,229,212,0.45),rgba(0,56,60,0.95)_48%,rgba(0,8,12,1)_100%)] shadow-[0_12px_22px_rgba(0,0,0,0.45),0_0_18px_rgba(0,229,212,0.18)] transition group-hover/card:shadow-[0_14px_24px_rgba(0,0,0,0.45),0_0_26px_rgba(255,181,31,0.28)] md:size-28 ${
-          purple ? "border-[#8e4dcc]/60" : "border-[#00e5d4]/40"
-        }`}
+        className="mx-auto flex size-24 items-center justify-center rounded-full border border-[#00e5d4]/40 bg-[radial-gradient(circle_at_35%_25%,rgba(0,229,212,0.45),rgba(0,56,60,0.95)_48%,rgba(0,8,12,1)_100%)] shadow-[0_12px_22px_rgba(0,0,0,0.45),0_0_18px_rgba(0,229,212,0.18)] transition group-hover/card:shadow-[0_14px_24px_rgba(0,0,0,0.45),0_0_26px_rgba(255,181,31,0.28)] md:size-28"
       >
         {logo ? (
           <Image
@@ -569,18 +561,12 @@ function EcosystemCard({
         ) : Icon ? (
           <Icon
             aria-hidden="true"
-            className={`size-12 drop-shadow-[0_0_10px_rgba(255,181,31,0.42)] md:size-14 ${
-              purple ? "text-[#d58aff]" : "text-[#ffb51f]"
-            }`}
+            className="size-12 text-[#ffb51f] drop-shadow-[0_0_10px_rgba(255,181,31,0.42)] md:size-14"
           />
         ) : null}
       </span>
 
-      <h3
-        className={`mt-10 text-[26px] font-medium leading-tight ${
-          purple ? "text-[#d58aff]" : "text-[#00e5d4]"
-        }`}
-      >
+      <h3 className="mt-10 text-[26px] font-medium leading-tight text-[#00e5d4]">
         {title}
       </h3>
       <span className="mx-auto mt-5 block h-px w-14 bg-[#d88719]" />
@@ -596,25 +582,6 @@ function EcosystemCard({
         />
       </span>
     </Link>
-  );
-}
-
-function CardScene({ purple }: { purple?: boolean }) {
-  if (purple) {
-    return (
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-44">
-        <div className="absolute bottom-0 left-1/2 h-36 w-16 -translate-x-1/2 rounded-t-full border border-[#ffb51f]/70 shadow-[0_0_28px_rgba(255,181,31,0.45)]" />
-        <div className="absolute bottom-0 left-1/2 h-1 w-40 -translate-x-1/2 bg-[linear-gradient(90deg,transparent,#ffb51f,transparent)]" />
-        <div className="absolute bottom-0 left-1/2 h-32 w-px -translate-x-1/2 bg-[linear-gradient(180deg,#ffe3a4,transparent)]" />
-      </div>
-    );
-  }
-
-  return (
-    <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-48 opacity-70">
-      <div className="absolute bottom-8 left-6 right-6 h-px bg-[linear-gradient(90deg,transparent,rgba(0,229,212,0.45),transparent)]" />
-      <div className="absolute bottom-16 left-8 right-10 h-px bg-[linear-gradient(90deg,transparent,rgba(255,181,31,0.3),transparent)]" />
-    </div>
   );
 }
 
