@@ -25,7 +25,6 @@ const socials = [
     label: "LinkedIn",
     icon: "/linkedin-logo-svgrepo-com.svg",
   },
-  { href: socialLinks.x, label: "X", icon: "/x.svg" },
 ];
 
 export function Footer() {
@@ -106,7 +105,7 @@ export function Footer() {
           </nav>
 
           <p className="text-sm font-medium text-[#aab8b7]">
-            © Tai Ora 2026. Patent Pending
+            © Tai Ora 2025–2026. Patent pending.
           </p>
         </div>
       </div>

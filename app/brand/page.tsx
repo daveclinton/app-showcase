@@ -19,7 +19,7 @@ export default function BrandPage() {
         {
           title: "For Brands",
           items: [
-            "Authentic previews and reviews created by real people",
+            "Short, useful product previews alongside verified reviews and real customer journeys.",
             "Transparent licensing opportunities with creator content",
             "A platform built on culture, ethics and trust that leads to loyalty",
           ],
@@ -28,28 +28,27 @@ export default function BrandPage() {
           title: "Ethical & inclusive by design",
           items: [
             "Consent-first licensing with transparent terms and attribution requirement",
-            "Previews can be shared externally; full journeys remain on Tai Ora",
+            "Approved previews may be shared externally. Personal iGlo™ journeys remain private unless the user explicitly chooses to share or license content from them.",
             "Edits cannot change the meaning of the creator’s experience",
-            "Phase 1: all sales redirect to your site for conversion",
+            "Phase 1: customers will be redirected to purchase through the brand’s website.",
           ],
         },
         {
           title: "What you can do",
           items: [
-            "Source creator content across skincare, haircare and wellness",
+            "Connect with suitable creators across skincare, haircare, self-care and wellness.",
             "License VeeVu™ previews for paid media and product pages",
-            "Embed iGlo™ journeys to increase product-page conversion with proof",
-            "Run A/B tests with multiple VeeVu™ cuts auto-generated from journeys",
+            "License verified reviews created from consenting users iGlo™ journeys for approved brand channels.",
             "Request specific briefs or challenges for launches",
-            "Measure performance with transparent, privacy-safe analytics",
+            "Access basic, privacy-conscious performance insights.",
           ],
         },
         {
           title: "Licensing options",
           items: [
             "Flexible terms: creator-owned, brand-licensed with flexible durations",
-            "Co-branded: your brand identity alongside the creator",
-            "Full buyout: optional by mutual agreement with full rights transfer",
+            "Co-branded use may be available with the creator’s explicit approval and clear disclosure of the brand relationship.",
+            "Extended licensing may be agreed directly with the creator, with clear terms covering duration, channels, payment and permitted use.",
             "All options uphold creator rights, cultural respect, and transparent usage.",
           ],
         },
