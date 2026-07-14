@@ -31,17 +31,17 @@ export default function IwiFundersPage() {
         },
         {
           title: "Partnership Pathways",
-          body: "We welcome kōrero with iwi and Māori organisations, kaupapa Māori providers, community trusts, research and clinical teams and values aligned brands. Options include co designed pilots, evaluation programmes, creator enablement and time bound review licences that respect creator authorship and cultural integrity.",
+          body: "We welcome kōrero with iwi and Māori organisations, kaupapa Māori providers, community trusts, research and clinical teams and values-aligned brands. Options include co-designed pilots, evaluation programmes, creator enablement and time-bound review licences that respect creator authorship and cultural integrity.",
         },
         {
           title: "Funding Alignment",
-          body: "We seek funders who put collective benefit before profit, uphold tino rangatiratanga and respect tikanga in practice. Pathways include iwi investment arms, whānau trusts, Māori and philanthropic funds and kaupapa aligned impact investors.",
+          body: "We seek funders who put collective benefit before profit, uphold tino rangatiratanga and respect tikanga in practice. Pathways include iwi investment arms, whānau trusts, Māori and philanthropic funds and kaupapa-aligned impact investors.",
         },
         {
           title: "Data & Privacy Commitments",
           body: [
-            "Your trust is paramount. Data is never sold or shared outside Tai Ora and its communities. Insights are used in collated form only and are never individually identifiable.",
-            "Only short preview videos may be shared externally when the creator has given consent. Full journeys remain on Tai Ora. Creators retain authorship and brands receive time bound licences with attribution.",
+            "Your trust is paramount. Tai Ora does not sell personal data. Information is shared only with consent and for clearly defined purposes, with appropriate privacy protections in place. Insights may be used in aggregated, de-identified form to support learning and community benefit.",
+            "Only short preview videos may be shared externally when the creator has given consent. Full journeys remain on Tai Ora. Creators retain authorship and brands receive time-bound licences with attribution.",
           ],
         },
         {
@@ -54,7 +54,7 @@ export default function IwiFundersPage() {
         },
         {
           title: "Ways to Engage",
-          body: "If this resonates let us begin with a discovery hui. We clarify goals, communities served, cultural and data settings, evaluation needs and pilot scope. Then we draft a light Memorandum of Understanding, governance cadence and an outcomes plan including how knowledge and benefits return to whānau.",
+          body: "If this resonates let us begin with a discovery hui. We clarify goals, communities served, cultural and data settings, evaluation needs and pilot scope. From there, we can develop a simple Memorandum of Understanding, agree on how we will work together and create an outcomes plan that sets out how knowledge and benefits will return to whānau.",
         },
       ]}
       secondaryCtaLabel="Contact Tai Ora"

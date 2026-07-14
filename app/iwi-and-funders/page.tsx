@@ -26,7 +26,7 @@ export default function IwiAndFundersPage() {
         },
         {
           title: "Ways to Engage",
-          body: "If this resonates let us begin with a discovery hui. We clarify goals, communities served, cultural and data settings, evaluation needs and pilot scope. Then we draft a light Memorandum of Understanding, governance cadence and outcomes plan.",
+          body: "If this resonates let us begin with a discovery hui. We clarify goals, communities served, cultural and data settings, evaluation needs and pilot scope. From there, we can develop a simple Memorandum of Understanding, agree on how we will work together and create an outcomes plan that sets out how knowledge and benefits will return to whānau.",
         },
       ]}
       ctaLabel="Partner with Tai Ora"

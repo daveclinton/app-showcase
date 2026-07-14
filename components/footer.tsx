@@ -49,8 +49,8 @@ export function Footer() {
           </Link>
 
           <p className="max-w-xl text-lg leading-8 text-[#d8e0df]">
-            Connecting creators with brands for authentic partnerships and
-            campaigns.
+            Helping people make informed wellbeing choices through authentic
+            stories and ethical technology.
           </p>
           <p className="text-base font-semibold text-[#b4dac6]">
             Privacy-first. Consent-led. Values-aligned.
@@ -106,7 +106,7 @@ export function Footer() {
           </nav>
 
           <p className="text-sm font-medium text-[#aab8b7]">
-            © Tai Ora 2025. Patent Pending.
+            © Tai Ora 2026. Patent Pending
           </p>
         </div>
       </div>

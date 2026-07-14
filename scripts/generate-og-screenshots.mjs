@@ -51,7 +51,6 @@ const DEFAULT_ROUTES = [
   "/partner",
   "/privacy-policy",
   "/terms-of-use",
-  "/waitlist",
   "/blog",
 ];
 

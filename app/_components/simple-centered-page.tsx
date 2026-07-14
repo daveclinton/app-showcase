@@ -11,6 +11,7 @@ type PageForm = {
   title: string;
   description?: string;
   fields: string[];
+  privacyNote?: string;
   note?: string;
   submitLabel: string;
 };
@@ -117,6 +118,11 @@ export function SimpleCenteredPage({
                   </div>
                 ))}
               </div>
+              {form.privacyNote ? (
+                <p className="mt-5 text-sm leading-7 text-[#d8e0df]">
+                  {form.privacyNote}
+                </p>
+              ) : null}
               {form.note ? (
                 <p className="mt-5 text-sm leading-7 text-[#aab8b7]">
                   {form.note}

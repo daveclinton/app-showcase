@@ -16,7 +16,6 @@ export const OG_SCREENSHOT_ROUTES = [
   "/partner",
   "/privacy-policy",
   "/terms-of-use",
-  "/waitlist",
   "/blog",
 ] as const;
 

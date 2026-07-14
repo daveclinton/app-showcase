@@ -27,8 +27,8 @@ export default function AboutPage() {
         {
           title: "Our Story",
           body: [
-            "Tai Ora was born from my own journey. I have always looked for better ways to bring ease and clarity into life and I wanted to do the same for wellbeing choices.",
-            "That moment of frustration turned into a vision to create Tai Ora, a space that feels authentic, cultural and open to everyone. With tools like VeeVu™ and iGlo™, Tai Ora helps people and brands share real journeys so together we can move beyond the hype and find clarity, connection and collective wellbeing.",
+            "Tai Ora was born from my own journey. I have always looked for better ways to bring ease and clarity into life, and I wanted to do the same for wellbeing choices. Like many, I have stood in front of shelves or scrolled online, unsure which products were truly good. I longed for options I could trust that were ethical, authentic and clear, but the information was often confusing. I could see others feeling the same uncertainty.",
+            "That moment of frustration turned into a vision to create Tai Ora, a space that feels authentic, cultural and open to everyone. With tools like VeeVu™ and iGlo™, Tai Ora helps people and brands share real journeys, so together we can move beyond the hype and find clarity, connection and collective wellbeing.",
           ],
         },
         {

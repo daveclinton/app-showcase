@@ -272,7 +272,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 Tai Ora journey.
               </p>
               <Button asChild className="mt-5 w-full">
-                <Link href="/waitlist">Join the newsletter</Link>
+                <Link href="/contact">Contact Tai Ora</Link>
               </Button>
               <p className="mt-3 text-xs text-muted-foreground">
                 Privacy-first. No spam.

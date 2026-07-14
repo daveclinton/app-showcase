@@ -14,20 +14,20 @@ export default function PartnerPage() {
     <SimpleCenteredPage
       title="Partner With Tai Ora"
       description="A values-led wellbeing platform helping people make informed choices through authentic journeys and trusted guidance."
-      highlights={["AI-verified authenticity", "Māori-led innovation", "Community-centred impact"]}
+      highlights={["Human-shared authenticity", "Māori-led innovation", "Community-centred impact"]}
       sections={[
         {
           title: "The Meaning of Tai Ora",
-          body: "In te reo Māori, Tai Ora speaks to health and wellness through the tides of life, reflecting our cultural grounding and vision for purposeful living.",
+          body: "The name Tai Ora brings together tai, reflecting the tides and rhythms of life, and ora, representing health and wellbeing. Together, they express our cultural grounding and vision for purposeful living.",
         },
         {
           title: "Why Partner With Us",
-          body: "Sponsors and partners help us expand this vision, creating technology that uplifts people, not just profits. Collaborating with Tai Ora connects your organisation to authentic, AI-verified journeys and values-led innovation.",
+          body: "Sponsors and partners help us expand this vision, creating technology that uplifts people, not just profits. Collaborating with Tai Ora connects your organisation to authentic journeys supported by responsible technology and values-led innovation.",
           items: [
-            "Authenticity: real, timestamped, AI-verified journeys",
+            "Authenticity: real, timestamped journeys shared by people",
             "Cultural grounding: Māori principles of balance and whānau",
             "Ethical innovation: AI that guides and supports, never controls",
-            "Giving back: profits fund community wellness hubs",
+            "Giving back: a meaningful portion of future profits will support community wellbeing initiatives",
           ],
         },
         {
@@ -36,7 +36,7 @@ export default function PartnerPage() {
             "Financial sponsorship: fuel product growth, Māori-led creator programmes and community access.",
             "Brand partnership: showcase products through VeeVu™ and iGlo™ journeys that brands and users can trust.",
             "In-kind support: provide products, services, or expertise to empower creators and communities.",
-            "Research collaboration: join university partnerships building T.A.I, Tai Ora Angel Intelligence.",
+            "Research collaboration: explore research partnerships supporting the responsible development of T.A.I., Tai Ora Angel Intelligence.",
           ],
         },
         {
@@ -72,7 +72,8 @@ export default function PartnerPage() {
         title: "Get In Touch",
         description: "Tell us about your partnership interest, goals, and how you'd like to collaborate with Tai Ora.",
         fields: ["Name", "Email", "Organisation", "Partnership interest"],
-        note: "We typically respond within 24-48 hours during business days.",
+        privacyNote: "By submitting this form, you agree that Tai Ora may use your information to respond to your enquiry. Your information will not be sold.",
+        note: "We aim to respond within 2–3 business days.",
         submitLabel: "Contact Tai Ora",
       }}
       ctaLabel="Contact Tai Ora"

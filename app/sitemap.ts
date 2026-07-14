@@ -14,7 +14,6 @@ const publicRoutes = [
   "/partner",
   "/privacy-policy",
   "/terms-of-use",
-  "/waitlist",
   "/blog",
   "/business-card",
 ];

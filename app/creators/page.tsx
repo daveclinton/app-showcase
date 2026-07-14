@@ -61,8 +61,8 @@ export default function CreatorsPage() {
         note: "Applications are reviewed for fit with Tai Ora's authentic, ethical creator community.",
         submitLabel: "Contact Tai Ora",
       }}
-      ctaLabel="Join the waitlist"
-      ctaHref="/waitlist"
+      ctaLabel="Contact Tai Ora"
+      ctaHref="/contact"
     />
   );
 }

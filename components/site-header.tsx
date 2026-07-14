@@ -15,7 +15,6 @@ const navLinks = [
   { href: "/blog", label: "Blog" },
   { href: "/partner", label: "Partner" },
   { href: "/contact", label: "Contact" },
-  { href: "/waitlist", label: "Waitlist" },
 ];
 
 export function SiteHeader() {
