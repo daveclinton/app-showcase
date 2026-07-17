@@ -54,7 +54,7 @@ const ecosystemCards = [
       alt: "Mauri logo",
       className: "size-[88px] md:size-[102px]",
     },
-    href: "https://mauri-logo.taiora.ai/",
+    href: "https://mauri.taiora.ai/",
     art: "from-[#003b3d]/80 via-[#00141a]/75 to-[#000508]",
     glow: "bg-[#00e5d4]/20",
   },
