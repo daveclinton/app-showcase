@@ -27,7 +27,7 @@ export default async function BlogPage() {
 
   return (
     <main className="min-h-dvh bg-background text-foreground">
-      <section className="border-b border-border px-6 pb-16 pt-8 md:px-10 md:pb-20 md:pt-12">
+      <section className="border-b border-border px-6 pb-6 pt-8 md:px-10 md:pb-8 md:pt-12">
         <div className="mx-auto max-w-7xl">
           <Link
             href="/"
@@ -63,7 +63,7 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      <section className="px-6 py-14 md:px-10 md:py-20">
+      <section className="px-6 pb-14 pt-0.5 md:px-10 md:pb-20">
         <div className="mx-auto max-w-7xl">
           <KnowledgeHub posts={posts} />
         </div>
