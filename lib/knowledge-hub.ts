@@ -51,7 +51,6 @@ export const collectionDefinitions: CollectionDefinition[] = [
         part: 4,
         title: "Building an Ethical AI Ecosystem",
         slug: "building-an-ethical-ai-ecosystem",
-        comingSoon: true,
       },
       {
         part: 5,
