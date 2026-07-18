@@ -11,6 +11,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/components/ui/native-select";
 import type { BlogPost } from "@/lib/blog-posts";
 
 type KnowledgeHubProps = {
@@ -44,6 +48,7 @@ export function KnowledgeHub({ posts, collectionNames }: KnowledgeHubProps) {
   );
   const collection =
     collections.find(({ name }) => name === activeCollection) || collections[0];
+  const useCollectionSelect = collections.length > 5;
 
   const tabs = useMemo(
     () =>
@@ -71,14 +76,29 @@ export function KnowledgeHub({ posts, collectionNames }: KnowledgeHubProps) {
           transition={{ duration: 0.45, ease: "easeOut" }}
           className="rounded-full border border-border/80 bg-background/90 p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.22)] backdrop-blur-xl"
         >
-          <AnimatedTabs
-            tabs={tabs}
-            value={activeCollection}
-            onValueChange={setActiveCollection}
-            containerClassName="justify-start gap-1 sm:justify-center"
-            tabClassName="min-h-11 flex-1 whitespace-normal px-3 py-2.5 text-center sm:flex-none sm:px-5"
-            activeTabClassName="bg-primary"
-          />
+          {useCollectionSelect ? (
+            <NativeSelect
+              aria-label="Choose a Knowledge Hub collection"
+              value={activeCollection}
+              onChange={(event) => setActiveCollection(event.target.value)}
+              className="w-full"
+            >
+              {collections.map(({ name }) => (
+                <NativeSelectOption key={name} value={name}>
+                  {name}
+                </NativeSelectOption>
+              ))}
+            </NativeSelect>
+          ) : (
+            <AnimatedTabs
+              tabs={tabs}
+              value={activeCollection}
+              onValueChange={setActiveCollection}
+              containerClassName="justify-start gap-1 sm:justify-center"
+              tabClassName="min-h-11 flex-1 whitespace-normal px-3 py-2.5 text-center sm:flex-none sm:px-5"
+              activeTabClassName="bg-primary"
+            />
+          )}
         </motion.div>
       </div>
 
