@@ -77,33 +77,59 @@ export function BlogCollectionNav({
 
             return (
               <li key={post.id}>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  aria-current={current ? "page" : undefined}
-                  className={cn(
-                    "block rounded-md border border-transparent no-underline transition-colors hover:bg-surface-hover",
-                    "aria-[current=page]:border-primary/40 aria-[current=page]:bg-surface-selected aria-[current=page]:text-link",
-                    isSidebar
-                      ? "px-3 py-3 text-sm leading-5"
-                      : "px-3 py-2 text-sm",
-                  )}
-                >
-                  {isSidebar ? (
-                    <>
-                      <span className="block text-xs font-semibold text-muted-foreground">
-                        {post.part !== null ? `Part ${post.part}` : "Story"}
-                      </span>
-                      <span className="mt-1 block font-semibold">
+                {post.published ? (
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    aria-current={current ? "page" : undefined}
+                    className={cn(
+                      "block rounded-md border border-transparent no-underline transition-colors hover:bg-surface-hover",
+                      "aria-[current=page]:border-primary/40 aria-[current=page]:bg-surface-selected aria-[current=page]:text-link",
+                      isSidebar
+                        ? "px-3 py-3 text-sm leading-5"
+                        : "px-3 py-2 text-sm",
+                    )}
+                  >
+                    {isSidebar ? (
+                      <>
+                        <span className="block text-xs font-semibold text-muted-foreground">
+                          {post.part !== null ? `Part ${post.part}` : "Story"}
+                        </span>
+                        <span className="mt-1 block font-semibold">
+                          {post.title}
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        {post.part !== null ? `Part ${post.part}: ` : ""}
                         {post.title}
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      {post.part !== null ? `Part ${post.part}: ` : ""}
-                      {post.title}
-                    </>
-                  )}
-                </Link>
+                      </>
+                    )}
+                  </Link>
+                ) : (
+                  <span
+                    className={cn(
+                      "block text-muted-foreground",
+                      isSidebar
+                        ? "px-3 py-3 text-sm leading-5"
+                        : "px-3 py-2 text-sm",
+                    )}
+                  >
+                    {isSidebar ? (
+                      <>
+                        <span className="block text-xs font-semibold">
+                          {post.part !== null ? `Part ${post.part}` : "Story"}
+                        </span>
+                        <span className="mt-1 block">{post.title}</span>
+                        <span className="mt-1 block text-xs">Coming soon</span>
+                      </>
+                    ) : (
+                      <>
+                        {post.part !== null ? `Part ${post.part}: ` : ""}
+                        {post.title} - Coming soon
+                      </>
+                    )}
+                  </span>
+                )}
               </li>
             );
           })}

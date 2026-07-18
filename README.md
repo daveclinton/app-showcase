@@ -48,7 +48,7 @@ Use these Notion properties:
 | Name | Title | Article title |
 | Slug | Text | URL slug; generated from the title when blank |
 | Summary | Text | Card and search/social description |
-| Collection | Select | Creates and names the collection tabs |
+| Collection | Select | Creates and orders the collection tabs |
 | Part | Number | Orders articles within the same collection |
 | Author | Text | Article byline |
 | Read Time | Text | Reading-time label |
@@ -56,5 +56,7 @@ Use these Notion properties:
 | Published | Checkbox | Makes the article public when checked |
 | Image | URL | Card and article cover; the Notion page cover is also supported |
 
-Write each article in the Notion page body. Only pages with `Published`
-checked appear on the site, RSS feed, or sitemap.
+Write each article in the Notion page body. Every database row appears in the
+Knowledge Hub; rows without `Published` checked display as coming soon. Check
+`Published` to enable the article link and include it in the RSS feed and
+sitemap. Empty `Collection` options also appear as coming-soon sections.

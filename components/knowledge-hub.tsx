@@ -2,26 +2,42 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { BookOpenText } from "lucide-react";
 
 import { BlogArticleCard } from "@/components/blog-article-card";
 import { AnimatedTabs } from "@/components/ui/animated-tabs";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import type { BlogPost } from "@/lib/blog-posts";
 
-export function KnowledgeHub({ posts }: { posts: BlogPost[] }) {
+type KnowledgeHubProps = {
+  posts: BlogPost[];
+  collectionNames: string[];
+};
+
+export function KnowledgeHub({ posts, collectionNames }: KnowledgeHubProps) {
   const reduceMotion = useReducedMotion();
   const collections = useMemo(
-    () =>
-      Array.from(
-        posts.reduce((groups, post) => {
-          const collectionPosts = groups.get(post.collection) || [];
-          collectionPosts.push(post);
-          groups.set(post.collection, collectionPosts);
-          return groups;
-        }, new Map<string, BlogPost[]>()),
+    () => {
+      const groups = new Map<string, BlogPost[]>(
+        collectionNames.map((name) => [name, []]),
+      );
+
+      for (const post of posts) {
+        const collectionPosts = groups.get(post.collection) || [];
+        collectionPosts.push(post);
+        groups.set(post.collection, collectionPosts);
+      }
+
+      return Array.from(
+        groups,
         ([name, collectionPosts]) => ({ name, posts: collectionPosts }),
-      ),
-    [posts],
+      );
+    },
+    [collectionNames, posts],
   );
   const [activeCollection, setActiveCollection] = useState(
     collections[0]?.name || "",
@@ -69,39 +85,32 @@ export function KnowledgeHub({ posts }: { posts: BlogPost[] }) {
       <AnimatePresence mode="wait">
         <motion.section
           key={collection.name}
-          aria-labelledby="active-collection-title"
+          aria-label={`${collection.name} stories`}
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
           transition={{ duration: 0.28, ease: "easeOut" }}
         >
-          <header className="mb-8 grid gap-4 border-b border-border pb-8 md:grid-cols-[auto_1fr] md:items-center">
-            <div className="flex size-12 items-center justify-center rounded-full border border-primary/40 bg-surface text-primary">
-              <BookOpenText aria-hidden="true" />
+          {collection.posts.length ? (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {collection.posts.map((post, index) => (
+                <BlogArticleCard
+                  key={post.id}
+                  post={post}
+                  priority={index === 0 && post.published}
+                />
+              ))}
             </div>
-            <div>
-              <h2
-                id="active-collection-title"
-                className="text-3xl font-bold text-foreground"
-              >
-                {collection.name}
-              </h2>
-              <p className="mt-2 text-muted-foreground">
-                {collection.posts.length}{" "}
-                {collection.posts.length === 1 ? "story" : "stories"}
-              </p>
-            </div>
-          </header>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {collection.posts.map((post, index) => (
-              <BlogArticleCard
-                key={post.id}
-                post={post}
-                priority={index === 0}
-              />
-            ))}
-          </div>
+          ) : (
+            <Card className="border-border bg-surface">
+              <CardHeader>
+                <CardTitle>Stories coming soon</CardTitle>
+                <CardDescription>
+                  New stories for {collection.name} are being prepared.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          )}
         </motion.section>
       </AnimatePresence>
     </div>

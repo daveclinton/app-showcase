@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 import { KnowledgeHub } from "@/components/knowledge-hub";
-import { getPublishedBlogPosts } from "@/lib/blog-posts";
+import { getBlogCollectionNames, getBlogPosts } from "@/lib/blog-posts";
 import { createPageMetadata } from "@/lib/page-metadata";
 
 export const metadata: Metadata = createPageMetadata({
@@ -23,7 +23,10 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default async function BlogPage() {
-  const posts = await getPublishedBlogPosts();
+  const [posts, collectionNames] = await Promise.all([
+    getBlogPosts(),
+    getBlogCollectionNames(),
+  ]);
 
   return (
     <main className="min-h-dvh bg-background text-foreground">
@@ -65,7 +68,7 @@ export default async function BlogPage() {
 
       <section className="px-6 pb-14 pt-0.5 md:px-10 md:pb-20">
         <div className="mx-auto max-w-7xl">
-          <KnowledgeHub posts={posts} />
+          <KnowledgeHub posts={posts} collectionNames={collectionNames} />
         </div>
       </section>
     </main>

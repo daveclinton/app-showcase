@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
+  ArrowRight,
   CalendarDays,
   Clock,
   Mail,
@@ -17,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
   getBlogPostBySlug,
+  getBlogPosts,
   getPublishedBlogPosts,
 } from "@/lib/blog-posts";
 import { createPageMetadata } from "@/lib/page-metadata";
@@ -68,18 +70,32 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const [post, publishedPosts] = await Promise.all([
+  const [post, posts] = await Promise.all([
     getBlogPostBySlug(slug),
-    getPublishedBlogPosts(),
+    getBlogPosts(),
   ]);
 
   if (!post || !post.published) {
     notFound();
   }
 
-  const collectionPosts = publishedPosts.filter(
+  const collectionPosts = posts.filter(
     (entry) => entry.collection === post.collection,
   );
+  const publishedCollectionPosts = collectionPosts.filter(
+    (entry) => entry.published,
+  );
+  const currentPostIndex = publishedCollectionPosts.findIndex(
+    (entry) => entry.slug === post.slug,
+  );
+  const previousPost =
+    currentPostIndex > 0
+      ? publishedCollectionPosts[currentPostIndex - 1]
+      : undefined;
+  const nextPost =
+    currentPostIndex >= 0
+      ? publishedCollectionPosts[currentPostIndex + 1]
+      : undefined;
   const hasCollectionNavigation = collectionPosts.length > 1;
   const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
   // SVGs/illustrations need contain + padding; photos should fill the frame.
@@ -186,6 +202,51 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <article className="article-content mt-10">
               <MdxContent source={post.content} />
             </article>
+
+            {previousPost || nextPost ? (
+              <nav
+                aria-label="Article navigation"
+                className="mt-10 grid gap-3 sm:grid-cols-2"
+              >
+                {previousPost ? (
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="h-auto min-w-0 justify-start px-4 py-4 text-left"
+                  >
+                    <Link href={`/blog/${previousPost.slug}`}>
+                      <ArrowLeft data-icon="inline-start" aria-hidden="true" />
+                      <span className="min-w-0">
+                        <span className="block text-xs text-muted-foreground">
+                          Previous article
+                        </span>
+                        <span className="block truncate">{previousPost.title}</span>
+                      </span>
+                    </Link>
+                  </Button>
+                ) : null}
+
+                {nextPost ? (
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="h-auto min-w-0 justify-end px-4 py-4 text-right sm:col-start-2"
+                  >
+                    <Link href={`/blog/${nextPost.slug}`}>
+                      <span className="min-w-0">
+                        <span className="block text-xs text-muted-foreground">
+                          Next article
+                        </span>
+                        <span className="block truncate">{nextPost.title}</span>
+                      </span>
+                      <ArrowRight data-icon="inline-end" aria-hidden="true" />
+                    </Link>
+                  </Button>
+                ) : null}
+              </nav>
+            ) : null}
 
             <Separator className="my-10" />
 

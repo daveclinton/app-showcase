@@ -18,7 +18,10 @@ type NotionProperty = {
   checkbox?: boolean;
   number?: number | null;
   date?: { start?: string | null } | null;
-  select?: { name?: string } | null;
+  select?: {
+    name?: string;
+    options?: Array<{ name?: string }>;
+  } | null;
   multi_select?: { name?: string }[];
   url?: string | null;
   files?: Array<{
@@ -278,6 +281,39 @@ async function getNotionBlogPosts() {
   return pages.map((page) => pageToPost(page)).filter((post) => post.title && post.slug);
 }
 
+async function getNotionBlogCollectionNames() {
+  const { databaseId } = getNotionConfig();
+  const database = await notionFetch<{
+    properties?: Record<string, NotionProperty>;
+  }>(`/databases/${databaseId}`);
+  const collection = getProperty(database.properties, ["Collection"]);
+
+  return (
+    collection?.select?.options
+      ?.map((option) => option.name?.trim() || "")
+      .filter(Boolean) || []
+  );
+}
+
+function sortBlogPosts(posts: BlogPost[]) {
+  return posts.sort((a, b) => {
+    const collectionOrder = a.collection.localeCompare(b.collection);
+
+    if (collectionOrder !== 0) {
+      return collectionOrder;
+    }
+
+    if (a.part !== null || b.part !== null) {
+      return (
+        (a.part ?? Number.POSITIVE_INFINITY) -
+        (b.part ?? Number.POSITIVE_INFINITY)
+      );
+    }
+
+    return new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime();
+  });
+}
+
 async function getNotionBlogPostBySlug(slug: string) {
   const posts = await getNotionBlogPosts();
   const post = posts.find((candidate) => candidate.slug === slug);
@@ -293,29 +329,16 @@ async function getNotionBlogPostBySlug(slug: string) {
 }
 
 export async function getBlogPosts() {
-  return getNotionBlogPosts();
+  return sortBlogPosts(await getNotionBlogPosts());
+}
+
+export async function getBlogCollectionNames() {
+  return getNotionBlogCollectionNames();
 }
 
 export async function getPublishedBlogPosts() {
   const posts = await getBlogPosts();
-  return posts
-    .filter((post) => post.published)
-    .sort((a, b) => {
-      const collectionOrder = a.collection.localeCompare(b.collection);
-
-      if (collectionOrder !== 0) {
-        return collectionOrder;
-      }
-
-      if (a.part !== null || b.part !== null) {
-        return (
-          (a.part ?? Number.POSITIVE_INFINITY) -
-          (b.part ?? Number.POSITIVE_INFINITY)
-        );
-      }
-
-      return new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime();
-    });
+  return posts.filter((post) => post.published);
 }
 
 export async function getBlogPostBySlug(slug: string) {
