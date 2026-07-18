@@ -19,7 +19,6 @@ import {
   getBlogPostBySlug,
   getPublishedBlogPosts,
 } from "@/lib/blog-posts";
-import { getCollectionDefinition } from "@/lib/knowledge-hub";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { absoluteUrl } from "@/lib/site";
 import { socialLinks } from "@/lib/social-links";
@@ -78,8 +77,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const collection = getCollectionDefinition(post.collection);
-  const availableSlugs = publishedPosts.map((entry) => entry.slug);
+  const collectionPosts = publishedPosts.filter(
+    (entry) => entry.collection === post.collection,
+  );
+  const hasCollectionNavigation = collectionPosts.length > 1;
   const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
   // SVGs/illustrations need contain + padding; photos should fill the frame.
   const isIllustrationCover = (() => {
@@ -120,7 +121,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <header>
               <Badge variant="secondary">
                 {post.collection}
-                {post.part ? ` — Part ${post.part}` : ""}
+                {post.part !== null ? ` — Part ${post.part}` : ""}
               </Badge>
               <h1 className="mt-5 max-w-4xl text-pretty text-4xl font-extrabold leading-tight tracking-tighter md:text-6xl">
                 {post.title}
@@ -172,12 +173,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </figure>
             )}
 
-            {collection ? (
+            {hasCollectionNavigation ? (
               <section className="mt-8 rounded-lg border border-border bg-surface p-5 lg:hidden">
                 <BlogCollectionNav
-                  articles={collection.articles}
+                  posts={collectionPosts}
                   currentSlug={post.slug}
-                  availableSlugs={availableSlugs}
                   variant="compact"
                 />
               </section>
@@ -224,20 +224,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
 
           <aside className="hidden flex-col gap-6 lg:sticky lg:top-28 lg:flex">
-            {collection ? (
+            {hasCollectionNavigation ? (
               <section className="rounded-lg border border-border bg-surface p-5">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">
-                  The Tai Ora story
+                  More from
                 </p>
-                <h2 className="mt-3 text-xl font-bold">{collection.name}</h2>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  {collection.description}
-                </p>
+                <h2 className="mt-3 text-xl font-bold">{post.collection}</h2>
                 <div className="mt-5 border-t border-border pt-4">
                   <BlogCollectionNav
-                    articles={collection.articles}
+                    posts={collectionPosts}
                     currentSlug={post.slug}
-                    availableSlugs={availableSlugs}
                     variant="sidebar"
                   />
                 </div>

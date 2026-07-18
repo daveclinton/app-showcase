@@ -1,8 +1,4 @@
 import { notionBlocksToMarkdown } from "@/lib/notion-blocks";
-import {
-  BLOG_COLLECTIONS,
-  type BlogCollection,
-} from "@/lib/knowledge-hub";
 
 type NotionRichText = {
   plain_text?: string;
@@ -35,6 +31,7 @@ type NotionProperty = {
 
 type NotionPage = {
   id: string;
+  created_time?: string;
   cover?: {
     type?: "external" | "file";
     external?: { url?: string };
@@ -47,7 +44,7 @@ export type BlogPost = {
   id: string;
   title: string;
   subtitle: string;
-  collection: BlogCollection;
+  collection: string;
   part: number | null;
   author: string;
   readTime: string;
@@ -223,17 +220,13 @@ function pageToPost(page: NotionPage, content = ""): BlogPost {
   const subtitle = propertyText(getProperty(properties, ["Summary", "Description", "Excerpt"]));
   const dateTime =
     propertyDate(getProperty(properties, ["Published At", "PublishedAt", "Date"])) ||
+    page.created_time ||
     new Date().toISOString();
   const publishedProperty = getProperty(properties, ["Published", "Live", "Status"]);
-  const published = publishedProperty ? propertyBoolean(publishedProperty) : true;
-  const collectionText = propertyText(
-    getProperty(properties, ["Collection", "Category", "Type"]),
-  );
+  const published = publishedProperty ? propertyBoolean(publishedProperty) : false;
   const collection =
-    BLOG_COLLECTIONS.find(
-      (candidate) =>
-        candidate.toLowerCase() === collectionText.toLowerCase(),
-    ) || "Building Tai Ora";
+    propertyText(getProperty(properties, ["Collection", "Category", "Type"])) ||
+    "Uncategorized";
 
   return {
     id: page.id,
@@ -308,8 +301,17 @@ export async function getPublishedBlogPosts() {
   return posts
     .filter((post) => post.published)
     .sort((a, b) => {
-      if (a.collection === b.collection && a.part && b.part) {
-        return a.part - b.part;
+      const collectionOrder = a.collection.localeCompare(b.collection);
+
+      if (collectionOrder !== 0) {
+        return collectionOrder;
+      }
+
+      if (a.part !== null || b.part !== null) {
+        return (
+          (a.part ?? Number.POSITIVE_INFINITY) -
+          (b.part ?? Number.POSITIVE_INFINITY)
+        );
       }
 
       return new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime();

@@ -34,3 +34,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Knowledge Hub
+
+The Knowledge Hub is managed entirely in the Notion database configured by
+`NOTION_TOKEN` and `NOTION_DATABASE_ID`. There are no local article or
+collection definitions.
+
+Use these Notion properties:
+
+| Property | Type | Purpose |
+| --- | --- | --- |
+| Name | Title | Article title |
+| Slug | Text | URL slug; generated from the title when blank |
+| Summary | Text | Card and search/social description |
+| Collection | Select | Creates and names the collection tabs |
+| Part | Number | Orders articles within the same collection |
+| Author | Text | Article byline |
+| Read Time | Text | Reading-time label |
+| Published At | Date | Publication date |
+| Published | Checkbox | Makes the article public when checked |
+| Image | URL | Card and article cover; the Notion page cover is also supported |
+
+Write each article in the Notion page body. Only pages with `Published`
+checked appear on the site, RSS feed, or sitemap.
