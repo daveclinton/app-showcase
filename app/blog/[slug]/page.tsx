@@ -11,6 +11,7 @@ import {
   UserRound,
 } from "lucide-react";
 
+import { BlogShareButton } from "@/components/blog-share-button";
 import { BlogCollectionNav } from "@/components/blog-collection-nav";
 import { MdxContent } from "@/components/mdx-content";
 import { Badge } from "@/components/ui/badge";
@@ -252,35 +253,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <p className="font-semibold text-foreground">Share this story</p>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(canonicalUrl)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Share on Facebook"
-                  className="inline-flex size-10 items-center justify-center rounded-full border border-border bg-surface transition hover:border-primary hover:bg-surface-hover active:bg-surface-active focus-visible:ring-[3px] focus-visible:ring-ring/50"
-                >
-                  <Image src="/facebook.svg" alt="" width={18} height={18} className="size-[18px] invert" />
-                </a>
-                <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalUrl)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Share on LinkedIn"
-                  className="inline-flex size-10 items-center justify-center rounded-full border border-border bg-surface transition hover:border-primary hover:bg-surface-hover active:bg-surface-active focus-visible:ring-[3px] focus-visible:ring-ring/50"
-                >
-                  <Image src="/linkedin-logo-svgrepo-com.svg" alt="" width={18} height={18} className="size-[18px] invert" />
-                </a>
-                <a
-                  href={`https://x.com/intent/post?url=${encodeURIComponent(canonicalUrl)}&text=${encodeURIComponent(post.title)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Share on X"
-                  className="inline-flex size-10 items-center justify-center rounded-full border border-border bg-surface transition hover:border-primary hover:bg-surface-hover active:bg-surface-active focus-visible:ring-[3px] focus-visible:ring-ring/50"
-                >
-                  <Image src="/x.svg" alt="" width={18} height={18} className="size-[18px] invert" />
-                </a>
-              </div>
+              <BlogShareButton
+                title={post.title}
+                text={post.subtitle}
+                url={canonicalUrl}
+              />
             </div>
           </div>
 
