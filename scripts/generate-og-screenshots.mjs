@@ -84,10 +84,9 @@ function parseRoutes() {
 }
 
 async function dismissOverlays(page) {
-  // Hide cookie bar / toasters if they still render.
+  // Hide transient toasts so screenshots stay stable.
   await page.addStyleTag({
     content: `
-      [class*="cookie"], [id*="cookie"],
       [data-sonner-toaster], [data-sonner-toast] {
         display: none !important;
         visibility: hidden !important;
@@ -142,19 +141,6 @@ async function main() {
     viewport: { width: WIDTH, height: HEIGHT },
     deviceScaleFactor: 1,
     colorScheme: "dark",
-  });
-
-  // Pre-accept cookies so the banner never appears.
-  await context.addInitScript(() => {
-    const consent = {
-      preferences: { essential: true, analytics: false },
-      updatedAt: new Date().toISOString(),
-    };
-    try {
-      localStorage.setItem("taiora-cookie-consent", JSON.stringify(consent));
-    } catch {
-      // ignore
-    }
   });
 
   const page = await context.newPage();

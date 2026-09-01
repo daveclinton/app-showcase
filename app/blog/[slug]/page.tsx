@@ -113,14 +113,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <main className="min-h-dvh bg-background text-foreground">
-      <div className="mx-auto max-w-7xl px-6 pb-20 pt-8 md:px-10 md:pb-28 md:pt-12">
+      <div className="mx-auto max-w-7xl px-6 pb-20 pt-32 md:px-10 md:pb-28 md:pt-36">
         <div className="mb-8 flex flex-wrap items-center gap-x-5 gap-y-2">
           <Link
-            href="/"
+            href="/blog"
             className="inline-flex items-center gap-2 text-sm font-semibold text-link no-underline transition-colors hover:text-link-hover active:text-mauri-mint focus-visible:ring-[3px] focus-visible:ring-ring/50"
           >
             <ArrowLeft aria-hidden="true" className="size-4" />
-            Go back home
+            Back to all posts
           </Link>
           <span className="text-muted-foreground/50" aria-hidden="true">
             /

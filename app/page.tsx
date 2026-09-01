@@ -140,11 +140,11 @@ const values = [
 export default function HomePage() {
   return (
     <main className="min-h-dvh overflow-hidden bg-[#000508] text-[#f7f9f8]">
-      <section className="relative isolate flex min-h-svh items-center overflow-hidden px-5 py-10 sm:px-8 sm:py-14 md:px-10 md:py-16 lg:px-11">
+      <section className="relative isolate flex min-h-svh items-center overflow-hidden px-5 pb-[clamp(1.5rem,4svh,3rem)] pt-[calc(4rem+clamp(1rem,3svh,2.5rem))] sm:px-8 md:px-10 lg:px-11">
         <BackgroundLight />
 
         <div className="relative z-10 mx-auto flex max-w-[1350px] flex-col items-center text-center">
-          <div className="flex size-[76px] items-center justify-center rounded-full bg-[radial-gradient(circle_at_35%_28%,#148f87_0%,#00514f_42%,#001b20_100%)] shadow-[0_0_22px_rgba(0,229,212,0.25),0_12px_28px_rgba(0,0,0,0.45)] sm:size-[96px] md:size-[116px] lg:size-[124px]">
+          <div className="flex size-[clamp(76px,11svh,112px)] items-center justify-center rounded-full bg-[radial-gradient(circle_at_35%_28%,#148f87_0%,#00514f_42%,#001b20_100%)] shadow-[0_0_22px_rgba(0,229,212,0.25),0_12px_28px_rgba(0,0,0,0.45)]">
             <Image
               src="/new-tai-ora-logo.png"
               alt="Tai Ora logo"
@@ -155,9 +155,9 @@ export default function HomePage() {
             />
           </div>
 
-          <div className="mt-3 flex w-full max-w-[620px] items-center gap-3 md:mt-5 md:gap-4">
+          <div className="mt-[clamp(0.75rem,1.6svh,1.25rem)] flex w-full max-w-[560px] items-center gap-3 md:gap-4 lg:max-w-[620px]">
             <span className="h-px flex-1 bg-[linear-gradient(90deg,transparent,#d88719)]" />
-            <span className="flex size-9 items-center justify-center rounded-full border border-[#ffb51f] text-[#ffb51f] shadow-[0_0_16px_rgba(255,181,31,0.28)] md:size-11">
+            <span className="flex size-[clamp(36px,5svh,44px)] items-center justify-center rounded-full border border-[#ffb51f] text-[#ffb51f] shadow-[0_0_16px_rgba(255,181,31,0.28)]">
               <KoruLine aria-hidden="true" className="size-5 md:size-6" />
             </span>
             <span className="h-px flex-1 bg-[linear-gradient(90deg,#d88719,transparent)]" />
@@ -165,7 +165,7 @@ export default function HomePage() {
 
           <h1
             aria-label="TAI ORA"
-            className="relative mt-5 flex w-full justify-center md:mt-8"
+            className="relative mt-[clamp(1.25rem,3svh,2rem)] flex w-full justify-center"
           >
             <Image
               src="/tai-ora-hero-name.png"
@@ -173,13 +173,13 @@ export default function HomePage() {
               width={1038}
               height={240}
               priority
-              className="h-auto w-full max-w-[340px] drop-shadow-[0_0_18px_rgba(255,255,255,0.16)] sm:max-w-[560px] md:max-w-[720px] lg:max-w-[820px]"
+              className="h-auto w-full max-w-[clamp(340px,54vw,780px)] drop-shadow-[0_0_18px_rgba(255,255,255,0.16)] xl:max-w-[820px]"
             />
           </h1>
 
           <p
             aria-label="I SEE YOU"
-            className="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[26px] font-medium leading-tight text-[#ffb51f] sm:text-[34px] md:text-[44px] lg:text-[50px]"
+            className="mt-[clamp(1rem,2.4svh,1.5rem)] flex flex-wrap justify-center gap-x-3 gap-y-1 text-[clamp(26px,4.4vw,50px)] font-medium leading-tight text-[#ffb51f]"
           >
             {"I SEE YOU".split("").map((char, index) => (
               <span key={`${char}-${index}`}>
@@ -188,14 +188,14 @@ export default function HomePage() {
             ))}
           </p>
 
-          <p className="mt-4 max-w-[720px] text-base leading-7 text-[#f7f9f8] sm:text-lg sm:leading-8 md:text-2xl md:leading-9">
+          <p className="mt-[clamp(0.875rem,2.2svh,1.25rem)] max-w-[720px] text-[clamp(16px,2vw,24px)] leading-[1.45] text-[#f7f9f8]">
             Empowering people through{" "}
             <span className="text-[#00e5d4]">ethical</span>,{" "}
             <span className="text-[#00e5d4]">practical</span> and{" "}
             <span className="text-[#00e5d4]">supportive</span> AI pathways.
           </p>
 
-          <div className="mt-5 flex w-full flex-col items-center justify-center gap-2.5 sm:flex-row sm:gap-5 md:mt-6 md:gap-8">
+          <div className="mt-[clamp(1rem,2.6svh,1.5rem)] flex w-full flex-col items-center justify-center gap-2.5 sm:flex-row sm:gap-5 md:gap-8">
             {storeLinks.map((store) => (
               <Link
                 key={store.label}
@@ -203,21 +203,21 @@ export default function HomePage() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`${store.kicker} ${store.label}`}
-                className="flex min-h-14 w-full max-w-[250px] items-center justify-center gap-3 rounded-[14px] border border-[#c97900] bg-[#000508]/85 px-4 py-2.5 text-white no-underline shadow-[0_0_18px_rgba(255,181,31,0.1)] transition hover:-translate-y-0.5 hover:border-[#ffb51f] hover:text-white hover:shadow-[0_0_24px_rgba(255,181,31,0.25)] focus-visible:ring-[3px] focus-visible:ring-[#ffb51f]/35 active:translate-y-px active:border-[#d88719] sm:max-w-[270px] md:min-h-[76px]"
+                className="flex min-h-[clamp(56px,8svh,72px)] w-full max-w-[250px] items-center justify-center gap-3 rounded-[14px] border border-[#c97900] bg-[#000508]/85 px-4 py-2.5 text-white no-underline shadow-[0_0_18px_rgba(255,181,31,0.1)] transition hover:-translate-y-0.5 hover:border-[#ffb51f] hover:text-white hover:shadow-[0_0_24px_rgba(255,181,31,0.25)] focus-visible:ring-[3px] focus-visible:ring-[#ffb51f]/35 active:translate-y-px active:border-[#d88719] sm:max-w-[270px]"
               >
                 <Image
                   src={store.icon}
                   alt=""
                   width={48}
                   height={48}
-                  className="size-8 md:size-10"
+                  className="size-[clamp(32px,4.5svh,40px)]"
                   aria-hidden="true"
                 />
                 <span className="flex flex-col items-start leading-none">
-                  <span className="text-[11px] font-medium md:text-sm">
+                  <span className="text-[clamp(11px,1.5svh,14px)] font-medium">
                     {store.kicker}
                   </span>
-                  <span className="mt-1 text-lg font-semibold md:text-2xl">
+                  <span className="mt-1 text-[clamp(18px,2.8svh,24px)] font-semibold">
                     {store.label}
                   </span>
                 </span>
@@ -227,7 +227,7 @@ export default function HomePage() {
 
           <a
             href="#ecosystem"
-            className="mt-5 flex animate-bounce flex-col items-center gap-1.5 text-sm font-medium text-[#ffb51f] no-underline transition hover:text-[#ffe3a4] focus-visible:ring-[3px] focus-visible:ring-[#ffb51f]/35 active:text-[#d88719] md:mt-7 md:gap-2 md:text-base"
+            className="mt-[clamp(1rem,2.6svh,1.75rem)] flex animate-bounce flex-col items-center gap-1.5 text-sm font-medium text-[#ffb51f] no-underline transition hover:text-[#ffe3a4] focus-visible:ring-[3px] focus-visible:ring-[#ffb51f]/35 active:text-[#d88719] md:gap-2 md:text-base"
           >
             Scroll to explore
             <ArrowDown aria-hidden="true" className="size-6" />
