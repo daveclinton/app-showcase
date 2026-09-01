@@ -282,7 +282,7 @@ function DesktopDropdownItem({
     <DropdownMenu.Root>
       <DropdownMenu.Trigger
         className={cn(
-          "flex h-[30px] items-center justify-center gap-2 rounded px-2.5 py-[5px] text-center text-sm font-semibold leading-5 text-foreground outline-none transition data-[state=open]:text-primary data-[state=open]:[&_svg]:rotate-180 hover:text-link-hover focus-visible:ring-[3px] focus-visible:ring-ring/50 active:text-primary-active",
+          "flex h-[30px] items-center justify-center gap-2 rounded px-2.5 py-[5px] text-center text-sm font-semibold leading-5 text-foreground outline-none transition data-[state=open]:text-primary data-[state=open]:[&_svg]:rotate-180 hover:text-link-hover focus-visible:text-link-hover focus-visible:shadow-[inset_0_-2px_0_var(--link)] active:text-primary-active",
           active && "text-primary",
           item.label === "Our Products" ? "w-[130px]" : "w-[109.4px]",
         )}

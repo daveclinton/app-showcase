@@ -5,6 +5,7 @@ type PageSection = {
   title: string;
   body?: string | string[];
   items?: string[];
+  afterItems?: string | string[];
 };
 
 type PageForm = {
@@ -94,6 +95,16 @@ export function SimpleCenteredPage({
                     </li>
                   ))}
                 </ul>
+              ) : null}
+              {section.afterItems ? (
+                <div className="mt-5 flex flex-col gap-4 text-base leading-8 text-[#d8e0df] md:text-lg">
+                  {(Array.isArray(section.afterItems)
+                    ? section.afterItems
+                    : [section.afterItems]
+                  ).map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
               ) : null}
             </section>
           ))}
