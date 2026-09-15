@@ -47,24 +47,11 @@ const storeLinks = [
 
 const ecosystemCards = [
   {
-    title: "MAURI",
-    body: "Pause, reflect and process your thoughts.",
-    logo: {
-      src: "/mauri-logo.png",
-      alt: "Mauri logo",
-      className: "size-[88px] md:size-[102px]",
-    },
-    href: "https://mauri.taiora.ai/",
-    art: "from-[#003b3d]/80 via-[#00141a]/75 to-[#000508]",
-    glow: "bg-[#00e5d4]/20",
-  },
-  {
-    title: "VEEVU™",
+    title: "Veevu™",
     body: "Short product video previews.",
     logo: {
       src: "/veevu-new.png",
       alt: "Veevu logo",
-      className: "size-[88px] md:size-[102px]",
     },
     href: "/brand",
     art: "from-[#3c2f11]/55 via-[#00141a]/85 to-[#000508]",
@@ -75,20 +62,38 @@ const ecosystemCards = [
     body: "Track your journey with real authentic reviews.",
     logo: {
       src: "/iglo-new.png",
-      alt: "Iglo logo",
-      className: "size-[88px] md:size-[102px]",
+      alt: "IGLO logo",
     },
     href: "/creators",
     art: "from-[#004645]/70 via-[#001a1d]/85 to-[#000508]",
     glow: "bg-[#00bdb2]/20",
   },
   {
-    title: "FUTURE AI PATHWAYS",
+    title: "Mauri",
+    body: "Pause, reflect and process your thoughts.",
+    logo: {
+      src: "/mauri-logo.png",
+      alt: "Mauri logo",
+    },
+    href: "https://mauri.taiora.ai/",
+    art: "from-[#003b3d]/80 via-[#00141a]/75 to-[#000508]",
+    glow: "bg-[#00e5d4]/20",
+  },
+  {
+    title: "WhakapapaGlo",
+    body: "Understand what shaped you and choose who you are becoming.",
+    icon: WhakapapaGloMark,
+    href: "/about",
+    art: "from-[#004645]/70 via-[#001a1d]/85 to-[#000508]",
+    glow: "bg-[#00bdb2]/20",
+    label: "Coming soon",
+  },
+  {
+    title: "Future AI Pathways",
     body: "Discover opportunities and build the skills for what's next.",
     logo: {
       src: "/future-pathways-new.png",
       alt: "Future AI Pathways logo",
-      className: "size-[88px] md:size-[102px]",
     },
     href: "/partner",
     art: "from-[#004645]/70 via-[#001a1d]/85 to-[#000508]",
@@ -267,9 +272,37 @@ export default function HomePage() {
             <span className="mt-5 h-px w-36 bg-[linear-gradient(90deg,transparent,#ffb51f,transparent)] shadow-[0_0_18px_rgba(255,181,31,0.5)]" />
           </div>
 
-          <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {ecosystemCards.map((card) => (
-              <EcosystemCard key={card.title} {...card} />
+          {/* Row 1 — 2 tiled cards, narrower and centred above the full-width row 2. */}
+          <div className="mx-auto mt-9 grid w-full overflow-hidden rounded-2xl border border-[#00e5d4]/25 bg-[linear-gradient(180deg,rgba(0,24,28,0.92),rgba(0,8,12,0.96))] shadow-[0_18px_42px_rgba(0,0,0,0.35),inset_0_0_40px_rgba(0,229,212,0.04)] sm:mt-11 sm:w-[88%] sm:grid-cols-2 lg:w-[72%]">
+            {ecosystemCards.slice(0, 2).map((card, index) => (
+              <EcosystemCard
+                key={card.title}
+                {...card}
+                size="compact"
+                className={
+                  index === 0
+                    ? "border-b border-[#00e5d4]/25 sm:border-b-0 sm:border-r"
+                    : undefined
+                }
+              />
+            ))}
+          </div>
+
+          {/* Row 2 — 3 tiled cards, full section width. */}
+          <div className="mt-8 grid overflow-hidden rounded-2xl border border-[#00e5d4]/25 bg-[linear-gradient(180deg,rgba(0,24,28,0.92),rgba(0,8,12,0.96))] shadow-[0_18px_42px_rgba(0,0,0,0.35),inset_0_0_40px_rgba(0,229,212,0.04)] sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
+            {ecosystemCards.slice(2).map((card, index) => (
+              <EcosystemCard
+                key={card.title}
+                {...card}
+                size="large"
+                className={
+                  index === 0
+                    ? "border-b border-[#00e5d4]/25 sm:border-b-0 sm:border-r"
+                    : index === 1
+                      ? "border-b border-[#00e5d4]/25 sm:border-b-0 lg:border-r"
+                      : "sm:col-span-2 sm:border-t sm:border-[#00e5d4]/25 lg:col-span-1 lg:border-t-0"
+                }
+              />
             ))}
           </div>
 
@@ -503,6 +536,11 @@ function BackgroundLight() {
   );
 }
 
+const ecosystemCardSizes = {
+  compact: "min-h-[320px] md:min-h-[340px] lg:min-h-[360px]",
+  large: "min-h-[380px] md:min-h-[430px] lg:min-h-[470px]",
+} as const;
+
 function EcosystemCard({
   title,
   body,
@@ -512,6 +550,8 @@ function EcosystemCard({
   art,
   glow,
   label,
+  size,
+  className,
 }: {
   title: string;
   body: string;
@@ -525,27 +565,24 @@ function EcosystemCard({
   art: string;
   glow: string;
   label?: string;
+  size: keyof typeof ecosystemCardSizes;
+  className?: string;
 }) {
   return (
     <Link
       href={href}
       target={href.startsWith("http") ? "_blank" : undefined}
       rel={href.startsWith("http") ? "noreferrer" : undefined}
-      className="group/card relative min-h-[430px] overflow-hidden rounded-2xl border border-[#00e5d4]/35 bg-[linear-gradient(180deg,rgba(0,70,70,0.52),rgba(0,8,12,0.92))] p-8 text-center no-underline shadow-[0_18px_40px_rgba(0,0,0,0.38),inset_0_0_40px_rgba(0,229,212,0.05)] transition hover:-translate-y-1.5 hover:border-[#ffb51f]/70 hover:text-inherit hover:shadow-[0_22px_48px_rgba(0,0,0,0.45),0_0_28px_rgba(0,229,212,0.18)] focus-visible:ring-[3px] focus-visible:ring-[#00e5d4]/35 active:translate-y-px md:min-h-[538px]"
+      className={`group/card relative isolate flex flex-col items-center justify-center overflow-hidden px-6 py-12 text-center no-underline transition hover:text-inherit focus-visible:ring-[3px] focus-visible:ring-inset focus-visible:ring-[#00e5d4]/45 active:text-inherit ${ecosystemCardSizes[size]} ${className ?? ""}`}
     >
       <div className={`absolute inset-0 -z-10 bg-gradient-to-b ${art}`} />
       <div
-        className={`absolute left-1/2 top-12 -z-10 size-40 -translate-x-1/2 rounded-full ${glow} blur-2xl`}
+        className={`absolute left-1/2 top-14 -z-10 size-40 -translate-x-1/2 rounded-full ${glow} blur-2xl`}
       />
-
-      {label ? (
-        <span className="absolute right-4 top-4 rounded-full border border-[#ffb51f]/45 bg-[#000508]/70 px-3 py-1 text-xs font-semibold text-[#ffb51f]">
-          {label}
-        </span>
-      ) : null}
+      <div className="absolute inset-0 -z-10 bg-[#00e5d4]/0 transition group-hover/card:bg-[#00e5d4]/[0.07]" />
 
       <span
-        className="mx-auto flex size-24 items-center justify-center rounded-full border border-[#00e5d4]/40 bg-[radial-gradient(circle_at_35%_25%,rgba(0,229,212,0.45),rgba(0,56,60,0.95)_48%,rgba(0,8,12,1)_100%)] shadow-[0_12px_22px_rgba(0,0,0,0.45),0_0_18px_rgba(0,229,212,0.18)] transition group-hover/card:shadow-[0_14px_24px_rgba(0,0,0,0.45),0_0_26px_rgba(255,181,31,0.28)] md:size-28"
+        className="mx-auto flex size-20 items-center justify-center rounded-full border border-[#00e5d4]/40 bg-[radial-gradient(circle_at_35%_25%,rgba(0,229,212,0.45),rgba(0,56,60,0.95)_48%,rgba(0,8,12,1)_100%)] shadow-[0_12px_22px_rgba(0,0,0,0.45),0_0_18px_rgba(0,229,212,0.18)] transition group-hover/card:shadow-[0_14px_24px_rgba(0,0,0,0.45),0_0_26px_rgba(255,181,31,0.28)] md:size-24"
       >
         {logo ? (
           <Image
@@ -555,26 +592,34 @@ function EcosystemCard({
             height={96}
             loading="eager"
             className={`object-contain object-center drop-shadow-[0_0_12px_rgba(255,181,31,0.38)] ${
-              logo.className || "size-[76px] md:size-[88px]"
+              logo.className || "size-[62px] md:size-[76px]"
             }`}
           />
         ) : Icon ? (
           <Icon
             aria-hidden="true"
-            className="size-12 text-[#ffb51f] drop-shadow-[0_0_10px_rgba(255,181,31,0.42)] md:size-14"
+            className="size-10 text-[#ffb51f] drop-shadow-[0_0_10px_rgba(255,181,31,0.42)] md:size-12"
           />
         ) : null}
       </span>
 
-      <h3 className="mt-10 text-[26px] font-medium leading-tight text-[#00e5d4]">
+      {label ? (
+        <span className="mt-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#ffb51f] md:text-xs">
+          {label}
+        </span>
+      ) : null}
+
+      <h3
+        className={`${label ? "mt-5" : "mt-8"} text-[22px] font-medium leading-tight text-[#00e5d4] md:text-[24px]`}
+      >
         {title}
       </h3>
-      <span className="mx-auto mt-5 block h-px w-14 bg-[#d88719]" />
-      <p className="mx-auto mt-8 max-w-[230px] text-lg leading-8 text-[#f7f9f8] md:text-[21px]">
+      <span className="mx-auto mt-4 block h-px w-12 bg-[#d88719]" />
+      <p className="mx-auto mt-5 max-w-[260px] text-base leading-7 text-[#f7f9f8] lg:max-w-[300px] lg:text-lg lg:leading-8">
         {body}
       </p>
 
-      <span className="absolute inset-x-8 bottom-8 flex items-center justify-center gap-2 text-sm font-semibold text-[#ffb51f] transition group-hover/card:text-[#ffe3a4] md:text-base">
+      <span className="mt-8 flex items-center justify-center gap-2 text-sm font-semibold text-[#ffb51f] transition group-hover/card:text-[#ffe3a4] md:text-base">
         Learn more
         <ArrowRight
           aria-hidden="true"
@@ -675,6 +720,23 @@ function ShieldCheck({ className, ...props }: SVGProps<SVGSVGElement>) {
       />
       <path
         d="m18 24 4 4 9-10"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="3"
+      />
+    </svg>
+  );
+}
+
+function WhakapapaGloMark({ className, ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className={className} {...props}>
+      <circle cx="12" cy="12" r="5.5" stroke="currentColor" strokeWidth="3" />
+      <circle cx="36" cy="12" r="5.5" stroke="currentColor" strokeWidth="3" />
+      <circle cx="24" cy="36" r="5.5" stroke="currentColor" strokeWidth="3" />
+      <path
+        d="M14 16.5 22 32M34 16.5 26 32"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
