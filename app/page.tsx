@@ -288,8 +288,12 @@ export default function HomePage() {
             ))}
           </div>
 
+          <h3 className="mt-10 text-center text-xs font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:mt-12 sm:text-sm">
+            Tai Ora Wellbeing and Future Pathways
+          </h3>
+
           {/* Row 2 — 3 tiled cards, full section width. */}
-          <div className="mt-8 grid overflow-hidden rounded-2xl border border-[#00e5d4]/25 bg-[linear-gradient(180deg,rgba(0,24,28,0.92),rgba(0,8,12,0.96))] shadow-[0_18px_42px_rgba(0,0,0,0.35),inset_0_0_40px_rgba(0,229,212,0.04)] sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-5 grid overflow-hidden rounded-2xl border border-[#00e5d4]/25 bg-[linear-gradient(180deg,rgba(0,24,28,0.92),rgba(0,8,12,0.96))] shadow-[0_18px_42px_rgba(0,0,0,0.35),inset_0_0_40px_rgba(0,229,212,0.04)] sm:mt-6 sm:grid-cols-2 lg:grid-cols-3">
             {ecosystemCards.slice(2).map((card, index) => (
               <EcosystemCard
                 key={card.title}
