@@ -67,7 +67,7 @@ export default function IwiFundersPage() {
           title: "Looking Ahead",
           body: [
             "Tai Ora is more than technology. It is an evolving ecosystem designed to help people feel seen, supported and more confident about their next steps.",
-            "Our current focus includes Mauri, a free and private AI-guided space for reflection, and Future AI Pathways, which helps rangatahi explore their strengths, identity and opportunities across AI, technology and the future of work.",
+            "Our current work includes Mauri within LydiaGlo, alongside developing pathways for identity and future opportunities. Rangatahi and education are an early focus within a wider vision for people and whānau. Future possibilities include financial confidence, everyday life skills and additional wellbeing support. The pathways will evolve through learning and collaboration.",
             "As Tai Ora grows, we will continue developing practical pathways that strengthen confidence, connection and informed decision-making.",
           ],
         },

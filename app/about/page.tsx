@@ -5,7 +5,7 @@ import { SimpleCenteredPage } from "../_components/simple-centered-page";
 
 export const metadata: Metadata = createPageMetadata({
   title: 'About Us',
-  description: 'Tai Ora was created to restore trust in the choices people make about their wellbeing. Learn our story, purpose, vision and values.',
+  description: 'Tai Ora is a Māori-led wellbeing and technology ecosystem supporting people and whānau to reflect, grow and navigate what comes next.',
   path: '/about',
 });
 
@@ -13,31 +13,27 @@ export default function AboutPage() {
   return (
     <SimpleCenteredPage
       title="About Us"
-      description="Tai Ora was created to restore trust in the choices people make about their wellbeing."
+      description="Tai Ora is a Māori-led wellbeing and technology ecosystem supporting people and whānau to reflect, grow and navigate what comes next."
       highlights={["Truth in wellbeing", "Authentic human stories", "Ethical technology"]}
       sections={[
         {
           title: "Why Tai Ora Exists",
-          body: [
-            "Tai Ora was created to restore trust in the choices people make about their wellbeing.",
-            "In a world filled with overwhelming information, marketing noise and conflicting advice, many people struggle to know what truly works for them.",
-            "Tai Ora brings together authentic human experience, trusted knowledge and ethical technology to help people make informed decisions and reconnect with their own journey of wellbeing.",
-          ],
+          body: "People face choices about their wellbeing, identity and future amid overwhelming information and competing expectations. Tai Ora brings together authentic experience, cultural connection, practical tools and ethical technology so people can find clarity, recognise their strengths and take steps that matter to them.",
         },
         {
           title: "Our Story",
           body: [
-            "Tai Ora was born from my own journey. I have always looked for better ways to bring ease and clarity into life, and I wanted to do the same for wellbeing choices. Like many, I have stood in front of shelves or scrolled online, unsure which products were truly good. I longed for options I could trust that were ethical, authentic and clear, but the information was often confusing. I could see others feeling the same uncertainty.",
-            "That moment of frustration turned into a vision to create Tai Ora, a space that feels authentic, cultural and open to everyone. With tools like VeeVu™ and iGlo™, Tai Ora helps people and brands share real journeys, so together we can move beyond the hype and find clarity, connection and collective wellbeing.",
+            "I created Tai Ora because I wanted people to feel seen and supported in the choices they make. I had experienced how confusing product information can be, and I knew that wellbeing is also connected to identity, confidence, relationships and hopes for the future.",
+            "Tai Ora brings these connections into one ecosystem. VeeVu™ helps people explore products, and iGlo™ gives them a private place to track their own experiences. LydiaGlo is the wellbeing area containing Mauri, an AI-guided space for reflection. The wider pathways offer different places to begin, depending on what matters to each person and whānau.",
           ],
         },
         {
           title: "Our Purpose",
-          body: "At Tai Ora our purpose is simple. We bring truth back to beauty and wellness. We want people to feel seen supported and empowered in the choices they make. Every feature we build is designed to protect authenticity lift voices that matter and return value to the people who create it.",
+          body: "Our purpose is to support people and whānau to feel more confident in themselves, connected to their identity and able to shape their future. We bring together reflection, lived experience and ethical technology so people can explore their strengths, build knowledge and take practical steps at their own pace.",
         },
         {
           title: "Our Vision",
-          body: "We see a future where wellbeing is not shaped by trends or noise but by what is real and meaningful. Tai Ora is more than an app. It is a movement to restore trust celebrate culture and create spaces where communities can grow together with confidence and care.",
+          body: "We see Tai Ora as a connected ecosystem where people and whānau can explore the pathways that matter to them, from wellbeing and identity to practical skills and future opportunities. Ethical technology can help people reflect and learn while they remain in control of their own choices.",
         },
         {
           title: "Tai Ora Philosophy of Wellbeing",
@@ -61,7 +57,7 @@ export default function AboutPage() {
         },
         {
           title: "Looking Ahead",
-          body: "As Tai Ora grows, new pathways such as T.A.I. (Tai Ora's Angel Intelligence) and LydiaGlo™ will support reflection, guidance and wellbeing recovery journeys.",
+          body: "WhakapapaGlo and Future AI Pathways are in development. Financial confidence, everyday life skills and additional wellbeing support are future possibilities to explore. These pathways will take shape through learning and collaboration with the people and communities involved.",
         },
       ]}
       ctaLabel="Explore the ecosystem"

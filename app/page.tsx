@@ -194,10 +194,7 @@ export default function HomePage() {
           </p>
 
           <p className="mt-[clamp(0.875rem,2.2svh,1.25rem)] max-w-[720px] text-[clamp(16px,2vw,24px)] leading-[1.45] text-[#f7f9f8]">
-            Empowering people through{" "}
-            <span className="text-[#00e5d4]">ethical</span>,{" "}
-            <span className="text-[#00e5d4]">practical</span> and{" "}
-            <span className="text-[#00e5d4]">supportive</span> AI pathways.
+            Tai Ora is a Māori-led ecosystem helping people and whānau strengthen wellbeing, build confidence and explore future possibilities through ethical AI.
           </p>
 
           <div className="mt-[clamp(1rem,2.6svh,1.5rem)] flex w-full flex-col items-center justify-center gap-2.5 sm:flex-row sm:gap-5 md:gap-8">

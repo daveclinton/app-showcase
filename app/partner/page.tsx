@@ -5,7 +5,7 @@ import { SimpleCenteredPage } from "../_components/simple-centered-page";
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Partner With Tai Ora',
-  description: 'A values-led wellbeing platform helping people make informed choices through authentic journeys and trusted guidance.',
+  description: 'We welcome partnerships that help people and whānau strengthen wellbeing, build confidence and explore future possibilities. Tai Ora connects ethical technology, authentic personal journeys and developing pathways across identity, learning and practical skills, guided by Māori values.',
   path: '/partner',
 });
 
@@ -13,7 +13,7 @@ export default function PartnerPage() {
   return (
     <SimpleCenteredPage
       title="Partner With Tai Ora"
-      description="A values-led wellbeing platform helping people make informed choices through authentic journeys and trusted guidance."
+      description="We welcome partnerships that help people and whānau strengthen wellbeing, build confidence and explore future possibilities. Tai Ora connects ethical technology, authentic personal journeys and developing pathways across identity, learning and practical skills, guided by Māori values."
       highlights={["Human-shared authenticity", "Māori-led innovation", "Community-centred impact"]}
       sections={[
         {
@@ -33,10 +33,11 @@ export default function PartnerPage() {
         {
           title: "Sponsorship Opportunities",
           items: [
-            "Financial sponsorship: fuel product growth, Māori-led creator programmes and community access.",
+            "Financial sponsorship: support community access, rangatahi programmes, evaluation and the development of pathways for wellbeing, confidence and practical learning.",
             "Brand partnership: showcase products through VeeVu™ and iGlo™ journeys that brands and users can trust.",
             "In-kind support: provide products, services, or expertise to empower creators and communities.",
-            "Research collaboration: explore research partnerships supporting the responsible development of T.A.I., Tai Ora Angel Intelligence.",
+            "Education and community collaboration: explore opportunities to support rangatahi programmes, practical learning, evaluation and access to technology.",
+            "Research collaboration: explore opportunities to evaluate and develop ethical technology and wellbeing pathways with education and research partners.",
           ],
         },
         {
@@ -52,19 +53,18 @@ export default function PartnerPage() {
         },
         {
           title: "Our Vision & Impact",
-          body: "Our profits sustain and support the people building Tai Ora, fuel continued growth and enable us to dedicate a meaningful portion to social and cultural initiatives beyond the platform. Tai Ora is not just technology, it is a global movement for purposeful living.",
-          items: [
-            "Growing network of creators preparing to share authentic product journeys",
-            "Early interest from ethical beauty, self-care and Māori-led brands",
-            "Phase 1 focus on high-quality content across skin, hair and self-care",
-          ],
+          body: "We are building Tai Ora to help people and whānau explore what matters to them, develop confidence and take practical steps towards their future. As the business grows, we aim to sustain the people building it, improve the ecosystem and contribute to community wellbeing initiatives.",
+        },
+        {
+          title: "Current focus",
+          body: "Our foundations are VeeVu™ product previews, iGlo™ personal journeys and LydiaGlo, which contains Mauri for reflection. Rangatahi and education are an early focus as we develop the wider pathways. We welcome partners who can help shape, support and evaluate this work.",
         },
         {
           title: "Contact Information",
           body: [
             "For sponsorships and partnerships, contact Tania Pickering, Founder & CEO.",
             "Email: tania@taiora.ai",
-            "Tai Ora: Truth in Beauty. Wellness with Purpose.",
+            "Tai Ora: Supporting people and whānau to explore, grow and shape their future.",
           ],
         },
       ]}

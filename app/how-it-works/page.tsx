@@ -5,7 +5,7 @@ import { SimpleCenteredPage } from "../_components/simple-centered-page";
 
 export const metadata: Metadata = createPageMetadata({
   title: 'How It Works',
-  description: 'Wellbeing is personal. So is Tai Ora. We guide users to creators and brands that align with their individual journeys.',
+  description: 'Start with what matters to you. Explore products, record your experiences or reflect on your wellbeing. Tai Ora’s wider pathways are evolving to support learning, confidence and practical action.',
   path: '/how-it-works',
 });
 
@@ -13,27 +13,20 @@ export default function HowItWorksPage() {
   return (
     <SimpleCenteredPage
       title="How Tai Ora Works"
-      description="Wellbeing is personal. So is Tai Ora. We guide users to creators and brands that align with their individual journeys, building trust, connection and better choices for everyone."
+      description="Start with what matters to you. Explore products, record your experiences or reflect on your wellbeing. Tai Ora’s wider pathways are evolving to support learning, confidence and practical action."
       highlights={["VeeVu™ for discovery", "iGlo™ for proof", "Ethics, culture, and care"]}
       sections={[
         {
-          title: "Different uploads. Different outcomes.",
-          body: "Creators can upload a VeeVu™ for quick discovery or an iGlo™ for authentic proof. Many choose to share both, giving brands flexible, trustworthy content.",
-          items: [
-            "VeeVu™: short, meaningful previews cut from the journey for product pages, ads and quick decisions.",
-            "iGlo™: the full, AI-verified journey with photos, notes, reflections and truthful results over time.",
-            "This two-video approach powers both discovery and trust.",
-          ],
+          title: "VeeVu",
+          body: "Explore short beauty and wellbeing product previews. Follow the product link to the retailer or brand website to learn more or make a purchase.",
         },
         {
-          title: "Steps for Creators",
-          items: [
-            "Record your journey: hook, intro, benefits, demo, CTA.",
-            "Upload and describe: title, product, brand, category, key benefits.",
-            "Auto create VeeVu™: Tai Ora generates the preview cut from your journey.",
-            "iGlo™ builds over time: add photos, notes and reflections as you go.",
-            "Publish and license: approve where your content appears and how it is used.",
-          ],
+          title: "iGlo",
+          body: "Record your beauty and self-care journey through check-ins, photos, notes and reflections. Track what changes for you over time. Your journey is private by default.",
+        },
+        {
+          title: "Mauri",
+          body: "Mauri sits within LydiaGlo, Tai Ora’s wellbeing area. It is an AI-guided space to pause, reflect and find your way forward, with encouragement to connect with trusted people when needed. It is not a therapy, diagnostic or emergency service.",
         },
         {
           title: "For Brands",

@@ -48,8 +48,8 @@ export function Footer() {
           </Link>
 
           <p className="max-w-xl text-lg leading-8 text-[#d8e0df]">
-            Helping people make informed wellbeing choices through authentic
-            stories and ethical technology.
+            Helping people and whānau explore wellbeing, identity and future
+            possibilities through ethical technology.
           </p>
           <p className="text-base font-semibold text-[#b4dac6]">
             Privacy-first. Consent-led. Values-aligned.

@@ -19,7 +19,7 @@ export default function BrandPage() {
         {
           title: "For Brands",
           items: [
-            "Short, useful product previews alongside verified reviews and real customer journeys.",
+            "Short, useful product previews alongside reviews based on documented product experiences.",
             "Transparent licensing opportunities with creator content",
             "A platform built on culture, ethics and trust that leads to loyalty",
           ],

@@ -13,7 +13,7 @@ export default function CreatorsPage() {
   return (
     <SimpleCenteredPage
       title="Turn your passion into purpose"
-      description="iGlo™ allows creators to document authentic product experiences and create earning opportunities from the content they choose to share. Only the original creator can earn from licensing their content through Tai Ora."
+      description="iGlo™ helps you record your beauty and self-care experiences through photos, notes and reflections. Your journey is private by default."
       highlights={["Share your authentic journey", "Retain ownership of your story", "Earn through ethical brand partnerships"]}
       sections={[
         {

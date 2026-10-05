@@ -31,13 +31,13 @@ export default function TermsOfUsePage() {
         {
           title: "4. Services",
           body: [
-            "The Services include wellness, beauty, and educational tools such as VeeVu™, iGlo™, SoulGlo™, LydiaGlo™, HoloPro™, TaniaGlo™, MumGlo™, GloSounds™, and the T.A.I. assistant layer.",
+            "The Services include wellness, beauty, and educational tools such as VeeVu™, iGlo™, SoulGlo™, LydiaGlo™, HoloPro™, TaniaGlo™, MumGlo™, GloSounds™, the T.A.I. assistant layer, and Mauri, an AI-guided reflection tool.",
             "T.A.I. provides supportive guidance only. It does not make decisions and is not a substitute for medical, legal, or financial advice.",
           ],
         },
         {
           title: "5. Accounts & eligibility",
-          body: "You must be at least 13 years old, or the minimum age of digital consent in your country, to use the Services. If you are under the age of majority, you must have a parent or guardian's consent.",
+          body: "You must be at least 13 years old, or the minimum age of digital consent in your country, to use the Services. If you are under the age of majority, you must have a parent or guardian's consent. You must be at least 16 years old to use Mauri.",
         },
         {
           title: "6. User content & licensing",

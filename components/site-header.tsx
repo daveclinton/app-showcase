@@ -8,7 +8,6 @@ import {
   Lightbulb,
   Menu,
   MessageCircle,
-  Sparkles,
   X,
 } from "lucide-react";
 import Image from "next/image";
@@ -65,32 +64,34 @@ const navItems = [
       {
         href: "/",
         label: "Tai Ora",
-        description: "Bring the ecosystem into one clear place.",
+        description: "Explore the Tai Ora ecosystem.",
         image: "/new-tai-ora-logo.png",
         tone: "aqua",
       },
       {
         href: "/brand",
         label: "VeeVu",
-        description: "Find trusted product previews from real creators.",
+        description: "Explore short product video previews.",
         image: "/veevu-new.png",
         tone: "rose",
       },
       {
         href: "/creators",
         label: "iGlo",
-        description: "Keep authentic review journeys moving.",
+        description: "Track your personal beauty and self-care journey.",
         image: "/iglo-new.png",
         tone: "gold",
       },
-    ],
-    footerLinks: [
       {
         href: "https://mauri.taiora.ai/",
-        label: "Open Mauri",
-        icon: Sparkles,
+        label: "Mauri",
+        description: "Pause, reflect and find your way forward.",
+        image: "/mauri-logo.png",
+        tone: "mint",
         external: true,
       },
+    ],
+    footerLinks: [
       {
         href: "/partner",
         label: "Build with Tai Ora",
@@ -306,14 +307,26 @@ function DesktopDropdownItem({
               {item.sectionLabel}
             </p>
 
-            <div className="mt-4 grid gap-3 md:grid-cols-3">
+            <div
+              className={cn(
+                "mt-4 grid gap-3",
+                item.label === "Our Products"
+                  ? "md:grid-cols-2"
+                  : "md:grid-cols-3",
+              )}
+            >
               {item.cards.map((card) => (
                 <MegaCard key={card.label} card={card} pathname={pathname} />
               ))}
             </div>
           </div>
 
-          <div className="grid border-t border-border bg-surface-active md:grid-cols-2">
+          <div
+            className={cn(
+              "grid border-t border-border bg-surface-active",
+              item.footerLinks.length > 1 ? "md:grid-cols-2" : "md:grid-cols-1",
+            )}
+          >
             {item.footerLinks.map((footerLink) => (
               <MegaFooterLink
                 key={footerLink.label}
