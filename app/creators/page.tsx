@@ -5,7 +5,7 @@ import { SimpleCenteredPage } from "../_components/simple-centered-page";
 
 export const metadata: Metadata = createPageMetadata({
   title: 'For Creators',
-  description: 'iGlo™ allows creators to document authentic product experiences and create earning opportunities from the content they choose to share. Only the original creator can earn from licensing their content through Tai Ora.',
+  description: 'iGlo™ helps you record your beauty and self-care experiences through photos, notes and reflections. Your journey is private by default.',
   path: '/creators',
 });
 
